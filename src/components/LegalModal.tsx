@@ -66,8 +66,8 @@ export const LegalModal: React.FC<LegalModalProps> = ({ type, onClose, language 
         {
           titleZh: '四、使用者權益行使',
           titleEn: '4. Your Legal Rights',
-          textZh: '您得隨時向本公司請求查詢、閱覽、製給複製本、補充或更正、停止蒐集處理或利用、或請求刪除您的個人資料。聯繫信箱：privacy@beat-tech.com。',
-          textEn: 'You retain the right to inquire, review, rectify, or request deletion of your personal data by contacting privacy@beat-tech.com.'
+          textZh: '您得隨時向本公司請求查詢、閱覽、製給複製本、補充或更正、停止蒐集處理或利用、或請求刪除您的個人資料。聯繫信箱：beat.tech.co@beatpasstw.com。',
+          textEn: 'You retain the right to inquire, review, rectify, or request deletion of your personal data by contacting beat.tech.co@beatpasstw.com.'
         }
       ]
     },
