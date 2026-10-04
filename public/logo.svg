@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+  <rect width="300" height="300" fill="#FFFFFF"/>
+  <g transform="skewX(-10)">
+    <text x="160" y="145" text-anchor="middle" fill="#F15A24" font-family="'Montserrat', 'Inter', 'Helvetica Neue', 'Arial Black', sans-serif" font-weight="900" font-style="italic" font-size="108" letter-spacing="-4">BEAT</text>
+    <text x="160" y="240" text-anchor="middle" fill="#242424" font-family="'Montserrat', 'Inter', 'Helvetica Neue', 'Arial Black', sans-serif" font-weight="900" font-style="italic" font-size="108" letter-spacing="-4">PASS</text>
+  </g>
+</svg>

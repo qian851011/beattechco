@@ -1,0 +1,150 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-beat-orange: #FF9F1C;
+    --color-beat-orange-hover: #F08C00;
+    --color-beat-orange-light: #FFF4E5;
+    --color-beat-offwhite: #F7F7F5;
+    --color-beat-cream: #F2F1EC;
+    --color-beat-white: #FFFFFF;
+    --color-beat-dark: #141413;
+    --color-beat-muted: #5C5C58;
+    --color-beat-border: #E5E5DF;
+  }
+
+  body {
+    font-family: 'Inter Variable', 'Inter', 'Noto Sans TC Variable', 'Noto Sans TC', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #F7F7F5;
+    color: #141413;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Light / Warm Cream & White utilities */
+.white-card {
+  background: #FFFFFF;
+  border: 1px solid #E5E5DF;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+/* Subtle, tasteful micro-animations (slide-in, fade, gentle float) */
+@keyframes fadeInUpSubtle {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Soft floating animations with slightly varied periods and offsets to give an organic, tasteful rhythm */
+@keyframes floatSubtleA {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes floatSubtleB {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes floatSubtleC {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.anim-fade-in-up {
+  animation: fadeInUpSubtle 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.anim-float-a {
+  animation: floatSubtleA 4.8s ease-in-out infinite;
+}
+
+.anim-float-b {
+  animation: floatSubtleB 5.6s ease-in-out infinite;
+  animation-delay: 0.8s;
+}
+
+.anim-float-c {
+  animation: floatSubtleC 5.2s ease-in-out infinite;
+  animation-delay: 1.4s;
+}
+
+/* Elegant card hover interaction with smooth lift and clean border highlight */
+.subtle-interactive-card {
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.28s ease, 
+              box-shadow 0.28s ease,
+              background-color 0.28s ease;
+  will-change: transform;
+}
+
+.subtle-interactive-card:hover {
+  transform: translateY(-3px);
+  border-color: #FF9F1C;
+  box-shadow: 0 8px 20px -6px rgba(255, 159, 28, 0.16), 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+.subtle-interactive-card-lg {
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.32s ease, 
+              box-shadow 0.32s ease,
+              background-color 0.32s ease;
+  will-change: transform;
+}
+
+.subtle-interactive-card-lg:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 159, 28, 0.65);
+  box-shadow: 0 12px 28px -6px rgba(255, 159, 28, 0.14), 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+@keyframes softPulseGlow {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(0.92);
+  }
+}
+
+.animate-soft-pulse {
+  animation: softPulseGlow 3s ease-in-out infinite;
+}
+
+@keyframes orangeBreatheGlow {
+  0%, 100% {
+    color: #FF9F1C;
+    text-shadow: 0 0 2px rgba(255, 159, 28, 0.4), 0 0 6px rgba(255, 159, 28, 0.2);
+    opacity: 0.92;
+  }
+  50% {
+    color: #FF8500;
+    text-shadow: 0 0 8px rgba(255, 159, 28, 0.9), 0 0 16px rgba(255, 159, 28, 0.6), 0 0 24px rgba(255, 159, 28, 0.35);
+    opacity: 1;
+  }
+}
+
+.animate-orange-glow {
+  animation: orangeBreatheGlow 2.4s ease-in-out infinite;
+}
+
