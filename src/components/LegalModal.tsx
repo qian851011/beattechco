@@ -133,7 +133,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({ type, onClose, language 
           titleZh: '二、透明退換與客服保障',
           titleEn: '2. Support & Inquiries',
           textZh: '會員對訂閱或使用有任何疑問，均可隨時透過官方客服管道聯繫，我們將秉持公平、透明之原則協助妥善處理。',
-          textEn: 'For membership or operational questions, contact support@beat-tech.com for prompt assistance.'
+          textEn: 'For membership or operational questions, contact beat.chrislu@gmail.com for prompt assistance.'
         }
       ]
     }
