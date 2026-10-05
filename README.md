@@ -3,8 +3,8 @@
 Hosted on **Cloudflare Pages** (connected to GitHub).
 
 - Frontend: React + Vite → built to `dist/`
+- Contact form: sent directly from the browser to FormSubmit (see `src/pages/ContactPage.tsx`)
 - API: Cloudflare Pages Functions in `functions/api/`
-  - `POST /api/contact` – contact form (forwards to FormSubmit)
   - `GET /api/news` – news articles from Notion
   - `GET /api/legal` – legal documents from Notion
 
@@ -16,7 +16,6 @@ Hosted on **Cloudflare Pages** (connected to GitHub).
   - `NOTION_API_KEY` (type: Secret)
   - `NOTION_DATABASE_ID`
   - `NOTION_LEGAL_DATABASE_ID` (optional)
-  - `APP_URL`
 
 ## Run Locally
 

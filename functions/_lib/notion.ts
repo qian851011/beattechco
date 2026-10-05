@@ -6,7 +6,6 @@ export interface Env {
   NOTION_TOKEN?: string;
   NOTION_DATABASE_ID?: string;
   NOTION_LEGAL_DATABASE_ID?: string;
-  APP_URL?: string;
 }
 
 // Minimal shape of the context object Cloudflare passes to a Pages Function

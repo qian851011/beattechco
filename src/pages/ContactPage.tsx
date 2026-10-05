@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Language, CollaborationType, ContactFormData } from '../types';
 import { CheckCircle2, Send, Mail, Globe, Clock, AlertCircle } from 'lucide-react';
 
+// All inquiries are delivered to this address via FormSubmit
+const INQUIRY_EMAIL = 'beat.tech.co@beatpasstw.com';
+
 const EMPTY_FORM: ContactFormData = {
   companyName: '',
   name: '',
@@ -81,22 +84,35 @@ export const ContactPage: React.FC<ContactPageProps> = ({
     }
 
     setIsSubmitting(true);
+    // Abort if FormSubmit does not answer within 15 seconds
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 15000);
     try {
-      const res = await fetch('/api/contact', {
+      const f = formData;
+      // Sent straight from the visitor's browser to FormSubmit (no backend needed)
+      const res = await fetch(`https://formsubmit.co/ajax/${INQUIRY_EMAIL}`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
+        signal: controller.signal,
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          _subject: `[BEAT 官網合作洽詢] ${f.collaborationType} - ${f.companyName.trim() || f.name.trim()}`,
+          _template: 'table',
+          _captcha: 'false',
+          _replyto: f.email.trim(),
+          '合作類別': f.collaborationType,
+          '聯絡人姓名': f.name.trim(),
+          '職稱': f.title.trim() || '未填寫',
+          '公司或場館': f.companyName.trim() || '個人／未填寫',
+          '聯絡信箱 (Email)': f.email.trim(),
+          '聯絡電話': f.phone.trim() || '未填寫',
+          '需求說明': f.requirements.trim(),
+          '備註': f.notes.trim() || '無'
+        })
       });
       const data = await res.json().catch(() => ({}));
-      // Only confirm when the server explicitly reports a successful delivery
-      if (res.ok && data?.success === true) {
+      // FormSubmit returns success as the string "true"; anything else is a failure
+      if (res.ok && (data?.success === true || data?.success === 'true')) {
         setSubmitted(true);
-      } else if (res.status === 400) {
-        setErrorMessage(
-          isEn
-            ? 'Some fields are invalid. Please check your name, email and requirements and try again.'
-            : '部分欄位格式有誤，請確認姓名、Email 與需求說明後再試一次。'
-        );
       } else {
         setErrorMessage(
           isEn
@@ -112,6 +128,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({
           : '無法連線至伺服器，請檢查網路連線後再試，或直接來信 beat.tech.co@beatpasstw.com。'
       );
     } finally {
+      clearTimeout(timeoutId);
       setIsSubmitting(false);
     }
   };
