@@ -1,18 +1,6 @@
 @import "tailwindcss";
 
 @layer base {
-  :root {
-    --color-beat-orange: #FF9F1C;
-    --color-beat-orange-hover: #F08C00;
-    --color-beat-orange-light: #FFF4E5;
-    --color-beat-offwhite: #F7F7F5;
-    --color-beat-cream: #F2F1EC;
-    --color-beat-white: #FFFFFF;
-    --color-beat-dark: #141413;
-    --color-beat-muted: #5C5C58;
-    --color-beat-border: #E5E5DF;
-  }
-
   body {
     font-family: 'Inter Variable', 'Inter', 'Noto Sans TC Variable', 'Noto Sans TC', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     background-color: #F7F7F5;

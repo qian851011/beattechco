@@ -1,19 +1,15 @@
 import React from 'react';
-import { PageId, Language } from '../types';
+import { PageId, Language, LegalDocType } from '../types';
 import { ArrowUpRight } from 'lucide-react';
 import { BeatLogo } from './BeatLogo';
 
 interface FooterProps {
   onNavigate: (page: PageId) => void;
   language: Language;
-  onOpenLegal: (type: 'privacy' | 'terms' | 'cookies' | 'rights') => void;
+  onOpenLegal: (type: LegalDocType) => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate, language, onOpenLegal }) => {
-  const handleNav = (page: PageId) => {
-    onNavigate(page);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
 
   return (
     <footer className="bg-[#EFEFEA] text-[#5C5C58] border-t border-[#E2E2DC] pt-16 pb-12 transition-colors">
@@ -35,13 +31,13 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, language, onOpenLega
           </div>
           <div className="flex items-center gap-3">
             <button
-              onClick={() => handleNav('beat-pass')}
+              onClick={() => onNavigate('beat-pass')}
               className="px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white bg-[#FF9F1C] hover:bg-[#F08C00] transition-colors cursor-pointer shadow-xs"
             >
               {language === 'zh-TW' ? '體驗 BEAT PASS' : 'Explore BEAT PASS'}
             </button>
             <button
-              onClick={() => handleNav('contact')}
+              onClick={() => onNavigate('contact')}
               className="px-4 py-2 text-xs font-medium uppercase tracking-wider text-[#141413] bg-white border border-[#DCDCD6] hover:border-[#FF9F1C] hover:text-[#FF9F1C] transition-colors cursor-pointer shadow-2xs"
             >
               {language === 'zh-TW' ? '商務合作洽詢' : 'Contact Us'}
@@ -60,7 +56,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, language, onOpenLega
             <ul className="space-y-2.5">
               <li>
                 <button
-                  onClick={() => handleNav('beat-pass')}
+                  onClick={() => onNavigate('beat-pass')}
                   className="hover:text-[#FF9F1C] transition-colors flex items-center gap-1 group text-left cursor-pointer"
                 >
                   <span>BEAT PASS</span>
@@ -69,7 +65,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, language, onOpenLega
               </li>
               <li>
                 <button
-                  onClick={() => handleNav('about')}
+                  onClick={() => onNavigate('about')}
                   className="hover:text-[#FF9F1C] transition-colors flex items-center gap-1 group text-left cursor-pointer"
                 >
                   <span>BEAT Commerce</span>
@@ -78,7 +74,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, language, onOpenLega
               </li>
               <li>
                 <button
-                  onClick={() => handleNav('about')}
+                  onClick={() => onNavigate('about')}
                   className="hover:text-[#FF9F1C] transition-colors text-left cursor-pointer"
                 >
                   <span>BEAT Technology Solutions</span>
@@ -86,10 +82,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, language, onOpenLega
               </li>
               <li>
                 <button
-                  onClick={() => handleNav('beat-pass')}
+                  onClick={() => onNavigate('beat-pass')}
                   className="hover:text-[#FF9F1C] transition-colors text-left cursor-pointer"
                 >
-                  <span>Chiu Chiu Coin(啾啾幣)</span>
+                  <span>Chiu Chiu Coin (啾啾幣)</span>
                 </button>
               </li>
             </ul>
@@ -104,7 +100,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, language, onOpenLega
             <ul className="space-y-2.5">
               <li>
                 <button
-                  onClick={() => handleNav('partners')}
+                  onClick={() => onNavigate('partners')}
                   className="hover:text-[#FF9F1C] transition-colors text-left cursor-pointer"
                 >
                   {language === 'zh-TW' ? '運動場館合作 (Venue)' : 'Venue Partnership'}
@@ -112,7 +108,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, language, onOpenLega
               </li>
               <li>
                 <button
-                  onClick={() => handleNav('partners')}
+                  onClick={() => onNavigate('partners')}
                   className="hover:text-[#FF9F1C] transition-colors text-left cursor-pointer"
                 >
                   {language === 'zh-TW' ? '品牌跨界合作 (Brand)' : 'Brand Partnership'}
@@ -120,7 +116,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, language, onOpenLega
               </li>
               <li>
                 <button
-                  onClick={() => handleNav('partners')}
+                  onClick={() => onNavigate('partners')}
                   className="hover:text-[#FF9F1C] transition-colors text-left cursor-pointer"
                 >
                   {language === 'zh-TW' ? '企業健康方案 (Enterprise)' : 'Enterprise Solutions'}
@@ -128,7 +124,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, language, onOpenLega
               </li>
               <li>
                 <button
-                  onClick={() => handleNav('partners')}
+                  onClick={() => onNavigate('partners')}
                   className="hover:text-[#FF9F1C] transition-colors text-left cursor-pointer"
                 >
                   {language === 'zh-TW' ? '技術與系統串聯 (Tech)' : 'Tech Integration'}
@@ -146,7 +142,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, language, onOpenLega
             <ul className="space-y-2.5">
               <li>
                 <button
-                  onClick={() => handleNav('about')}
+                  onClick={() => onNavigate('about')}
                   className="hover:text-[#FF9F1C] transition-colors text-left cursor-pointer"
                 >
                   {language === 'zh-TW' ? '公司理念與願景' : 'Philosophy & Vision'}
@@ -154,7 +150,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, language, onOpenLega
               </li>
               <li>
                 <button
-                  onClick={() => handleNav('news')}
+                  onClick={() => onNavigate('news')}
                   className="hover:text-[#FF9F1C] transition-colors text-left cursor-pointer"
                 >
                   {language === 'zh-TW' ? '最新消息與動態' : 'Corporate News'}
@@ -162,7 +158,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, language, onOpenLega
               </li>
               <li>
                 <button
-                  onClick={() => handleNav('contact')}
+                  onClick={() => onNavigate('contact')}
                   className="hover:text-[#FF9F1C] transition-colors text-left cursor-pointer"
                 >
                   {language === 'zh-TW' ? '商務與媒體接洽' : 'Business Contact'}
@@ -221,7 +217,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, language, onOpenLega
               比忒科技有限公司 · Beat Technology Co., Ltd.
             </p>
             <p className="mt-1">
-              BEAT THE ODDS. 
+              BEAT THE ODDS.
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2">

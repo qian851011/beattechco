@@ -2,6 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { Language, CollaborationType, ContactFormData } from '../types';
 import { CheckCircle2, Send, Mail, Globe, Clock, AlertCircle } from 'lucide-react';
 
+const EMPTY_FORM: ContactFormData = {
+  companyName: '',
+  name: '',
+  title: '',
+  email: '',
+  phone: '',
+  collaborationType: 'BEAT PASS 場館合作',
+  requirements: '',
+  notes: ''
+};
+
 interface ContactPageProps {
   language: Language;
   defaultCollaborationType?: CollaborationType;
@@ -14,14 +25,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({
   const isEn = language === 'en';
 
   const [formData, setFormData] = useState<ContactFormData>({
-    companyName: '',
-    name: '',
-    title: '',
-    email: '',
-    phone: '',
-    collaborationType: defaultCollaborationType || 'BEAT PASS 場館合作',
-    requirements: '',
-    notes: ''
+    ...EMPTY_FORM,
+    collaborationType: defaultCollaborationType || EMPTY_FORM.collaborationType
   });
 
   const [submitted, setSubmitted] = useState(false);
@@ -112,16 +117,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({
   };
 
   const handleReset = () => {
-    setFormData({
-      companyName: '',
-      name: '',
-      title: '',
-      email: '',
-      phone: '',
-      collaborationType: 'BEAT PASS 場館合作',
-      requirements: '',
-      notes: ''
-    });
+    setFormData(EMPTY_FORM);
     setFieldErrors({});
     setSubmitted(false);
     setErrorMessage('');
@@ -135,7 +131,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({
 
   return (
     <div className="min-h-screen bg-[#F7F7F5] text-[#141413] pt-24 pb-20">
-      {/* 27 | CONTACT HERO */}
+      {/* CONTACT HERO */}
       <section className="border-b border-[#E5E5DF] pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl space-y-4">

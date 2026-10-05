@@ -27,7 +27,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Removed redundant "聯絡我們" from center nav links so there is only one "聯絡我們" button on the right
+  // Contact lives in the right-side button, not in the center links
   const navLinks: { id: PageId; labelZh: string; labelEn: string }[] = [
     { id: 'home', labelZh: '首頁', labelEn: 'HOME' },
     { id: 'about', labelZh: '關於比忒', labelEn: 'ABOUT' },
@@ -39,7 +39,6 @@ export const Navbar: React.FC<NavbarProps> = ({
   const handleNavClick = (page: PageId) => {
     onNavigate(page);
     setMobileMenuOpen(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const isContactActive = currentPage === 'contact';
@@ -79,7 +78,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center space-x-2 xl:space-x-5">
             {navLinks.map((link) => {
-              const isActive = currentPage === link.id || (link.id === 'about' && currentPage === 'business');
+              const isActive = currentPage === link.id;
               return (
                 <button
                   key={link.id}
@@ -111,7 +110,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span className="font-medium">{language === 'zh-TW' ? 'EN' : '繁中'}</span>
             </button>
 
-            {/* "合作洽詢" 改為 "聯絡我們" */}
+            {/* Contact */}
             <button
               onClick={() => handleNavClick('contact')}
               className={`px-3.5 py-1.5 text-xs tracking-wider uppercase font-medium transition-all cursor-pointer shadow-2xs ${
@@ -162,7 +161,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 key={link.id}
                 onClick={() => handleNavClick(link.id)}
                 className={`flex items-center justify-between text-left py-2 text-sm font-medium tracking-wider uppercase ${
-                  currentPage === link.id || (link.id === 'about' && currentPage === 'business')
+                  currentPage === link.id
                     ? 'text-[#FF9F1C] font-semibold pl-2 border-l-2 border-[#FF9F1C]'
                     : 'text-[#52524C] hover:text-[#141413]'
                 }`}

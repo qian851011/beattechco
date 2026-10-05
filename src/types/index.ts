@@ -1,4 +1,4 @@
-export type PageId = 'home' | 'about' | 'business' | 'beat-pass' | 'partners' | 'news' | 'contact';
+export type PageId = 'home' | 'about' | 'beat-pass' | 'partners' | 'news' | 'contact';
 
 export type Language = 'zh-TW' | 'en';
 
@@ -15,7 +15,6 @@ export interface NewsItem {
   summaryEn: string;
   content: string[];
   contentEn?: string[];
-  readTime: string;
 }
 
 export interface FAQItem {
@@ -23,8 +22,9 @@ export interface FAQItem {
   questionEn: string;
   answer: string;
   answerEn: string;
-  category: string;
 }
+
+export type LegalDocType = 'privacy' | 'terms' | 'cookies' | 'rights';
 
 export type CollaborationType = 
   | 'BEAT PASS 場館合作'

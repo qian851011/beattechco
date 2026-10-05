@@ -21,7 +21,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, language }) =>
 
   return (
     <div className="min-h-screen bg-[#F7F7F5] text-[#141413] pt-24 pb-20">
-      {/* 21 | ABOUT & BUSINESS HERO */}
+      {/* ABOUT & BUSINESS HERO */}
       <section className="border-b border-[#E5E5DF] pb-16 bg-[#F7F7F5] relative overflow-hidden">
         {/* Soft subtle ambient background glow */}
         <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#FF9F1C]/[0.025] rounded-full blur-3xl pointer-events-none" />
@@ -41,7 +41,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, language }) =>
               {isEn ? 'From Movement to Ecosystem.' : '從運動出發，走向更大的生態。'}
               <span className="block text-sm sm:text-base text-[#6C6C66] font-normal mt-1 leading-relaxed">
                 {isEn
-                  ? 'BEAT Technology  is a tech company centered on technology, lifestyle, and industrial innovation. Starting from BEAT PASS, we continuously expand the diverse possibilities among membership services, sports venues, e-commerce, and digital technology.'
+                  ? 'BEAT Technology is a tech company centered on technology, lifestyle, and industrial innovation. Starting from BEAT PASS, we continuously expand the diverse possibilities among membership services, sports venues, e-commerce, and digital technology.'
                   : '比忒科技是一家以科技、生活與產業創新為核心的科技公司。我們從 BEAT PASS 出發，持續拓展會員服務、運動場館、電子商務與數位科技之間的多元可能性。'}
               </span>
             </p>
@@ -305,7 +305,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, language }) =>
                   </div>
                   <p className="text-xs sm:text-sm text-[#6C6C66] leading-relaxed pt-2">
                     {isEn
-                      ? 'BEAT PASS is our cornerstone sports membership service. By connecting movers with diverse boutique spaces through technology, members can freely explore yoga, bouldering, strength training, martial arts, and aquatics with a single digital pass.'
+                      ? 'BEAT PASS is our cornerstone sports membership service. By connecting movers with diverse boutique spaces through technology, members can freely explore yoga, bouldering, strength training, martial arts, and swimming with a single digital pass.'
                       : 'BEAT PASS 是比忒科技目前的核心旗艦運動產品。以現代科技串聯運動者與各類型特色場館，打破傳統健身會籍限制，讓使用者以單一會員憑證隨時探索瑜伽、抱石、重訓、格鬥與游泳池，享受高度自主的運動生活。'}
                   </p>
 
@@ -352,7 +352,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, language }) =>
                   </div>
                   <div className="group/metric border-b border-[#E5E5DF] pb-5 p-2 -mx-2 rounded-xs hover:bg-white transition-all duration-200 cursor-default">
                     <div className="text-3xl font-bold text-[#141413] font-mono group-hover/metric:text-[#FF9F1C] group-hover/metric:translate-x-1 transition-all duration-200">6+</div>
-                    <div className="text-xs text-[#6C6C66] mt-1">{isEn ? 'Core disciplines: Fitness, Yoga, Climbing, Boxing, Pilates, Aquatics' : '主流運動維度（健身、瑜伽、攀岩、拳擊、皮拉提斯、游泳池）'}</div>
+                    <div className="text-xs text-[#6C6C66] mt-1">{isEn ? 'Core disciplines: Fitness, Yoga, Climbing, Boxing, Pilates, Swimming' : '主流運動維度（健身、瑜伽、攀岩、拳擊、皮拉提斯、游泳池）'}</div>
                   </div>
                 </div>
                 <div className="pt-2 border-t border-[#F0F0EB]">
@@ -525,7 +525,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, language }) =>
             </h3>
             <p className="text-xs sm:text-sm text-[#6C6C66] max-w-xl mx-auto leading-relaxed">
               {isEn
-                ? 'Beater Technology is a technology company driven by continuous innovation. In response to the maturing sports ecosystem, we created "BEAT PASS." Moving forward, we will continue to plan and incubate new digital products, smart sports hardware integrations, and corporate wellness services.'
+                ? 'BEAT Technology is a technology company driven by continuous innovation. In response to the maturing sports ecosystem, we created "BEAT PASS." Moving forward, we will continue to plan and incubate new digital products, smart sports hardware integrations, and corporate wellness services.'
                 : '比忒科技是一家持續創新的科技公司。隨著運動生態的成熟，我們創造了"BEAT PASS"後續也將持續規劃並孵化新的數位產品、智慧運動硬體整合與企業健康活力服務。'}
             </p>
           </div>

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { X, ShieldCheck, FileText, Cookie, Award } from 'lucide-react';
+import { Language, LegalDocType } from '../types';
 
 interface LegalModalProps {
-  type: 'privacy' | 'terms' | 'cookies' | 'rights' | null;
+  type: LegalDocType | null;
   onClose: () => void;
-  language: 'zh-TW' | 'en';
+  language: Language;
 }
 
 interface NotionLegalDoc {
@@ -198,7 +199,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({ type, onClose, language 
     }
     if (/^(第[一二三四五六七八九十百\d]+條|[一二三四五六七八九十]+、|Article\s+\d+|Section\s+\d+)/.test(text)) {
       return (
-        <h4 key={idx} className="text-sm sm:text-base font-bold text-[#141413] pt-3 pb-1 text-[#141413]">
+        <h4 key={idx} className="text-sm sm:text-base font-bold text-[#141413] pt-3 pb-1">
           {text}
         </h4>
       );

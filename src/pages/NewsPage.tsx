@@ -48,7 +48,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ language }) => {
 
   return (
     <div className="min-h-screen bg-[#F7F7F5] text-[#141413] pt-24 pb-20">
-      {/* 26 | NEWS HERO */}
+      {/* NEWS HERO */}
       <section className="border-b border-[#E5E5DF] pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl space-y-4">

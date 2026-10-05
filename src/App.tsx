@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { PageId, Language, CollaborationType } from './types';
+import { PageId, Language, CollaborationType, LegalDocType } from './types';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { LegalModal } from './components/LegalModal';
@@ -10,12 +10,12 @@ import { PartnersPage } from './pages/PartnersPage';
 import { NewsPage } from './pages/NewsPage';
 import { ContactPage } from './pages/ContactPage';
 
-const ROUTABLE_PATHS = ['about', 'business', 'beat-pass', 'partners', 'news', 'contact'];
+const ROUTABLE_PATHS = ['about', 'beat-pass', 'partners', 'news', 'contact'];
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<PageId>('home');
   const [language, setLanguage] = useState<Language>('zh-TW');
-  const [legalModalType, setLegalModalType] = useState<'privacy' | 'terms' | 'cookies' | 'rights' | null>(null);
+  const [legalModalType, setLegalModalType] = useState<LegalDocType | null>(null);
   const [contactPresetType, setContactPresetType] = useState<CollaborationType | undefined>(undefined);
 
   // Sync initial URL path
@@ -38,7 +38,7 @@ export default function App() {
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
-  // Update document title for Section 33 SEO guidelines
+  // Update document title per page
   useEffect(() => {
     switch (currentPage) {
       case 'beat-pass':
@@ -47,7 +47,6 @@ export default function App() {
       case 'partners':
         document.title = 'BEAT Technology 合作夥伴｜場館・品牌・企業合作';
         break;
-      case 'business':
       case 'about':
         document.title = '關於比忒科技與核心業務｜Technology That Moves｜BEAT Technology';
         break;
@@ -94,7 +93,7 @@ export default function App() {
         {currentPage === 'home' && (
           <HomePage onNavigate={handleNavigate} language={language} />
         )}
-        {(currentPage === 'about' || currentPage === 'business') && (
+        {currentPage === 'about' && (
           <AboutPage onNavigate={handleNavigate} language={language} />
         )}
         {currentPage === 'beat-pass' && (
@@ -118,7 +117,7 @@ export default function App() {
       <Footer
         onNavigate={handleNavigate}
         language={language}
-        onOpenLegal={(type) => setLegalModalType(type)}
+        onOpenLegal={setLegalModalType}
       />
 
       {/* Legal & Compliance Modal */}

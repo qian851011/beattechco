@@ -27,7 +27,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, language }) => {
 
   return (
     <div className="min-h-screen bg-[#F7F7F5] text-[#141413] pt-20">
-      {/* 12 | HERO SECTION */}
+      {/* HERO SECTION */}
       <section className="relative overflow-hidden pt-12 pb-24 md:pt-20 md:pb-32 border-b border-[#E5E5DF] bg-[#F7F7F5]">
         {/* Subtle geometric dynamic grid */}
         <div className="absolute inset-0 bg-[radial-gradient(#1414130a_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none opacity-80" />
@@ -142,7 +142,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, language }) => {
                           {isEn ? 'Partner Venues' : '合作場館 (Venues)'}
                         </div>
                         <div className="text-[11px] text-[#6C6C66]">
-                          {isEn ? 'Digital check-in & member reach' : '用科技更聰明的經營'}
+                          {isEn ? 'Smarter operations through technology' : '用科技更聰明地經營'}
                         </div>
                       </div>
                     </div>
@@ -176,7 +176,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, language }) => {
         </div>
       </section>
 
-      {/* 13 | HOME — COMPANY INTRODUCTION */}
+      {/* HOME — COMPANY INTRODUCTION */}
       <section className="py-20 md:py-28 border-b border-[#E5E5DF] bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
@@ -210,7 +210,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, language }) => {
         </div>
       </section>
 
-      {/* 14 | HOME — BUSINESS ECOSYSTEM */}
+      {/* HOME — BUSINESS ECOSYSTEM */}
       <section className="py-24 border-b border-[#E5E5DF] bg-[#F7F7F5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
@@ -343,7 +343,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, language }) => {
         </div>
       </section>
 
-      {/* 15 | HOME — BEAT PASS HIGHLIGHT */}
+      {/* HOME — BEAT PASS HIGHLIGHT */}
       <section className="py-24 border-b border-[#E5E5DF] bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -453,7 +453,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, language }) => {
         </div>
       </section>
 
-      {/* 16 | HOME — VENUE VALUE */}
+      {/* HOME — VENUE VALUE */}
       <section className="py-24 border-b border-[#E5E5DF] bg-[#F7F7F5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-16">
@@ -536,7 +536,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, language }) => {
         </div>
       </section>
 
-      {/* 17 | HOME — TECHNOLOGY */}
+      {/* HOME — TECHNOLOGY */}
       <section className="py-24 border-b border-[#E5E5DF] bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-16">
@@ -580,7 +580,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, language }) => {
         </div>
       </section>
 
-      {/* 18 | HOME — COMMERCE */}
+      {/* HOME — COMMERCE */}
       <section className="py-24 border-b border-[#E5E5DF] bg-[#F7F7F5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -639,7 +639,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, language }) => {
         </div>
       </section>
 
-      {/* 19 | HOME — PHILOSOPHY */}
+      {/* HOME — PHILOSOPHY */}
       <section className="py-24 border-b border-[#E5E5DF] bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-16">
@@ -677,7 +677,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, language }) => {
         </div>
       </section>
 
-      {/* 20 | HOME — FINAL CTA */}
+      {/* HOME — FINAL CTA */}
       <section className="py-24 relative overflow-hidden bg-[#F2F1EC]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
           <div className="inline-flex items-center gap-2 text-xs font-mono text-[#FF9F1C] font-semibold uppercase tracking-widest">

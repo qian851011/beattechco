@@ -64,7 +64,7 @@ export const BeatPassPage: React.FC<BeatPassPageProps> = ({ onNavigate, language
                   <span className="w-2 h-2 bg-[#FF9F1C]" />
                   <span>BEAT PASS OFFICIAL</span>
                   <span className="text-[#C4C4BC]">/</span>
-                  <span>{isEn ? 'Flagship Sports Membership' : '比忒科技產品'}</span>
+                  <span>{isEn ? 'A BEAT Technology Product' : '比忒科技產品'}</span>
                 </div>
                 <div className="text-xs text-[#7A7A74] font-medium">
                   {isEn ? 'Official Brand Identity' : '官方運動生活會員標誌'}
