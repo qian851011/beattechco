@@ -41,7 +41,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, language }) =>
               {isEn ? 'From Movement to Ecosystem.' : '從運動出發，走向更大的生態。'}
               <span className="block text-sm sm:text-base text-[#6C6C66] font-normal mt-1 leading-relaxed">
                 {isEn
-                  ? 'Beater Technology is a tech company centered on technology, lifestyle, and industrial innovation. Starting from BEAT PASS, we continuously expand the diverse possibilities among membership services, sports venues, e-commerce, and digital technology.'
+                  ? 'BEAT Technology  is a tech company centered on technology, lifestyle, and industrial innovation. Starting from BEAT PASS, we continuously expand the diverse possibilities among membership services, sports venues, e-commerce, and digital technology.'
                   : '比忒科技是一家以科技、生活與產業創新為核心的科技公司。我們從 BEAT PASS 出發，持續拓展會員服務、運動場館、電子商務與數位科技之間的多元可能性。'}
               </span>
             </p>
