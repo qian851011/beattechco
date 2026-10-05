@@ -290,7 +290,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                         type="text"
                         value={formData.companyName}
                         onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
-                        placeholder={isEn ? 'e.g., Summit Movement Lab' : '例如：比忒運動會館'}
+                        placeholder={isEn ? 'e.g., Summit Movement Lab' : '例如：比忒游泳館'}
                         className="w-full bg-[#FAF9F6] border border-[#E5E5DF] px-4 py-2.5 text-xs text-[#141413] placeholder-[#A0A09A] focus:outline-none focus:border-[#FF9F1C] focus:bg-white"
                       />
                     </div>
@@ -307,7 +307,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                           setFormData({ ...formData, name: e.target.value });
                           if (fieldErrors.name) setFieldErrors({ ...fieldErrors, name: undefined });
                         }}
-                        placeholder={isEn ? 'e.g., Alex Chen' : '例如：王小明'}
+                        placeholder={isEn ? 'e.g., Alex Chen' : '例如：王比忒/Wang Beat'}
                         className={`w-full bg-[#FAF9F6] border px-4 py-2.5 text-xs text-[#141413] placeholder-[#A0A09A] focus:outline-none focus:bg-white transition-colors ${
                           fieldErrors.name
                             ? 'border-red-500 bg-red-50/20 ring-1 ring-red-400'
@@ -348,7 +348,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({
                           setFormData({ ...formData, email: e.target.value });
                           if (fieldErrors.email) setFieldErrors({ ...fieldErrors, email: undefined });
                         }}
-                        placeholder="name@company.com"
+                        placeholder="name@beatpasstw.com"
                         className={`w-full bg-[#FAF9F6] border px-4 py-2.5 text-xs text-[#141413] placeholder-[#A0A09A] focus:outline-none focus:bg-white transition-colors ${
                           fieldErrors.email
                             ? 'border-red-500 bg-red-50/20 ring-1 ring-red-400'
