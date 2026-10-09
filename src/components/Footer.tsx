@@ -218,7 +218,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, language, onOpenLega
         <div className="pt-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-[11px] text-[#7A7A74]">
           <div>
             <p className="font-medium text-[#3A3A36]">
-              比忒科技有限公司 · Beat Technology Co., Ltd.
+              比忒科技有限公司 · Beat Technology Co., Ltd. · UBN:62046656
             </p>
             <p className="mt-1">
               BEAT THE ODDS.
@@ -227,7 +227,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, language, onOpenLega
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
             <span>© {new Date().getFullYear()} BEAT Technology Co., Ltd. All rights reserved.</span>
             <span>·</span>
-            <span>Taipei, Taiwan</span>
+            <span>Taipei, Taiwan </span>
           </div>
         </div>
       </div>
