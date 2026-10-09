@@ -12,8 +12,19 @@ import { ContactPage } from './pages/ContactPage';
 
 const ROUTABLE_PATHS = ['about', 'beat-pass', 'partners', 'news', 'contact'];
 
-export default function App() {
-  const [currentPage, setCurrentPage] = useState<PageId>('home');
+// 依網址決定第一個畫面（瀏覽器與預先輸出 HTML 時都用得到）
+function getPageFromPath(): PageId {
+  if (typeof window === 'undefined') return 'home';
+  const path = window.location.pathname.replace(/^\//, '');
+  return ROUTABLE_PATHS.includes(path) ? (path as PageId) : 'home';
+}
+
+interface AppProps {
+  initialPage?: PageId;
+}
+
+export default function App({ initialPage }: AppProps = {}) {
+  const [currentPage, setCurrentPage] = useState<PageId>(() => initialPage ?? getPageFromPath());
   const [language, setLanguage] = useState<Language>('zh-TW');
   const [legalModalType, setLegalModalType] = useState<LegalDocType | null>(null);
   const [contactPresetType, setContactPresetType] = useState<CollaborationType | undefined>(undefined);

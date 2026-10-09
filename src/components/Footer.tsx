@@ -30,12 +30,14 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, language, onOpenLega
             </p>
           </div>
           <div className="flex items-center gap-3">
-            <button
-              onClick={() => onNavigate('beat-pass')}
+            <a
+              href="https://beatpasstw.com/app/"
+              target="_blank"
+              rel="noopener"
               className="px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white bg-[#FF9F1C] hover:bg-[#F08C00] transition-colors cursor-pointer shadow-xs"
             >
               {language === 'zh-TW' ? '體驗 BEAT PASS' : 'Explore BEAT PASS'}
-            </button>
+            </a>
             <button
               onClick={() => onNavigate('contact')}
               className="px-4 py-2 text-xs font-medium uppercase tracking-wider text-[#141413] bg-white border border-[#DCDCD6] hover:border-[#FF9F1C] hover:text-[#FF9F1C] transition-colors cursor-pointer shadow-2xs"
@@ -64,13 +66,15 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, language, onOpenLega
                 </button>
               </li>
               <li>
-                <button
-                  onClick={() => onNavigate('about')}
+                <a
+                  href="https://beatpasstw.com/shop/"
+                  target="_blank"
+                  rel="noopener"
                   className="hover:text-[#FF9F1C] transition-colors flex items-center gap-1 group text-left cursor-pointer"
                 >
                   <span>BEAT Commerce</span>
                   <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity text-[#FF9F1C]" />
-                </button>
+                </a>
               </li>
               <li>
                 <button

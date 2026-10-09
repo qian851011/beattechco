@@ -83,12 +83,14 @@ export const BeatPassPage: React.FC<BeatPassPageProps> = ({ onNavigate, language
                 : 'BEAT PASS 是比忒科技打造的跨場域運動會員服務。透過單一數位憑證，串聯多元運動空間，讓使用者依照自己的生活節奏、興趣與訓練需求，探索運動的無限可能。'}
             </p>
             <div className="pt-2 flex flex-wrap items-center gap-4">
-              <button
-                onClick={() => onNavigate('contact')}
+              <a
+                href="https://beatpasstw.com/app/"
+                target="_blank"
+                rel="noopener"
                 className="px-6 py-3.5 text-xs sm:text-sm font-semibold uppercase tracking-wider text-white bg-[#FF9F1C] hover:bg-[#F08C00] transition-colors cursor-pointer shadow-md shadow-[#FF9F1C]/25"
               >
                 {isEn ? 'Join the Movement' : '立即加入運動行列'}
-              </button>
+              </a>
               <button
                 onClick={() => onNavigate('partners')}
                 className="px-6 py-3.5 text-xs sm:text-sm font-medium uppercase tracking-wider text-[#141413] bg-white border border-[#DCDCD6] hover:border-[#141413] transition-colors cursor-pointer shadow-2xs"
@@ -579,13 +581,15 @@ export const BeatPassPage: React.FC<BeatPassPageProps> = ({ onNavigate, language
 
               {/* Action Column */}
               <div className="shrink-0 flex flex-col items-start lg:items-end gap-3">
-                <button
-                  onClick={() => onNavigate('contact')}
+                <a
+                  href="https://beatpasstw.com/app/"
+                  target="_blank"
+                  rel="noopener"
                   className="px-8 py-4 text-xs sm:text-sm font-semibold uppercase tracking-wider text-white bg-[#FF9F1C] hover:bg-[#F08C00] transition-colors cursor-pointer shadow-md shadow-[#FF9F1C]/25 flex items-center gap-2"
                 >
                   <span>{isEn ? 'Claim Welcome Offer' : '立即加入領取專屬禮遇'}</span>
                   <ArrowRight className="w-4 h-4" />
-                </button>
+                </a>
                 <span className="text-[11px] text-[#8C8C85]">
                   {isEn ? '* Valid for new activations · Applicable across ecosystem' : '* 新開通會員適用 · 點數與啾啾幣即刻適用於全生態'}
                 </span>

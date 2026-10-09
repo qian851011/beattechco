@@ -297,13 +297,15 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, language }) => {
               </div>
 
               <div className="pt-8 mt-8 border-t border-[#F0F0EB]">
-                <button
-                  onClick={() => onNavigate('about')}
+                <a
+                  href="https://beatpasstw.com/shop/"
+                  target="_blank"
+                  rel="noopener"
                   className="flex items-center justify-between w-full text-xs font-semibold uppercase tracking-wider text-[#141413] group-hover:text-[#FF9F1C] transition-colors cursor-pointer"
                 >
                   <span>{isEn ? 'Explore BEAT Commerce' : '探索 BEAT Commerce'}</span>
                   <ArrowUpRight className="w-4 h-4 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-200 text-[#FF9F1C]" />
-                </button>
+                </a>
               </div>
             </div>
 
@@ -369,13 +371,15 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, language }) => {
               </p>
 
               <div className="pt-4">
-                <button
-                  onClick={() => onNavigate('beat-pass')}
+                <a
+                  href="https://beatpasstw.com/app/"
+                  target="_blank"
+                  rel="noopener"
                   className="flex items-center gap-2 px-6 py-3.5 text-xs font-semibold uppercase tracking-wider text-white bg-[#FF9F1C] hover:bg-[#F08C00] transition-colors cursor-pointer shadow-sm"
                 >
                   <span>{isEn ? 'Explore BEAT PASS' : '探索 BEAT PASS 完整體驗'}</span>
                   <ArrowRight className="w-4 h-4" />
-                </button>
+                </a>
               </div>
             </div>
 
@@ -600,13 +604,15 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, language }) => {
                   : 'BEAT Commerce 將運動延伸至更多商品與生活場景，探索運動、品牌與消費者之間的新連結。讓運動者的美學品味與生活所需，在每一次揮汗之餘自然延展。'}
               </p>
               <div>
-                <button
-                  onClick={() => onNavigate('about')}
+                <a
+                  href="https://beatpasstw.com/shop/"
+                  target="_blank"
+                  rel="noopener"
                   className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#141413] hover:text-[#FF9F1C] transition-colors cursor-pointer group"
                 >
                   <span>{isEn ? 'Explore Commerce Vision' : '探索 BEAT Commerce 規劃'}</span>
                   <ArrowRight className="w-4 h-4 text-[#FF9F1C] transform group-hover:translate-x-1 transition-transform" />
-                </button>
+                </a>
               </div>
             </div>
 
