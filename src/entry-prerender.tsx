@@ -2,8 +2,8 @@
 // 瀏覽器實際載入的仍是 main.tsx，畫面與互動完全不變。
 import { renderToString } from 'react-dom/server';
 import App from './App.tsx';
-import type { PageId } from './types';
+import type { NewsItem, PageId } from './types';
 
-export function render(page: PageId): string {
-  return renderToString(<App initialPage={page} />);
+export function render(page: PageId, opts: { news?: NewsItem[]; articleId?: string | null } = {}): string {
+  return renderToString(<App initialPage={page} initialNews={opts.news} initialArticleId={opts.articleId ?? null} />);
 }

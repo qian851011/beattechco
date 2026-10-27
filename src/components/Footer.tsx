@@ -134,6 +134,15 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, language, onOpenLega
                   {language === 'zh-TW' ? '技術與系統串聯 (Tech)' : 'Tech Integration'}
                 </button>
               </li>
+              <li>
+                <a
+                  href="/venue-system"
+                  onClick={(e) => { e.preventDefault(); onNavigate('venue-system'); }}
+                  className="hover:text-[#FF9F1C] transition-colors text-left cursor-pointer"
+                >
+                  {language === 'zh-TW' ? '場館管理系統 (System)' : 'Venue Management System'}
+                </a>
+              </li>
             </ul>
           </div>
 

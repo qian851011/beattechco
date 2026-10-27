@@ -56,12 +56,22 @@ const ROUTES = [
     description:
       '無論您是運動場館經營者、品牌代表、企業福委會或科技合作團隊，歡迎留下您的需求與聯絡方式，比忒科技商務拓展團隊將於 1-2 個工作日內竭誠與您聯繫。',
   },
+  {
+    page: 'venue-system',
+    file: 'venue-system.html',
+    url: `${SITE}/venue-system`,
+    title: '場館管理系統｜BEAT PASS 合作場館數位工具｜比忒科技',
+    description:
+      'BEAT PASS 場館管理系統：為健身房、瑜伽、攀岩與皮拉提斯場館提供 QR Code 數位核驗入場、線上課程預約、場館後台 BEAT Partner Portal 與營運數據洞察，並帶來新運動客源。',
+  },
 ] as const;
 
 const escapeAttr = (s: string) =>
   s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
-function setHead(html: string, r: (typeof ROUTES)[number]): string {
+type HeadInfo = { title: string; description: string; url: string };
+
+function setHead(html: string, r: HeadInfo): string {
   const t = escapeAttr(r.title);
   const d = escapeAttr(r.description);
   return html
@@ -74,6 +84,42 @@ function setHead(html: string, r: (typeof ROUTES)[number]): string {
     .replace(/(<meta name="twitter:description" content=")[^"]*(")/, (_m, a, b) => `${a}${d}${b}`)
     .replace(/(<link rel="canonical" href=")[^"]*(")/, (_m, a, b) => `${a}${r.url}${b}`);
 }
+
+type NewsArticle = {
+  id: string;
+  date: string;
+  title: string;
+  summary: string;
+  content: string[];
+  categoryZh?: string;
+};
+
+// build 時從線上 API 取得最新消息（失敗就回傳 null，只略過文章頁，不影響其他頁面）
+async function fetchNews(): Promise<NewsArticle[] | null> {
+  const url = process.env.BEAT_NEWS_URL || `${SITE}/api/news`;
+  try {
+    const res = await fetch(url, { signal: AbortSignal.timeout(20000) });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data: any = await res.json();
+    if (data?.status !== 'ok' || !Array.isArray(data.articles)) throw new Error(`status ${data?.status}`);
+    return (data.articles as NewsArticle[]).filter((a) => a && a.id && a.title);
+  } catch (err) {
+    console.warn('[beat-prerender] 無法取得最新消息，略過文章頁：', err);
+    return null;
+  }
+}
+
+const articleUrl = (a: NewsArticle) => `${SITE}/news/${encodeURIComponent(a.id)}`;
+
+function articleDescription(a: NewsArticle): string {
+  const s = (a.summary || '').trim();
+  const text = s.length >= 20 ? s : (a.content || []).join('').trim();
+  return text.length > 120 ? `${text.slice(0, 118)}…` : text;
+}
+
+// 把文章資料嵌入頁面，瀏覽器載入時可直接顯示，不必等 API
+const newsDataScript = (news: NewsArticle[]) =>
+  `<script>window.__BEAT_NEWS__=${JSON.stringify(news).replace(/</g, '\\u003c')}</script>`;
 
 // build 完成後，把每個頁面預先輸出成靜態 HTML（about.html → /about）。
 // 任何一步失敗都只會略過預先輸出，網站照常以原本的方式運作，不會讓部署失敗。
@@ -104,13 +150,16 @@ function prerenderPages(): Plugin {
         const emptyRoot = '<div id="root"></div>';
         if (!template.includes(emptyRoot)) throw new Error('empty #root not found in index.html');
 
+        const news = await fetchNews();
         const pages = new Map<string, string>();
         for (const r of ROUTES) {
-          const appHtml: string = mod.render(r.page);
+          const appHtml: string = r.page === 'news' && news ? mod.render('news', { news }) : mod.render(r.page);
           if (!appHtml || appHtml.length < 200) throw new Error(`empty render for ${r.page}`);
           const withApp = template.replace(emptyRoot, `<div id="root">${appHtml}</div>`);
           // 首頁的標題與描述沿用 index.html 原本的設定
-          pages.set(r.file, r.page === 'home' ? withApp : setHead(withApp, r));
+          let html = r.page === 'home' ? withApp : setHead(withApp, r);
+          if (r.page === 'news' && news) html = html.replace('</body>', `${newsDataScript(news)}\n  </body>`);
+          pages.set(r.file, html);
         }
         for (const [file, html] of pages) await fs.writeFile(path.join(outDir, file), html);
 
@@ -121,6 +170,51 @@ function prerenderPages(): Plugin {
           .replace('</head>', '    <meta name="robots" content="noindex" />\n  </head>');
         await fs.writeFile(path.join(outDir, '404.html'), notFound);
         console.log(`[beat-prerender] 已預先輸出 ${pages.size} 個頁面與 404.html`);
+
+        // 每篇最新消息各自輸出一頁（news/<id>.html → /news/<id>），並加進 sitemap
+        if (news && news.length) {
+          try {
+            await fs.mkdir(path.join(outDir, 'news'), { recursive: true });
+            for (const a of news) {
+              const appHtml: string = mod.render('news', { news, articleId: a.id });
+              const head: HeadInfo = {
+                title: `${a.title}｜BEAT Technology 比忒科技`,
+                description: articleDescription(a),
+                url: articleUrl(a),
+              };
+              const ld = {
+                '@context': 'https://schema.org',
+                '@type': 'NewsArticle',
+                headline: a.title,
+                description: head.description,
+                datePublished: a.date,
+                dateModified: a.date,
+                inLanguage: 'zh-TW',
+                mainEntityOfPage: head.url,
+                image: `${SITE}/og-image.png`,
+                author: { '@id': `${SITE}/#organization` },
+                publisher: { '@id': `${SITE}/#organization` },
+              };
+              const html = setHead(template.replace(emptyRoot, `<div id="root">${appHtml}</div>`), head)
+                .replace(/(<meta property="og:type" content=")[^"]*(")/, (_m, x, y) => `${x}article${y}`)
+                .replace(
+                  '</head>',
+                  `    <script type="application/ld+json">${JSON.stringify(ld).replace(/</g, '\\u003c')}</script>\n  </head>`
+                )
+                .replace('</body>', `${newsDataScript(news)}\n  </body>`);
+              await fs.writeFile(path.join(outDir, 'news', `${a.id}.html`), html);
+            }
+            const sitemapPath = path.join(outDir, 'sitemap.xml');
+            const sitemap = await fs.readFile(sitemapPath, 'utf8');
+            const extra = news
+              .map((a) => `  <url><loc>${articleUrl(a)}</loc><lastmod>${a.date}</lastmod><priority>0.6</priority></url>`)
+              .join('\n');
+            await fs.writeFile(sitemapPath, sitemap.replace('</urlset>', `${extra}\n</urlset>`));
+            console.log(`[beat-prerender] 已預先輸出 ${news.length} 篇最新消息文章，並加入 sitemap`);
+          } catch (err) {
+            console.warn('[beat-prerender] 略過最新消息文章頁（其他頁面不受影響）：', err);
+          }
+        }
       } catch (err) {
         console.warn('[beat-prerender] 略過預先輸出（網站仍可正常運作）：', err);
       } finally {

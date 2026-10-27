@@ -1,4 +1,4 @@
-export type PageId = 'home' | 'about' | 'beat-pass' | 'partners' | 'news' | 'contact';
+export type PageId = 'home' | 'about' | 'beat-pass' | 'partners' | 'news' | 'contact' | 'venue-system';
 
 export type Language = 'zh-TW' | 'en';
 

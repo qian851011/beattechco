@@ -4,13 +4,45 @@ import { ArrowRight, X } from 'lucide-react';
 
 interface NewsPageProps {
   language: Language;
+  // 預先輸出 HTML 時傳入；瀏覽器端則讀取頁面內嵌的 window.__BEAT_NEWS__
+  initialArticles?: NewsItem[];
+  initialArticleId?: string | null;
 }
 
-export const NewsPage: React.FC<NewsPageProps> = ({ language }) => {
+declare global {
+  interface Window {
+    __BEAT_NEWS__?: NewsItem[];
+  }
+}
+
+// 從網址 /news/<id> 取得文章 id
+function getArticleIdFromPath(): string | null {
+  if (typeof window === 'undefined') return null;
+  const m = window.location.pathname.match(/^\/news\/([^/]+)\/?$/);
+  return m ? decodeURIComponent(m[1]) : null;
+}
+
+export const NewsPage: React.FC<NewsPageProps> = ({ language, initialArticles, initialArticleId }) => {
+  const seedArticles =
+    initialArticles ?? (typeof window !== 'undefined' && Array.isArray(window.__BEAT_NEWS__) ? window.__BEAT_NEWS__ : undefined);
+  const seedArticleId = initialArticleId ?? getArticleIdFromPath();
   const [selectedCategory, setSelectedCategory] = useState<NewsCategory>('All');
-  const [activeArticle, setActiveArticle] = useState<NewsItem | null>(null);
-  const [articles, setArticles] = useState<NewsItem[]>([]);
-  const [loadState, setLoadState] = useState<'loading' | 'ready' | 'error'>('loading');
+  const [activeArticle, setActiveArticle] = useState<NewsItem | null>(
+    () => (seedArticles && seedArticleId ? seedArticles.find((a) => a.id === seedArticleId) ?? null : null)
+  );
+  const [articles, setArticles] = useState<NewsItem[]>(() => seedArticles ?? []);
+  const [loadState, setLoadState] = useState<'loading' | 'ready' | 'error'>(() => (seedArticles ? 'ready' : 'loading'));
+
+  // 開啟／關閉文章時同步網址，讓每篇文章都有自己的連結
+  const openArticle = (news: NewsItem) => {
+    setActiveArticle(news);
+    const target = `/news/${encodeURIComponent(news.id)}`;
+    if (window.location.pathname !== target) window.history.pushState(null, '', target);
+  };
+  const closeArticle = () => {
+    setActiveArticle(null);
+    if (window.location.pathname.startsWith('/news/')) window.history.pushState(null, '', '/news');
+  };
   const isEn = language === 'en';
 
   const categories: { id: NewsCategory; labelZh: string; labelEn: string }[] = [
@@ -30,17 +62,32 @@ export const NewsPage: React.FC<NewsPageProps> = ({ language }) => {
         if (res.ok && data.status === 'ok' && Array.isArray(data.articles)) {
           setArticles(data.articles);
           setLoadState('ready');
-        } else {
+          const id = getArticleIdFromPath();
+          if (id) {
+            const found = (data.articles as NewsItem[]).find((a) => a.id === id);
+            if (found) setActiveArticle(found);
+          }
+        } else if (!seedArticles) {
           setLoadState('error');
         }
       } catch (err) {
         console.warn('Could not fetch /api/news:', err);
-        setLoadState('error');
+        if (!seedArticles) setLoadState('error');
       }
     };
 
     fetchNews();
   }, []);
+
+  // 瀏覽器上一頁／下一頁時，依網址開啟或關閉文章
+  useEffect(() => {
+    const onPop = () => {
+      const id = getArticleIdFromPath();
+      setActiveArticle(id ? articles.find((a) => a.id === id) ?? null : null);
+    };
+    window.addEventListener('popstate', onPop);
+    return () => window.removeEventListener('popstate', onPop);
+  }, [articles]);
 
   const filteredNews = selectedCategory === 'All'
     ? articles
@@ -97,7 +144,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ language }) => {
             {filteredNews.map((news) => (
               <article
                 key={news.id}
-                onClick={() => setActiveArticle(news)}
+                onClick={() => openArticle(news)}
                 className="p-6 bg-white border border-[#E5E5DF] hover:border-[#FF9F1C] transition-all flex flex-col justify-between group cursor-pointer shadow-xs hover:shadow-md"
               >
                 <div>
@@ -111,7 +158,9 @@ export const NewsPage: React.FC<NewsPageProps> = ({ language }) => {
                   </div>
 
                   <h3 className="text-base sm:text-lg font-bold text-[#141413] group-hover:text-[#FF9F1C] transition-colors leading-snug mb-3">
-                    {isEn ? news.titleEn : news.title}
+                    <a href={`/news/${encodeURIComponent(news.id)}`} onClick={(e) => e.preventDefault()}>
+                      {isEn ? news.titleEn : news.title}
+                    </a>
                   </h3>
 
                   <p className="text-xs text-[#6C6C66] leading-relaxed line-clamp-3">
@@ -167,7 +216,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ language }) => {
                 </h2>
               </div>
               <button
-                onClick={() => setActiveArticle(null)}
+                onClick={closeArticle}
                 className="p-2 text-[#6C6C66] hover:text-[#141413] border border-[#E5E5DF] shrink-0 bg-white cursor-pointer"
                 aria-label="Close article"
               >
@@ -189,7 +238,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ language }) => {
 
             <div className="p-4 border-t border-[#E5E5DF] bg-[#F7F7F5] flex justify-end">
               <button
-                onClick={() => setActiveArticle(null)}
+                onClick={closeArticle}
                 className="px-5 py-2 text-xs font-semibold uppercase tracking-wider text-white bg-[#FF9F1C] hover:bg-[#F08C00] shadow-xs cursor-pointer"
               >
                 {isEn ? 'Back to News' : '返回最新消息'}

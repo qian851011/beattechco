@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { PageId, Language, CollaborationType, LegalDocType } from './types';
+import { PageId, Language, CollaborationType, LegalDocType, NewsItem } from './types';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { LegalModal } from './components/LegalModal';
@@ -9,21 +9,29 @@ import { BeatPassPage } from './pages/BeatPassPage';
 import { PartnersPage } from './pages/PartnersPage';
 import { NewsPage } from './pages/NewsPage';
 import { ContactPage } from './pages/ContactPage';
+import { VenueSystemPage } from './pages/VenueSystemPage';
 
-const ROUTABLE_PATHS = ['about', 'beat-pass', 'partners', 'news', 'contact'];
+const ROUTABLE_PATHS = ['about', 'beat-pass', 'partners', 'news', 'contact', 'venue-system'];
 
 // 依網址決定第一個畫面（瀏覽器與預先輸出 HTML 時都用得到）
 function getPageFromPath(): PageId {
   if (typeof window === 'undefined') return 'home';
-  const path = window.location.pathname.replace(/^\//, '');
+  return pageFromPathname(window.location.pathname);
+}
+
+function pageFromPathname(pathname: string): PageId {
+  const path = pathname.replace(/^\//, '').replace(/\/$/, '');
+  if (path.startsWith('news/')) return 'news';
   return ROUTABLE_PATHS.includes(path) ? (path as PageId) : 'home';
 }
 
 interface AppProps {
   initialPage?: PageId;
+  initialNews?: NewsItem[];
+  initialArticleId?: string | null;
 }
 
-export default function App({ initialPage }: AppProps = {}) {
+export default function App({ initialPage, initialNews, initialArticleId }: AppProps = {}) {
   const [currentPage, setCurrentPage] = useState<PageId>(() => initialPage ?? getPageFromPath());
   const [language, setLanguage] = useState<Language>('zh-TW');
   const [legalModalType, setLegalModalType] = useState<LegalDocType | null>(null);
@@ -31,18 +39,10 @@ export default function App({ initialPage }: AppProps = {}) {
 
   // Sync initial URL path
   useEffect(() => {
-    const path = window.location.pathname.replace(/^\//, '');
-    if (ROUTABLE_PATHS.includes(path)) {
-      setCurrentPage(path as PageId);
-    }
+    setCurrentPage(pageFromPathname(window.location.pathname));
 
     const handlePopState = () => {
-      const currentPath = window.location.pathname.replace(/^\//, '');
-      if (ROUTABLE_PATHS.includes(currentPath)) {
-        setCurrentPage(currentPath as PageId);
-      } else {
-        setCurrentPage('home');
-      }
+      setCurrentPage(pageFromPathname(window.location.pathname));
     };
 
     window.addEventListener('popstate', handlePopState);
@@ -66,6 +66,9 @@ export default function App({ initialPage }: AppProps = {}) {
         break;
       case 'contact':
         document.title = '商務合作洽詢｜BEAT Technology 比忒科技';
+        break;
+      case 'venue-system':
+        document.title = '場館管理系統｜BEAT PASS 合作場館數位工具｜比忒科技';
         break;
       default:
         document.title = 'BEAT Technology 比忒科技｜科技 × 運動生活｜Technology That Moves';
@@ -114,7 +117,10 @@ export default function App({ initialPage }: AppProps = {}) {
           <PartnersPage onNavigate={handleNavigate} language={language} />
         )}
         {currentPage === 'news' && (
-          <NewsPage language={language} />
+          <NewsPage language={language} initialArticles={initialNews} initialArticleId={initialArticleId} />
+        )}
+        {currentPage === 'venue-system' && (
+          <VenueSystemPage onNavigate={handleNavigate} language={language} />
         )}
         {currentPage === 'contact' && (
           <ContactPage
