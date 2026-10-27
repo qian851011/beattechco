@@ -81,8 +81,8 @@ export const VenueSystemPage: React.FC<VenueSystemPageProps> = ({ onNavigate, la
     {
       q: isEn ? 'How are partnership terms and fees set?' : '合作方式與費用怎麼計算？',
       a: isEn
-        ? 'Choose “Venue Partnership” or “SaaS & Systems” on our contact form. Our business team will reply within 1–2 business days to explain the partnership options.'
-        : '請在合作洽詢表單選擇「BEAT PASS 場館合作」或「系統服務」留下需求，比忒科技商務團隊將於 1–2 個工作日內與您聯繫，說明合作方式。',
+        ? 'Less than NT$500 per month. Partner recruitment offer: the first 100 partner venues pay no monthly fee!!?? Choose “Venue Partnership” or “SaaS & Systems” on our contact form and our business team will reply within 1–2 business days.'
+        : '每個月不到500，合作夥伴招募優惠活動前100個合作場館免月費!!?? 請在合作洽詢表單選擇「BEAT PASS 場館合作」或「系統服務」留下需求，比忒科技商務團隊將於 1–2 個工作日內與您聯繫。',
     },
     {
       q: isEn ? 'Which areas currently have partner venues?' : '目前有哪些地區的場館加入？',

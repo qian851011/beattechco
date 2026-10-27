@@ -104,9 +104,16 @@ export const NewsPage: React.FC<NewsPageProps> = ({ language, initialArticles, i
               <span className="text-[#C4C4BC]">/</span>
               <span>{isEn ? 'Official News & Announcements' : '最新消息與官方公告'}</span>
             </div>
-            <h1 className="text-3xl sm:text-5xl font-extrabold text-[#141413] tracking-tight leading-tight">
-              News & Updates
-            </h1>
+            {/* 開啟文章時，文章標題才是這頁的 H1（外觀不變） */}
+            {activeArticle ? (
+              <p className="text-3xl sm:text-5xl font-extrabold text-[#141413] tracking-tight leading-tight">
+                News & Updates
+              </p>
+            ) : (
+              <h1 className="text-3xl sm:text-5xl font-extrabold text-[#141413] tracking-tight leading-tight">
+                News & Updates
+              </h1>
+            )}
             <p className="text-sm sm:text-base text-[#6C6C66] leading-relaxed">
               {isEn
                 ? 'Stay informed with the latest milestones, product releases, cross-brand partnerships, and engineering updates from BEAT Technology.'
@@ -211,9 +218,9 @@ export const NewsPage: React.FC<NewsPageProps> = ({ language, initialArticles, i
                   <span aria-hidden="true">·</span>
                   <span>{activeArticle.date}</span>
                 </div>
-                <h2 className="text-lg sm:text-2xl font-bold text-[#141413]">
+                <h1 className="text-lg sm:text-2xl font-bold text-[#141413]">
                   {isEn ? activeArticle.titleEn : activeArticle.title}
-                </h2>
+                </h1>
               </div>
               <button
                 onClick={closeArticle}
