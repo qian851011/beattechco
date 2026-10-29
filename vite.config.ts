@@ -102,7 +102,9 @@ async function fetchNews(): Promise<NewsArticle[] | null> {
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data: any = await res.json();
     if (data?.status !== 'ok' || !Array.isArray(data.articles)) throw new Error(`status ${data?.status}`);
-    return (data.articles as NewsArticle[]).filter((a) => a && a.id && a.title);
+    const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Taipei', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
+    // 排程中（日期在今天之後）的文章不預先輸出，到當天才公開
+    return (data.articles as NewsArticle[]).filter((a) => a && a.id && a.title && String(a.date || '').slice(0, 10) <= today);
   } catch (err) {
     console.warn('[beat-prerender] 無法取得最新消息，略過文章頁：', err);
     return null;

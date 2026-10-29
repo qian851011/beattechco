@@ -15,6 +15,24 @@ declare global {
   }
 }
 
+const PAGE_SIZE = 9;
+
+// 台灣時間的今天（YYYY-MM-DD）；日期在今天之後的文章（排程中）先不顯示
+function todayInTaipei(): string {
+  return new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Taipei', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
+}
+const onlyPublished = (list: NewsItem[]) => {
+  const today = todayInTaipei();
+  return list.filter((a) => !a.date || String(a.date).slice(0, 10) <= today);
+};
+
+// 網址 ?page=2 對應第幾頁
+function getPageFromQuery(): number {
+  if (typeof window === 'undefined') return 1;
+  const n = parseInt(new URLSearchParams(window.location.search).get('page') || '1', 10);
+  return Number.isFinite(n) && n > 1 ? n : 1;
+}
+
 // 從網址 /news/<id> 取得文章 id
 function getArticleIdFromPath(): string | null {
   if (typeof window === 'undefined') return null;
@@ -23,10 +41,12 @@ function getArticleIdFromPath(): string | null {
 }
 
 export const NewsPage: React.FC<NewsPageProps> = ({ language, initialArticles, initialArticleId }) => {
-  const seedArticles =
+  const rawSeed =
     initialArticles ?? (typeof window !== 'undefined' && Array.isArray(window.__BEAT_NEWS__) ? window.__BEAT_NEWS__ : undefined);
+  const seedArticles = rawSeed ? onlyPublished(rawSeed) : undefined;
   const seedArticleId = initialArticleId ?? getArticleIdFromPath();
   const [selectedCategory, setSelectedCategory] = useState<NewsCategory>('All');
+  const [page, setPage] = useState<number>(() => getPageFromQuery());
   const [activeArticle, setActiveArticle] = useState<NewsItem | null>(
     () => (seedArticles && seedArticleId ? seedArticles.find((a) => a.id === seedArticleId) ?? null : null)
   );
@@ -60,11 +80,12 @@ export const NewsPage: React.FC<NewsPageProps> = ({ language, initialArticles, i
         const res = await fetch('/api/news');
         const data = await res.json().catch(() => ({}));
         if (res.ok && data.status === 'ok' && Array.isArray(data.articles)) {
-          setArticles(data.articles);
+          const published = onlyPublished(data.articles as NewsItem[]);
+          setArticles(published);
           setLoadState('ready');
           const id = getArticleIdFromPath();
           if (id) {
-            const found = (data.articles as NewsItem[]).find((a) => a.id === id);
+            const found = published.find((a) => a.id === id);
             if (found) setActiveArticle(found);
           }
         } else if (!seedArticles) {
@@ -92,6 +113,23 @@ export const NewsPage: React.FC<NewsPageProps> = ({ language, initialArticles, i
   const filteredNews = selectedCategory === 'All'
     ? articles
     : articles.filter((n) => n.category === selectedCategory);
+
+  // 分頁：每頁最多 9 篇
+  const totalPages = Math.max(1, Math.ceil(filteredNews.length / PAGE_SIZE));
+  const currentPage = Math.min(page, totalPages);
+  const pagedNews = filteredNews.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
+  const pageHref = (n: number) => (n === 1 ? '/news' : `/news?page=${n}`);
+  const goToPage = (n: number) => {
+    setPage(n);
+    if (window.location.pathname === '/news' || window.location.pathname === '/news/') {
+      window.history.replaceState(null, '', pageHref(n));
+    }
+    document.getElementById('news-list')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+  const selectCategory = (id: NewsCategory) => {
+    setSelectedCategory(id);
+    if (page !== 1) goToPage(1);
+  };
 
   return (
     <div className="min-h-screen bg-[#F7F7F5] text-[#141413] pt-24 pb-20">
@@ -124,7 +162,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ language, initialArticles, i
       </section>
 
       {/* FILTER TABS & NEWS LIST */}
-      <section className="py-12 border-b border-[#E5E5DF]">
+      <section id="news-list" className="py-12 border-b border-[#E5E5DF] scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Interactive filter tabs */}
           <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-10 no-scrollbar">
@@ -133,7 +171,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ language, initialArticles, i
               return (
                 <button
                   key={cat.id}
-                  onClick={() => setSelectedCategory(cat.id)}
+                  onClick={() => selectCategory(cat.id)}
                   className={`px-4 py-2 text-xs font-medium tracking-wider uppercase whitespace-nowrap transition-all border cursor-pointer ${
                     isSelected
                       ? 'bg-white border-[#FF9F1C] text-[#141413] font-semibold shadow-xs'
@@ -148,7 +186,7 @@ export const NewsPage: React.FC<NewsPageProps> = ({ language, initialArticles, i
 
           {/* News Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredNews.map((news) => (
+            {pagedNews.map((news) => (
               <article
                 key={news.id}
                 onClick={() => openArticle(news)}
@@ -182,6 +220,45 @@ export const NewsPage: React.FC<NewsPageProps> = ({ language, initialArticles, i
               </article>
             ))}
           </div>
+
+          {/* Pagination */}
+          {totalPages > 1 && (
+            <nav className="flex items-center justify-center gap-2 mt-10 flex-wrap" aria-label={isEn ? 'News pages' : '最新消息分頁'}>
+              {currentPage > 1 && (
+                <a
+                  href={pageHref(currentPage - 1)}
+                  onClick={(e) => { e.preventDefault(); goToPage(currentPage - 1); }}
+                  className="px-4 py-2 text-xs font-medium tracking-wider uppercase border bg-white/80 border-[#E5E5DF] text-[#6C6C66] hover:text-[#141413] hover:border-[#141413]/30 transition-all"
+                >
+                  {isEn ? '‹ Prev' : '‹ 上一頁'}
+                </a>
+              )}
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((n) => (
+                <a
+                  key={n}
+                  href={pageHref(n)}
+                  onClick={(e) => { e.preventDefault(); goToPage(n); }}
+                  aria-current={n === currentPage ? 'page' : undefined}
+                  className={`min-w-[2.5rem] px-3 py-2 text-xs text-center font-medium tracking-wider border transition-all ${
+                    n === currentPage
+                      ? 'bg-white border-[#FF9F1C] text-[#141413] font-semibold shadow-xs'
+                      : 'bg-white/80 border-[#E5E5DF] text-[#6C6C66] hover:text-[#141413] hover:border-[#141413]/30'
+                  }`}
+                >
+                  {n}
+                </a>
+              ))}
+              {currentPage < totalPages && (
+                <a
+                  href={pageHref(currentPage + 1)}
+                  onClick={(e) => { e.preventDefault(); goToPage(currentPage + 1); }}
+                  className="px-4 py-2 text-xs font-medium tracking-wider uppercase border bg-white/80 border-[#E5E5DF] text-[#6C6C66] hover:text-[#141413] hover:border-[#141413]/30 transition-all"
+                >
+                  {isEn ? 'Next ›' : '下一頁 ›'}
+                </a>
+              )}
+            </nav>
+          )}
 
           {loadState === 'loading' && (
             <div className="py-20 text-center text-[#8C8C85] text-sm" role="status">

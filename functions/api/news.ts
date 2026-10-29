@@ -79,10 +79,14 @@ export const onRequestGet = async ({ env }: PagesContext): Promise<Response> => 
       });
     }
 
-    // Sort descending by date
-    parsedArticles.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    // 排程中的文章（日期在台灣時間今天之後）先不公開，到當天才出現
+    const todayTaipei = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Taipei', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
+    const publishedArticles = parsedArticles.filter((a) => String(a.date).slice(0, 10) <= todayTaipei);
 
-    return Response.json({ status: 'ok', articles: parsedArticles });
+    // Sort descending by date
+    publishedArticles.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+    return Response.json({ status: 'ok', articles: publishedArticles });
   } catch (error: any) {
     console.error('Error querying Notion API:', error?.message || error);
     return Response.json({ status: 'error', articles: [] });
