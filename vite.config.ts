@@ -63,6 +63,41 @@ const ROUTES = [
     title: '場館管理系統｜BEAT PASS 合作場館數位工具｜比忒科技',
     description:
       'BEAT PASS 場館管理系統：為健身房、瑜伽、攀岩與皮拉提斯場館提供 QR Code 數位核驗入場、線上課程預約、場館後台 BEAT Partner Portal 與營運數據洞察，並帶來新運動客源。',
+    // 結構化資料：服務、價格與常見問題（文字與頁面上顯示的一致）
+    ld: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        name: 'BEAT PASS 場館管理系統',
+        serviceType: '運動場館管理系統',
+        url: `${SITE}/venue-system`,
+        provider: { '@id': `${SITE}/#organization` },
+        areaServed: { '@type': 'Country', name: 'Taiwan' },
+        audience: { '@type': 'BusinessAudience', audienceType: '健身房、瑜伽、抱石攀岩、皮拉提斯、拳擊與體能訓練場館' },
+        description:
+          'QR Code 數位核驗入場、線上課程預約、場館後台 BEAT Partner Portal 與營運數據洞察，並為合作場館帶來新運動客源。',
+        offers: {
+          '@type': 'Offer',
+          description: '每個月不到500，合作夥伴招募優惠活動前100個合作場館免月費',
+          priceSpecification: {
+            '@type': 'UnitPriceSpecification',
+            maxPrice: 500,
+            priceCurrency: 'TWD',
+            unitText: 'MONTH',
+          },
+        },
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: [
+          ['BEAT PASS 適合哪些類型的場館？', '健身房、瑜伽、抱石攀岩、皮拉提斯器械、拳擊與專業體能訓練等運動場館與工作室，都歡迎洽詢合作。'],
+          ['場館需要更換原本的會員系統嗎？', 'BEAT PASS 主要服務透過 BEAT PASS 前來的會員，以 QR Code 核驗與 BEAT Partner Portal 運作。實際導入方式會依場館現況討論，歡迎透過合作洽詢表單聯絡我們。'],
+          ['合作方式與費用怎麼計算？', '每個月不到500，合作夥伴招募優惠活動前100個合作場館免月費!!?? 請在合作洽詢表單選擇「BEAT PASS 場館合作」或「系統服務」留下需求，比忒科技商務團隊將於 1–2 個工作日內與您聯繫。'],
+          ['目前有哪些地區的場館加入？', 'BEAT PASS 持續拓展雙北都會運動場域網絡，最新進度請見最新消息。'],
+        ].map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+      },
+    ],
   },
 ] as const;
 
@@ -92,6 +127,7 @@ type NewsArticle = {
   summary: string;
   content: string[];
   categoryZh?: string;
+  cover?: string | null;
 };
 
 // build 時從線上 API 取得最新消息（失敗就回傳 null，只略過文章頁，不影響其他頁面）
@@ -160,6 +196,12 @@ function prerenderPages(): Plugin {
           const withApp = template.replace(emptyRoot, `<div id="root">${appHtml}</div>`);
           // 首頁的標題與描述沿用 index.html 原本的設定
           let html = r.page === 'home' ? withApp : setHead(withApp, r);
+          if ('ld' in r && r.ld) {
+            const blocks = (r.ld as unknown[])
+              .map((x) => `    <script type="application/ld+json">${JSON.stringify(x).replace(/</g, '\\u003c')}</script>`)
+              .join('\n');
+            html = html.replace('</head>', `${blocks}\n  </head>`);
+          }
           if (r.page === 'news' && news) html = html.replace('</body>', `${newsDataScript(news)}\n  </body>`);
           pages.set(r.file, html);
         }
@@ -193,12 +235,16 @@ function prerenderPages(): Plugin {
                 dateModified: a.date,
                 inLanguage: 'zh-TW',
                 mainEntityOfPage: head.url,
-                image: `${SITE}/og-image.png`,
+                image: a.cover || `${SITE}/og-image.png`,
                 author: { '@id': `${SITE}/#organization` },
                 publisher: { '@id': `${SITE}/#organization` },
               };
               const html = setHead(template.replace(emptyRoot, `<div id="root">${appHtml}</div>`), head)
                 .replace(/(<meta property="og:type" content=")[^"]*(")/, (_m, x, y) => `${x}article${y}`)
+                // 有封面就用文章自己的分享圖
+                .replace(/(<meta property="og:image" content=")[^"]*(")/, (_m, x, y) => (a.cover ? `${x}${escapeAttr(a.cover)}${y}` : _m))
+                .replace(/(<meta name="twitter:image" content=")[^"]*(")/, (_m, x, y) => (a.cover ? `${x}${escapeAttr(a.cover)}${y}` : _m))
+                .replace(/\s*<meta property="og:image:(width|height)" content="[^"]*"\s*\/?>/g, (m) => (a.cover ? '' : m))
                 .replace(
                   '</head>',
                   `    <script type="application/ld+json">${JSON.stringify(ld).replace(/</g, '\\u003c')}</script>\n  </head>`

@@ -15,6 +15,7 @@ export interface NewsItem {
   summaryEn: string;
   content: string[];
   contentEn?: string[];
+  cover?: string | null;
 }
 
 export interface FAQItem {

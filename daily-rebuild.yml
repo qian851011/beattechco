@@ -1,0 +1,24 @@
+# 每天台灣時間 00:10 請 Cloudflare Pages 重新 build 一次，
+# 讓排程文章到期當天就有自己的文章頁並加入 sitemap（搜尋引擎與 AI 讀得到）。
+# 需要先在 GitHub 專案 Settings → Secrets and variables → Actions 新增
+# CF_DEPLOY_HOOK（Cloudflare Pages 的 Deploy hook 網址）。
+name: Daily rebuild
+
+on:
+  schedule:
+    - cron: '10 16 * * *' # UTC 16:10 = 台灣時間 00:10
+  workflow_dispatch: {}
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Cloudflare Pages deploy hook
+        env:
+          CF_DEPLOY_HOOK: ${{ secrets.CF_DEPLOY_HOOK }}
+        run: |
+          if [ -z "$CF_DEPLOY_HOOK" ]; then
+            echo "CF_DEPLOY_HOOK secret is not set; skipping."
+            exit 0
+          fi
+          curl -fsS -X POST "$CF_DEPLOY_HOOK"

@@ -93,8 +93,8 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, language }) =>
 
                 <p className="text-xs sm:text-sm text-[#5C5C58] leading-relaxed pt-1">
                   {isEn
-                    ? 'We believe technology breaks down silos, enabling people to move flexibly across varied urban rhythms while empowering passionate venues to thrive.'
-                    : '我們深信科技的力量在於打破藩籬，讓運動者自由切換生活節奏，讓每座用心經營的特色運動空間都能被看見與發光發熱。'}
+                    ? 'We want people to move the way that fits their week, and good independent venues to be easier to find.'
+                    : '我們希望運動的人能照自己的節奏安排，也讓用心經營的小場館更容易被找到。'}
                 </p>
               </div>
 
@@ -106,10 +106,10 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, language }) =>
                   </span>
                   <div className="text-xs sm:text-sm">
                     <strong className="text-[#141413] group-hover/item:text-[#FF9F1C] block mb-0.5 transition-colors">
-                      {isEn ? 'Freedom to Move' : '自由無界探索 (Freedom)'}
+                      {isEn ? 'For members' : '給會員'}
                     </strong>
                     <span className="text-[#6C6C66] leading-relaxed block">
-                      {isEn ? 'Move flexibly anytime across curated venues without long-term lock-in.' : '打破傳統單一合約束縛，一張數位通行憑證自由體驗瑜伽、抱石與重訓。'}
+                      {isEn ? 'No long contracts. One pass for yoga, bouldering, and strength training.' : '不用綁約，一張會員卡就能去瑜伽、抱石和重訓場館。'}
                     </span>
                   </div>
                 </div>
@@ -120,10 +120,10 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, language }) =>
                   </span>
                   <div className="text-xs sm:text-sm">
                     <strong className="text-[#141413] group-hover/item:text-[#FF9F1C] block mb-0.5 transition-colors">
-                      {isEn ? 'Empowering Spaces' : '場館深耕發光 (Empowerment)'}
+                      {isEn ? 'For venues' : '給場館'}
                     </strong>
                     <span className="text-[#6C6C66] leading-relaxed block">
-                      {isEn ? 'Connecting independent studios directly with active urban audiences.' : '協助堅持品質的特色空間觸及熱愛運動的年輕客群，告別削價競爭。'}
+                      {isEn ? 'Bring new visitors to independent studios.' : '幫獨立經營的場館接觸到新的運動族群。'}
                     </span>
                   </div>
                 </div>
@@ -134,10 +134,10 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, language }) =>
                   </span>
                   <div className="text-xs sm:text-sm">
                     <strong className="text-[#141413] group-hover/item:text-[#FF9F1C] block mb-0.5 transition-colors">
-                      {isEn ? 'Ecosystem Synergy' : '全域共榮循環 (Synergy)'}
+                      {isEn ? 'Beyond the venue' : '場館之外'}
                     </strong>
                     <span className="text-[#6C6C66] leading-relaxed block">
-                      {isEn ? 'Bridging movement with lifestyle commerce, reward perks, and corporate wellness.' : '無縫串聯運動體驗、風格電商選品、點數回饋機制與企業活力福利。'}
+                      {isEn ? 'Later: a shop for sports gear and member rewards.' : '接下來會有運動用品商店和會員回饋。'}
                     </span>
                   </div>
                 </div>
@@ -159,8 +159,8 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, language }) =>
                   </h3>
                   <p className="text-sm font-semibold text-[#FF9F1C] mt-2">
                     {isEn
-                      ? 'Connect People · Empower Venues · Build the Ecosystem'
-                      : '連結運動者 · 賦能運動場館 · 建立寬廣生態'}
+                      ? 'Members · Venues · Shop'
+                      : '服務會員 · 支援場館 · 一步一步擴大'}
                   </p>
                 </div>
 
@@ -179,12 +179,12 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, language }) =>
                   </span>
                   <div className="text-xs sm:text-sm">
                     <strong className="text-[#141413] group-hover/item:text-[#FF9F1C] block mb-0.5 transition-colors">
-                      {isEn ? 'Connect People' : '連結運動者 (Connect People)'}
+                      {isEn ? 'Serve members' : '服務會員'}
                     </strong>
                     <span className="text-[#6C6C66] leading-relaxed block">
                       {isEn
-                        ? 'Deliver frictionless, flexible, and trusted digital movement credentials across the city.'
-                        : '提供流暢、彈性且值得信賴的數位運動通行體驗，打破傳統合約門檻。'}
+                        ? 'Book online, show a QR code, walk in.'
+                        : '線上預約、出示 QR Code、直接入場。'}
                     </span>
                   </div>
                 </div>
@@ -195,12 +195,12 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, language }) =>
                   </span>
                   <div className="text-xs sm:text-sm">
                     <strong className="text-[#141413] group-hover/item:text-[#FF9F1C] block mb-0.5 transition-colors">
-                      {isEn ? 'Empower Venues' : '賦能運動場館 (Empower Venues)'}
+                      {isEn ? 'Support venues' : '支援場館'}
                     </strong>
                     <span className="text-[#6C6C66] leading-relaxed block">
                       {isEn
-                        ? 'Equip independent space operators with modern software to relieve administrative friction and expand reach.'
-                        : '以輕量數位工具協助場館經營者減輕行政繁瑣，零額外硬體負擔開拓新客。'}
+                        ? 'QR check-in and a venue backend, so the front desk spends less time on admin.'
+                        : '用 QR Code 入場和場館後台，讓櫃檯少一點行政工作。'}
                     </span>
                   </div>
                 </div>
@@ -211,12 +211,12 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, language }) =>
                   </span>
                   <div className="text-xs sm:text-sm">
                     <strong className="text-[#141413] group-hover/item:text-[#FF9F1C] block mb-0.5 transition-colors">
-                      {isEn ? 'Build the Ecosystem' : '建立寬廣生態 (Build Ecosystem)'}
+                      {isEn ? 'Grow step by step' : '一步一步擴大'}
                     </strong>
                     <span className="text-[#6C6C66] leading-relaxed block">
                       {isEn
-                        ? 'Unite active lifestyles, conscious commerce, and forward-looking tech to cultivate enduring value.'
-                        : '結合運動生活品味、潮流選品電商與前瞻科技應用，打造持續成長商業生態。'}
+                        ? 'Add more venue types, more cities, and a shop over time.'
+                        : '逐步增加場館類型、城市，以及商店。'}
                     </span>
                   </div>
                 </div>
@@ -232,12 +232,12 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, language }) =>
                 <Cpu className="w-4.5 h-4.5" />
               </div>
               <h4 className="text-base font-bold text-[#141413] group-hover:text-[#FF9F1C] mb-2 transition-colors duration-200">
-                {isEn ? 'Engineering as Core Engine' : '以科技為核心引擎'}
+                {isEn ? 'We build software' : '我們做的是軟體'}
               </h4>
               <p className="text-xs sm:text-sm text-[#6C6C66] leading-relaxed">
                 {isEn
-                  ? 'BEAT Technology is not a conventional gym manager. We are a software engineering company dedicated to scalable digital products, high-availability architecture, and smooth cross-platform experiences.'
-                  : '比忒科技並非傳統健身管理公司，而是一家專注於數位產品開發、高可用性微服務架構與跨端體驗的科技公司。科技是我們解決真實問題的最強大槓桿。'}
+                  ? 'We do not run gyms. We build the software that connects members and venues: the BEAT PASS app, the venue backend, and our websites.'
+                  : '我們不經營健身房，我們做的是連接會員和場館的軟體：BEAT PASS App、場館後台，以及這些網站。'}
               </p>
             </div>
 
@@ -246,12 +246,12 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, language }) =>
                 <Activity className="w-4.5 h-4.5" />
               </div>
               <h4 className="text-base font-bold text-[#141413] group-hover:text-[#FF9F1C] mb-2 transition-colors duration-200">
-                {isEn ? 'Active Lifestyle Aesthetics' : '專注運動生活品味'}
+                {isEn ? 'Mix your workouts' : '運動可以混著來'}
               </h4>
               <p className="text-xs sm:text-sm text-[#6C6C66] leading-relaxed">
                 {isEn
-                  ? 'Movement is the modern urbanite’s purest expression of discipline and personal style. From strength training and bouldering to mindfulness yoga, every discipline embodies distinct values.'
-                  : '我們深信運動是現代人探索自律與自我風格的最佳途徑。從重訓、抱石到瑜伽冥想，每一個運動項目都代表一種生活主張與都會美學。'}
+                  ? 'Strength training one day, bouldering or yoga the next. We think people should be able to mix it up.'
+                  : '今天重訓、明天抱石、週末瑜伽。我們覺得運動本來就該可以這樣混著來。'}
               </p>
             </div>
 
@@ -260,12 +260,12 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, language }) =>
                 <ShieldCheck className="w-4.5 h-4.5" />
               </div>
               <h4 className="text-base font-bold text-[#141413] group-hover:text-[#FF9F1C] mb-2 transition-colors duration-200">
-                {isEn ? 'Integrity & Enduring Value' : '誠信與長青夥伴價值'}
+                {isEn ? 'Rules in writing' : '規則寫清楚'}
               </h4>
               <p className="text-xs sm:text-sm text-[#6C6C66] leading-relaxed">
                 {isEn
-                  ? 'We deeply respect venue owners’ dedication. We insist on fair, transparent, and sustainable partnerships to jointly elevate the digital landscape of the fitness sector.'
-                  : '我們尊重每一位合作場館經營者的專業心血，堅持建立公平、透明與可持續的長期合作關係，共同推動健康運動產業的數位升級。'}
+                  ? 'Fees and rules for partner venues are written down up front. Our venue contract and member terms are public.'
+                  : '合作場館的費用和規則事先寫清楚，會員條款也公開在網站上。'}
               </p>
             </div>
           </div>
@@ -305,8 +305,8 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, language }) =>
                   </div>
                   <p className="text-xs sm:text-sm text-[#6C6C66] leading-relaxed pt-2">
                     {isEn
-                      ? 'BEAT PASS is our cornerstone sports membership service. By connecting movers with diverse boutique spaces through technology, members can freely explore yoga, bouldering, strength training, martial arts, and swimming with a single digital pass.'
-                      : 'BEAT PASS 是比忒科技目前的核心旗艦運動產品。以現代科技串聯運動者與各類型特色場館，打破傳統健身會籍限制，讓使用者以單一會員憑證隨時探索瑜伽、抱石、重訓、格鬥與游泳池，享受高度自主的運動生活。'}
+                      ? 'BEAT PASS is our main product: one digital membership for yoga, bouldering, Pilates, and performance training venues in the Taipei area.'
+                      : 'BEAT PASS 是比忒科技目前的主力產品：一張數位會員卡，可以使用雙北的瑜伽、抱石、皮拉提斯與體能訓練場館，不用每間都重新入會。'}
                   </p>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-4 text-[15px] leading-[20px] text-[#4A4A46]">
@@ -347,12 +347,12 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, language }) =>
                     <span className="w-2 h-2 rounded-full bg-[#FF9F1C] animate-soft-pulse" />
                   </div>
                   <div className="group/metric border-b border-[#E5E5DF] pb-5 p-2 -mx-2 rounded-xs hover:bg-white transition-all duration-200 cursor-default">
-                    <div className="text-3xl font-bold text-[#141413] font-mono group-hover/metric:text-[#FF9F1C] group-hover/metric:translate-x-1 transition-all duration-200">100+</div>
-                    <div className="text-xs text-[#6C6C66] mt-1">{isEn ? 'Boutique partner sports venues expanding rapidly' : '風格合作運動場館（運動場館擴大進行中）'}</div>
+                    <div className="text-3xl font-bold text-[#141413] font-mono group-hover/metric:text-[#FF9F1C] group-hover/metric:translate-x-1 transition-all duration-200">雙北</div>
+                    <div className="text-xs text-[#6C6C66] mt-1">{isEn ? 'Where partner venues are today (expanding)' : '目前合作場館所在地區（持續增加中）'}</div>
                   </div>
                   <div className="group/metric border-b border-[#E5E5DF] pb-5 p-2 -mx-2 rounded-xs hover:bg-white transition-all duration-200 cursor-default">
-                    <div className="text-3xl font-bold text-[#141413] font-mono group-hover/metric:text-[#FF9F1C] group-hover/metric:translate-x-1 transition-all duration-200">6+</div>
-                    <div className="text-xs text-[#6C6C66] mt-1">{isEn ? 'Core disciplines: Fitness, Yoga, Climbing, Boxing, Pilates, Swimming' : '主流運動維度（健身、瑜伽、攀岩、拳擊、皮拉提斯、游泳池）'}</div>
+                    <div className="text-3xl font-bold text-[#141413] font-mono group-hover/metric:text-[#FF9F1C] group-hover/metric:translate-x-1 transition-all duration-200">4</div>
+                    <div className="text-xs text-[#6C6C66] mt-1">{isEn ? 'Venue types: yoga, bouldering, Pilates, performance training' : '場館類型：瑜伽、抱石、皮拉提斯、體能訓練'}</div>
                   </div>
                 </div>
                 <div className="pt-2 border-t border-[#F0F0EB]">
@@ -419,20 +419,20 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, language }) =>
               <div className="lg:col-span-5 bg-[#FAF9F6] border border-[#E5E5DF] p-6 sm:p-8 flex flex-col justify-between space-y-6">
                 <div className="space-y-4">
                   <div className="text-xs font-mono text-[#5C5C58] font-semibold uppercase tracking-wider">
-                    Strategic Scope
+                    {isEn ? 'Plans' : '規劃'}
                   </div>
                   <div className="subtle-interactive-card p-4 bg-white border border-[#E5E5DF] hover:border-[#FF9F1C]/40 text-xs text-[#4A4A46] cursor-default">
                     <span className="font-semibold text-[#141413] block mb-1">{isEn ? 'Curated Brand Collaborations' : '精選品牌聯名'}</span>
-                    {isEn ? 'Partnering with premium apparel and outdoor gear brands to create limited joint releases.' : '未來將與具備高度生活質感的運動潮流、戶外冒險與機能服飾品牌展開跨界聯名企劃。'}
+                    {isEn ? 'We are open to working with sportswear and gear brands.' : '歡迎運動服飾與裝備品牌洽談合作。'}
                   </div>
                   <div className="subtle-interactive-card p-4 bg-white border border-[#E5E5DF] hover:border-[#FF9F1C]/40 text-xs text-[#4A4A46] cursor-default">
-                    <span className="font-semibold text-[#141413] block mb-1">{isEn ? 'Seamless Venue Commerce' : '場館周邊深度串接'}</span>
-                    {isEn ? 'Connecting offline venue discovery directly with online product recommendations.' : '持續探索場館現場體驗與線上電商的智慧導購串聯。'}
+                    <span className="font-semibold text-[#141413] block mb-1">{isEn ? 'Gear at the venue' : '場館現場用品'}</span>
+                    {isEn ? 'Planned: buy gear you need for a class when you book it.' : '規劃中：預約課程時，可以一起買上課要用的用品。'}
                   </div>
                 </div>
                 <div className="pt-2 border-t border-[#F0F0EB]">
                   <div className="text-xs text-[#6C6C66] leading-relaxed">
-                    {isEn ? 'Seamlessly uniting boutique products and fitness communities.' : '結合風格選物與運動社群，創造無縫的運動生活消費體驗。'}
+                    {isEn ? 'The shop is being prepared.' : '商店正在籌備中。'}
                   </div>
                 </div>
               </div>
@@ -452,30 +452,30 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, language }) =>
                     Technology Solutions
                   </h3>
                   <div className="text-sm font-medium text-[#4A4A46]">
-                    {isEn ? 'Tech Services, Architecture & Digital Product R&D' : '科技服務、系統架構與數位產品研發'}
+                    {isEn ? 'Our software' : '我們的軟體'}
                   </div>
                   <p className="text-xs sm:text-sm text-[#6C6C66] leading-relaxed pt-2">
                     {isEn
-                      ? 'Technology is BEAT’s core foundational strength. From self-developed dynamic QR credentials and venue assistance tools to high-throughput cloud microservices, we build reliable software for ecosystem scaling.'
-                      : '科技是比忒科技的研發底層與核心競爭力。從自研的會員驗證憑證服務、場館賦能輔助介面，到雲端高擴展性 API 微服務，我們持續厚植產品開發能力，為未來數位服務與跨企業技術合作奠定堅實基礎。'}
+                      ? 'We build and run the systems behind BEAT: dynamic QR check-in, online booking, and the venue backend BEAT Partner Portal.'
+                      : 'BEAT 背後的系統由我們開發與維運：動態 QR Code 入場、線上預約，以及場館後台 BEAT Partner Portal。'}
                   </p>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-4 text-[15px] leading-[20px] text-[#4A4A46]">
                     <div className="group/feat flex items-center gap-2.5 p-1 -ml-1 rounded-xs hover:bg-[#FFF9F2]/70 transition-all duration-200 cursor-default">
                       <CheckCircle2 className="w-4 h-4 text-[#8C8C85] group-hover/feat:text-[#FF9F1C] group-hover/feat:scale-120 transition-all duration-200 shrink-0" />
-                      <span className="group-hover/feat:text-[#141413] transition-colors">{isEn ? 'Venue Digital Tool Research' : '場館數位管理工具研究'}</span>
+                      <span className="group-hover/feat:text-[#141413] transition-colors">{isEn ? 'Dynamic QR check-in' : '動態 QR Code 入場'}</span>
                     </div>
                     <div className="group/feat flex items-center gap-2.5 p-1 -ml-1 rounded-xs hover:bg-[#FFF9F2]/70 transition-all duration-200 cursor-default">
                       <CheckCircle2 className="w-4 h-4 text-[#8C8C85] group-hover/feat:text-[#FF9F1C] group-hover/feat:scale-120 transition-all duration-200 shrink-0" />
-                      <span className="group-hover/feat:text-[#141413] transition-colors">{isEn ? 'Cross-System API Integration' : '跨系統 API 串接與生態整合'}</span>
+                      <span className="group-hover/feat:text-[#141413] transition-colors">{isEn ? 'Online booking' : '線上預約'}</span>
                     </div>
                     <div className="group/feat flex items-center gap-2.5 p-1 -ml-1 rounded-xs hover:bg-[#FFF9F2]/70 transition-all duration-200 cursor-default">
                       <CheckCircle2 className="w-4 h-4 text-[#8C8C85] group-hover/feat:text-[#FF9F1C] group-hover/feat:scale-120 transition-all duration-200 shrink-0" />
-                      <span className="group-hover/feat:text-[#141413] transition-colors">{isEn ? 'High-Concurrency Secure Credentials' : '高併發安全憑證技術'}</span>
+                      <span className="group-hover/feat:text-[#141413] transition-colors">{isEn ? 'Venue backend' : '場館後台'}</span>
                     </div>
                     <div className="group/feat flex items-center gap-2.5 p-1 -ml-1 rounded-xs hover:bg-[#FFF9F2]/70 transition-all duration-200 cursor-default">
                       <CheckCircle2 className="w-4 h-4 text-[#8C8C85] group-hover/feat:text-[#FF9F1C] group-hover/feat:scale-120 transition-all duration-200 shrink-0" />
-                      <span className="group-hover/feat:text-[#141413] transition-colors">{isEn ? 'Enterprise Digital Solutions' : '企業級數位解決方案規劃'}</span>
+                      <span className="group-hover/feat:text-[#141413] transition-colors">{isEn ? 'Member app and websites' : '會員 App 與網站'}</span>
                     </div>
                   </div>
                 </div>
@@ -485,7 +485,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, language }) =>
                     onClick={() => onNavigate('contact')}
                     className="group inline-flex items-center gap-2.5 px-7 sm:px-8 py-3.5 sm:py-4 text-[17px] font-bold uppercase tracking-wider text-white bg-[#FF9F1C] hover:bg-[#F08C00] active:scale-[0.97] hover:-translate-y-0.5 transition-all duration-200 ease-out cursor-pointer shadow-xs hover:shadow-lg hover:shadow-[#FF9F1C]/35 select-none touch-manipulation"
                   >
-                    <span>{isEn ? 'Discuss Tech Collaboration' : '探討技術合作與架構交流'}</span>
+                    <span>{isEn ? 'Talk to us about tech' : '洽談技術合作'}</span>
                     <ArrowRight className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-white transition-transform duration-200 ease-out group-hover:translate-x-1.5" />
                   </button>
                 </div>
@@ -494,20 +494,20 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, language }) =>
               <div className="lg:col-span-5 bg-[#FAF9F6] border border-[#E5E5DF] p-6 sm:p-8 flex flex-col justify-between space-y-6">
                 <div className="space-y-4">
                   <div className="text-xs font-mono text-[#5C5C58] font-semibold uppercase tracking-wider">
-                    Technology Principles
+                    {isEn ? 'Basics' : '基本做法'}
                   </div>
                   <div className="subtle-interactive-card p-4 bg-white border border-[#E5E5DF] hover:border-[#FF9F1C]/40 text-xs text-[#4A4A46] cursor-default">
-                    <span className="font-semibold text-[#141413] block mb-1">{isEn ? 'Modular Extensibility' : '模組化擴展設計'}</span>
-                    {isEn ? 'Decoupled architecture ready to rapidly absorb new product lines and commercial integrations.' : '架構設計具備高解耦特性，便於隨時因應新產品線與新商業模式的迅速擴展。'}
+                    <span className="font-semibold text-[#141413] block mb-1">{isEn ? 'Security' : '資料安全'}</span>
+                    {isEn ? 'Data is encrypted in transit and passwords are stored hashed. See our privacy policy.' : '資料傳輸加密、密碼雜湊儲存，詳見隱私權政策。'}
                   </div>
                   <div className="subtle-interactive-card p-4 bg-white border border-[#E5E5DF] hover:border-[#FF9F1C]/40 text-xs text-[#4A4A46] cursor-default">
-                    <span className="font-semibold text-[#141413] block mb-1">{isEn ? 'Modern Cloud Security' : '現代化雲端運算標準'}</span>
-                    {isEn ? 'Adopting leading cloud standards ensuring rigorous data protection, high availability, and swift latency.' : '採用領先業界的雲端原生技術，兼具數據防護、高可用性與流暢使用者體驗。'}
+                    <span className="font-semibold text-[#141413] block mb-1">{isEn ? 'Payments' : '金流'}</span>
+                    {isEn ? 'Card payments go through ECPay. We do not store full card numbers.' : '信用卡付款透過綠界科技處理，我們不留存完整卡號。'}
                   </div>
                 </div>
                 <div className="pt-2 border-t border-[#F0F0EB]">
                   <div className="text-xs text-[#6C6C66] leading-relaxed">
-                    {isEn ? 'Empowering partners and movers through resilient core technology.' : '以堅實的技術底層為支撐，賦能生態系中所有合作夥伴與數位使用者。'}
+                    {isEn ? 'Questions about our systems: beat.tech.co@beatpasstw.com' : '系統相關問題：beat.tech.co@beatpasstw.com'}
                   </div>
                 </div>
               </div>

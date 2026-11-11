@@ -75,7 +75,9 @@ export const onRequestGet = async ({ env }: PagesContext): Promise<Response> => 
         summary: meta.summary || (paragraphsZh[0] ? paragraphsZh[0].slice(0, 100) + '...' : ''),
         summaryEn: meta.summaryEn || (paragraphsEn[0] ? paragraphsEn[0].slice(0, 100) + '...' : ''),
         content: paragraphsZh,
-        contentEn: paragraphsEn
+        contentEn: paragraphsEn,
+        // Notion 頁面封面（只用「外部連結」封面；上傳到 Notion 的檔案網址約 1 小時後失效，不適合當分享圖）
+        cover: page.cover?.type === 'external' && page.cover.external?.url ? page.cover.external.url : null
       });
     }
 

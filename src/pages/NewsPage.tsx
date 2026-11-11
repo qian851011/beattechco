@@ -100,6 +100,15 @@ export const NewsPage: React.FC<NewsPageProps> = ({ language, initialArticles, i
     fetchNews();
   }, []);
 
+  // 開啟文章時，瀏覽器分頁標題改成文章標題；關閉後恢復
+  useEffect(() => {
+    if (activeArticle) {
+      document.title = `${isEn ? activeArticle.titleEn || activeArticle.title : activeArticle.title}｜BEAT Technology 比忒科技`;
+    } else {
+      document.title = '最新消息與公告｜BEAT Technology 比忒科技';
+    }
+  }, [activeArticle, isEn]);
+
   // 瀏覽器上一頁／下一頁時，依網址開啟或關閉文章
   useEffect(() => {
     const onPop = () => {

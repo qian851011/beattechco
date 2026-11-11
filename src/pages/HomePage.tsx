@@ -104,9 +104,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, language }) => {
                 {/* Visual kinetic status */}
                 <div className="flex items-center justify-between pb-6 border-b border-[#F0F0EB]">
                   <div className="flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#FF9F1C] animate-pulse" />
-                    <span className="text-xs uppercase font-mono tracking-wider text-[#141413] font-semibold">
-                      ECOSYSTEM FLOW
+                    <span className="w-2 h-2 rounded-full bg-[#FF9F1C]" />
+                    <span className="text-sm text-[#141413] font-semibold">
+                      {isEn ? 'What we work on' : '我們在做的事'}
                     </span>
                   </div>
                 </div>
@@ -120,15 +120,15 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, language }) => {
                       </div>
                       <div>
                         <div className="text-xs font-bold text-[#141413] uppercase tracking-wider">
-                          {isEn ? 'Movers & Athletes' : '運動者 (People)'}
+                          {isEn ? 'For movers' : '給運動的人'}
                         </div>
                         <div className="text-[11px] text-[#6C6C66]">
-                          {isEn ? 'Seamless multi-discipline movement' : '自由切換不同運動項目'}
+                          {isEn ? 'One pass for many venues' : '一張會員卡，進出不同場館'}
                         </div>
                       </div>
                     </div>
-                    <span className="w-24 text-center shrink-0 text-[11px] font-mono font-bold bg-[#FBFBFA] border border-[#E8E8E0] px-2.5 py-1 tracking-wider shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)]">
-                      <span className="inline-block animate-orange-glow">CONNECTED</span>
+                    <span className="shrink-0 text-[11px] text-[#6C6C66] pl-3">
+                      {isEn ? 'Live' : '服務中'}
                     </span>
                   </div>
 
@@ -139,15 +139,15 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, language }) => {
                       </div>
                       <div>
                         <div className="text-xs font-bold text-[#141413] uppercase tracking-wider">
-                          {isEn ? 'Partner Venues' : '合作場館 (Venues)'}
+                          {isEn ? 'For venues' : '給場館'}
                         </div>
                         <div className="text-[11px] text-[#6C6C66]">
-                          {isEn ? 'Smarter operations through technology' : '用科技更聰明地經營'}
+                          {isEn ? 'QR check-in, no new hardware' : '手機 QR Code 入場，不用裝新設備'}
                         </div>
                       </div>
                     </div>
-                    <span className="w-24 text-center shrink-0 text-[11px] font-mono font-bold bg-[#FBFBFA] border border-[#E8E8E0] px-2.5 py-1 tracking-wider shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)]">
-                      <span className="inline-block animate-orange-glow">NETWORK</span>
+                    <span className="shrink-0 text-[11px] text-[#6C6C66] pl-3">
+                      {isEn ? 'Taipei area' : '雙北合作中'}
                     </span>
                   </div>
 
@@ -158,15 +158,15 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, language }) => {
                       </div>
                       <div>
                         <div className="text-xs font-bold text-[#141413] uppercase tracking-wider">
-                          {isEn ? 'Active Lifestyle Commerce' : '運動生活 (Commerce)'}
+                          {isEn ? 'BEAT Shop' : 'BEAT 商店'}
                         </div>
                         <div className="text-[11px] text-[#6C6C66]">
-                          {isEn ? 'Gear, aesthetics & discovery' : '運動裝備與生活場景延伸'}
+                          {isEn ? 'Gear and everyday essentials' : '運動用品與生活選物'}
                         </div>
                       </div>
                     </div>
-                    <span className="w-24 text-center shrink-0 text-[11px] font-mono font-bold bg-[#FBFBFA] border border-[#E8E8E0] px-2.5 py-1 tracking-wider shadow-[inset_0_1px_2px_rgba(0,0,0,0.02)]">
-                      <span className="inline-block animate-orange-glow">EXPANDING</span>
+                    <span className="shrink-0 text-[11px] text-[#6C6C66] pl-3">
+                      {isEn ? 'Coming soon' : '籌備中'}
                     </span>
                   </div>
                 </div>
@@ -184,26 +184,23 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, language }) => {
               {isEn ? 'COMPANY VISION' : '企業願景'}
             </div>
             <h2 className="text-2xl sm:text-4xl font-extrabold text-[#141413] tracking-tight leading-snug">
-              More Than One Product.
-              <span className="block text-xl sm:text-2xl text-[#6C6C66] font-normal mt-1">
-                {isEn ? 'We build far more than a single product.' : '我們不只做一個產品。'}
-              </span>
+              {isEn ? 'Start with one problem.' : '先把一件事做好。'}
             </h2>
             <div className="mt-8 space-y-5 text-[#42423E] text-sm sm:text-base leading-relaxed border-l-2 border-[#FF9F1C] pl-6 bg-[#FAF9F6] py-4 pr-4">
               <p>
                 {isEn
-                  ? 'At BEAT Technology, we believe true technological value does not lie solely in solving a isolated problem, but in continuously forging new, sustainable connections.'
-                  : '比忒科技相信，真正有價值的科技，不只是解決一個問題，而是持續創造新的連結。'}
+                  ? 'BEAT Technology Co., Ltd. is a Taipei company. Our main product today is BEAT PASS: one membership for many fitness venues, with no long contracts and no signing up again at every gym.'
+                  : '比忒科技有限公司是一家台北的公司，目前主力產品是 BEAT PASS：一張跨場館的會員卡，不用綁約，也不用每到一間就重新入會。'}
               </p>
               <p>
                 {isEn
-                  ? 'We begin with movement. Through BEAT PASS, we connect active urbanites with diverse venues; through commerce, we extend the active lifestyle; and through technological solutions, we explore broader frontiers across enterprise and digital domains.'
-                  : '我們從運動開始。從 BEAT PASS 串聯運動者與場館；從電商延伸運動生活；從科技服務探索企業與數位世界更多可能。'}
+                  ? 'We start with the everyday hassles between people and venues: getting in, booking a class, checking membership. Once that works well, we extend into sports gear and other digital services.'
+                  : '我們先處理運動的人和場館之間最常卡住的事：入場、預約、核對會員。這些做順了，再延伸到運動用品和其他數位服務。'}
               </p>
               <p className="text-[#6C6C66]">
                 {isEn
-                  ? 'BEAT PASS is our cornerstone today. And we are relentlessly charting what’s next.'
-                  : 'BEAT PASS 是我們目前的重要起點。而我們正在持續拓展下一個可能。'}
+                  ? 'Every new step will be announced on our News page.'
+                  : '每完成一步，都會寫在最新消息裡。'}
               </p>
             </div>
           </div>
@@ -258,8 +255,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, language }) => {
                 </div>
                 <p className="text-xs sm:text-sm text-[#6C6C66] leading-relaxed">
                   {isEn
-                    ? 'Connecting movers with distinct fitness disciplines through technology, providing unmatched freedom and flexibility.'
-                    : '以科技串聯運動者與不同運動場域，讓使用者擁有更自由、更彈性的運動選擇。'}
+                    ? 'One membership that works at different kinds of venues, so you can switch between workouts.'
+                    : '一張會員卡用在不同類型的場館，今天重訓、明天瑜伽都可以。'}
                 </p>
               </div>
 
@@ -326,8 +323,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, language }) => {
                 </div>
                 <p className="text-xs sm:text-sm text-[#6C6C66] leading-relaxed">
                   {isEn
-                    ? 'From high-reliability digital tools to scalable architecture, continually engineering solid foundations for growth.'
-                    : '從數位產品到系統與技術服務，持續建立 BEAT Technology 的科技能力與未來拓展空間。'}
+                    ? 'The member app, venue backend, and websites behind BEAT.'
+                    : 'BEAT 背後的會員 App、場館後台與網站。'}
                 </p>
               </div>
 
@@ -393,7 +390,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, language }) => {
                   </div>
                   <h4 className="text-base font-bold text-[#141413] mb-1 group-hover:text-[#FF9F1C] transition-colors">{isEn ? 'Cross-Venue' : '跨場域'}</h4>
                   <p className="text-xs text-[#6C6C66] leading-relaxed">
-                    {isEn ? 'Explore diverse movement spaces across the city without single-club lock-in.' : '探索更多運動空間，打破單一場館束縛。'}
+                    {isEn ? 'Try different venues without signing up at each one.' : '不用每間都辦會員，就能試不同場館。'}
                   </p>
                 </div>
 
@@ -465,65 +462,56 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, language }) => {
               FOR VENUES
             </div>
             <h2 className="text-2xl sm:text-4xl font-extrabold text-[#141413] tracking-tight">
-              More Than a Platform.
+              {isEn ? 'What venues get from BEAT PASS' : '場館加入 BEAT PASS，可以得到什麼？'}
             </h2>
-            <div className="text-xl font-medium text-[#4A4A46] mt-1">
-              {isEn ? 'Not just a system, but a digital growth partner for venues.' : '不只是系統，更是場館成長的數位夥伴。'}
-            </div>
             <p className="text-sm text-[#6C6C66] mt-4 leading-relaxed">
               {isEn
-                ? 'BEAT Technology empowers independent venues with modern tools, broader member acquisition, and collaborative marketing.'
-                : 'BEAT Technology 希望透過科技與合作，協助運動場館接觸更多使用者、提升營運效率，並創造更多服務與品牌曝光的可能。'}
+                ? 'BEAT PASS does not replace your own membership system. It adds one more way for new people to find you and walk in.'
+                : 'BEAT PASS 不是要取代你原本的會員系統，而是多一個管道，讓還沒來過的人找到你、走進來。'}
             </p>
           </div>
 
           {/* 6 Feature Blocks */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="subtle-interactive-card p-6 bg-white border border-[#E5E5DF] shadow-xs group cursor-default">
-              <div className="text-[11px] font-mono text-[#8C8C85] group-hover:text-[#FF9F1C] mb-2 font-medium transition-colors">01 / CONNECTION</div>
-              <h3 className="text-lg font-bold text-[#141413] group-hover:text-[#FF9F1C] mb-2 transition-colors">{isEn ? 'CUSTOMER CONNECTION' : '新客源接觸'}</h3>
+              <h3 className="text-lg font-bold text-[#141413] group-hover:text-[#FF9F1C] mb-2 transition-colors">{isEn ? 'New visitors' : '新客人'}</h3>
               <p className="text-xs text-[#6C6C66] leading-relaxed">
-                {isEn ? 'Reach active, health-conscious urban audiences looking for fresh training environments.' : '連結新的運動族群，讓更多熱愛運動的都會消費者認識並走進您的場域。'}
+                {isEn ? 'Members browse venues in BEAT PASS, book, and show up. Many of them have never been to your venue before.' : '會員在 BEAT PASS 裡找場館、預約、到場，很多是第一次來你這裡的人。'}
               </p>
             </div>
 
             <div className="subtle-interactive-card p-6 bg-white border border-[#E5E5DF] shadow-xs group cursor-default">
-              <div className="text-[11px] font-mono text-[#8C8C85] group-hover:text-[#FF9F1C] mb-2 font-medium transition-colors">02 / OPERATIONS</div>
-              <h3 className="text-lg font-bold text-[#141413] group-hover:text-[#FF9F1C] mb-2 transition-colors">{isEn ? 'DIGITAL TOOLS' : '數位管理工具'}</h3>
+              <h3 className="text-lg font-bold text-[#141413] group-hover:text-[#FF9F1C] mb-2 transition-colors">{isEn ? 'Check-in in one scan' : '掃一下就入場'}</h3>
               <p className="text-xs text-[#6C6C66] leading-relaxed">
-                {isEn ? 'Intuitive digital verification tools streamlining check-ins and reducing front-desk friction.' : '提供更便利的數位管理與會員核驗服務，降低櫃檯與行政溝通負擔。'}
+                {isEn ? 'Members show a QR code on their phone and the front desk scans it. No paper sign-in sheets.' : '會員出示手機 QR Code，櫃檯掃一下就完成，不用紙本簽到。'}
               </p>
             </div>
 
             <div className="subtle-interactive-card p-6 bg-white border border-[#E5E5DF] shadow-xs group cursor-default">
-              <div className="text-[11px] font-mono text-[#8C8C85] group-hover:text-[#FF9F1C] mb-2 font-medium transition-colors">03 / INSIGHTS</div>
-              <h3 className="text-lg font-bold text-[#141413] group-hover:text-[#FF9F1C] mb-2 transition-colors">{isEn ? 'DATA INSIGHTS' : '營運數據洞察'}</h3>
+              <h3 className="text-lg font-bold text-[#141413] group-hover:text-[#FF9F1C] mb-2 transition-colors">{isEn ? 'A venue backend' : '場館後台'}</h3>
               <p className="text-xs text-[#6C6C66] leading-relaxed">
-                {isEn ? 'Data-driven intelligence to understand visitor peak hours and inform growth decisions.' : '協助場館掌握使用與營運資訊，以數據為基礎輔助場館經營決策。'}
+                {isEn ? 'Check-ins and bookings from BEAT PASS members are recorded in BEAT Partner Portal.' : 'BEAT PASS 會員的入場與預約紀錄，都在 BEAT Partner Portal 裡查得到。'}
               </p>
             </div>
 
             <div className="subtle-interactive-card p-6 bg-white border border-[#E5E5DF] shadow-xs group cursor-default">
-              <div className="text-[11px] font-mono text-[#8C8C85] group-hover:text-[#FF9F1C] mb-2 font-medium transition-colors">04 / BRANDING</div>
-              <h3 className="text-lg font-bold text-[#141413] group-hover:text-[#FF9F1C] mb-2 transition-colors">{isEn ? 'BRAND EXPOSURE' : '品牌深度曝光'}</h3>
+              <h3 className="text-lg font-bold text-[#141413] group-hover:text-[#FF9F1C] mb-2 transition-colors">{isEn ? 'Listed on BEAT' : '出現在 BEAT 上'}</h3>
               <p className="text-xs text-[#6C6C66] leading-relaxed">
-                {isEn ? 'Promote venue distinctiveness across BEAT’s apps, website, and editorial features.' : '增加場館在 BEAT 生態系平台與各類溝通渠道中的曝光與接觸機會。'}
+                {isEn ? 'Your venue gets its own listing in BEAT PASS and on our websites.' : '場館會有自己的介紹，出現在 BEAT PASS 和我們的網站上。'}
               </p>
             </div>
 
             <div className="subtle-interactive-card p-6 bg-white border border-[#E5E5DF] shadow-xs group cursor-default">
-              <div className="text-[11px] font-mono text-[#8C8C85] group-hover:text-[#FF9F1C] mb-2 font-medium transition-colors">05 / MARKETING</div>
-              <h3 className="text-lg font-bold text-[#141413] group-hover:text-[#FF9F1C] mb-2 transition-colors">{isEn ? 'MARKETING SUPPORT' : '主題行銷企劃'}</h3>
+              <h3 className="text-lg font-bold text-[#141413] group-hover:text-[#FF9F1C] mb-2 transition-colors">{isEn ? 'Joint events' : '一起辦活動'}</h3>
               <p className="text-xs text-[#6C6C66] leading-relaxed">
-                {isEn ? 'Participate in ecosystem-wide challenges and co-branded wellness campaigns.' : '透過 BEAT 生態系策劃主題體驗與聯合企劃，創造多元行銷綜效。'}
+                {isEn ? 'We run trial classes and fitness challenges from time to time. Partner venues can take part.' : '我們會不定期辦體驗課和運動挑戰，合作場館可以一起參加。'}
               </p>
             </div>
 
             <div className="subtle-interactive-card p-6 bg-white border border-[#E5E5DF] shadow-xs group cursor-default">
-              <div className="text-[11px] font-mono text-[#FF9F1C] mb-2 font-semibold">06 / FUTURE</div>
-              <h3 className="text-lg font-bold text-[#141413] group-hover:text-[#FF9F1C] mb-2 transition-colors">{isEn ? 'NEW POSSIBILITIES' : '長遠生態共好'}</h3>
+              <h3 className="text-lg font-bold text-[#141413] group-hover:text-[#FF9F1C] mb-2 transition-colors">{isEn ? 'Cost' : '費用'}</h3>
               <p className="text-xs text-[#6C6C66] leading-relaxed">
-                {isEn ? 'Unlock future commerce, corporate wellness, and software synergies together.' : '持續探索場館、品牌與運動生活之間的新合作，共創健康產業新價值。'}
+                {isEn ? 'Under NT$500 a month. The first 100 partner venues pay no monthly fee.' : '每月不到 500 元，前 100 家合作場館免月費。'}
               </p>
             </div>
           </div>
@@ -548,34 +536,23 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, language }) => {
               TECHNOLOGY CAPABILITY
             </div>
             <h2 className="text-2xl sm:text-4xl font-extrabold text-[#141413] tracking-tight">
-              Built With Technology.
+              {isEn ? 'What we are building' : '我們正在做的產品'}
             </h2>
-            <div className="text-xl font-medium text-[#4A4A46] mt-1">
-              {isEn ? 'Engineering is the driving heartbeat of BEAT.' : '科技，是 BEAT 持續前進的核心。'}
-            </div>
             <p className="text-sm text-[#6C6C66] mt-4 leading-relaxed">
               {isEn
-                ? 'From member credentials to cloud infrastructure, we accumulate robust software engineering capabilities to empower future scale.'
-                : '從會員服務、場館管理到電子商務與數位產品，比忒科技持續累積產品開發、系統架構與數位服務能力，為未來的擴充保留堅實空間。'}
+                ? 'Three products, one for each side of BEAT. New services will be announced on our News page when they are ready.'
+                : '三個產品，各自對應會員、場館和商店。其他服務完成了，會在最新消息公告。'}
             </p>
           </div>
 
-          {/* 8 Capability Blocks */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {/* Products */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {[
-              { title: 'Web Platforms', desc: isEn ? 'High-performance modern web platforms' : '高效現代化網頁架構與跨端體驗' },
-              { title: 'Mobile Systems', desc: isEn ? 'Intuitive mobile UI & real-time passes' : '直覺流暢的行動端互動與即時憑證' },
-              { title: 'Scalable SaaS', desc: isEn ? 'Modular venue enablement tools' : '模組化場館賦能與營運數位工具' },
-              { title: 'Cloud Infrastructure', desc: isEn ? 'High-availability secure cloud systems' : '高可用性、高安全標準的雲端服務' },
-              { title: 'Data Synergy', desc: isEn ? 'Movement trends & operational insights' : '運動生活趨勢與營運洞察能力' },
-              { title: 'API Integration', desc: isEn ? 'Resilient cross-system interfaces' : '彈性安全的跨系統介接與生態串聯' },
-              { title: 'System Architecture', desc: isEn ? 'Decoupled microservices architecture' : '穩健微服務與高擴展性底層架構' },
-              { title: 'Digital Products', desc: isEn ? 'Continuous R&D in forward-looking apps' : '持續研發與孵化前瞻數位應用' }
+              { title: 'BEAT PASS', desc: isEn ? 'Membership across venues, online booking, and QR check-in.' : '跨場館會員卡、線上預約、手機 QR Code 入場。' },
+              { title: 'BEAT Partner Portal', desc: isEn ? 'The venue backend for member check-in and daily operations.' : '場館端後台，處理會員入場核驗與日常營運。' },
+              { title: isEn ? 'BEAT Shop' : 'BEAT 商店', desc: isEn ? 'Sports gear and everyday essentials. Coming soon.' : '運動用品與生活選物，籌備中。' }
             ].map((cap, idx) => (
               <div key={idx} className="subtle-interactive-card p-5 bg-[#FAF9F6] border border-[#E5E5DF] hover:bg-white group cursor-default">
-                <div className="text-[10px] font-mono text-[#FF9F1C] font-semibold mb-1 group-hover:tracking-wider transition-all duration-200">
-                  CORE 0{idx + 1}
-                </div>
                 <div className="font-bold text-[#141413] text-sm mb-1 group-hover:text-[#FF9F1C] transition-colors">{cap.title}</div>
                 <div className="text-xs text-[#6C6C66] leading-relaxed">{cap.desc}</div>
               </div>
@@ -600,8 +577,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, language }) => {
               </h2>
               <p className="text-sm text-[#6C6C66] leading-relaxed">
                 {isEn
-                  ? 'BEAT Commerce extends movement into curated apparel, gear, and daily wellness items, connecting sports with conscious consumption.'
-                  : 'BEAT Commerce 將運動延伸至更多商品與生活場景，探索運動、品牌與消費者之間的新連結。讓運動者的美學品味與生活所需，在每一次揮汗之餘自然延展。'}
+                  ? 'The BEAT Shop is being prepared. It will sell sports apparel, training gear, and nutrition products.'
+                  : 'BEAT 商店正在籌備，預計販售運動服飾、訓練用品與營養補給。'}
               </p>
               <div>
                 <a
@@ -623,20 +600,20 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, language }) => {
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-[#4A4A46]">
                   <div className="subtle-interactive-card p-4 bg-[#FAF9F6] border border-[#E5E5DF] hover:bg-white group cursor-default">
-                    <div className="font-bold text-[#141413] group-hover:text-[#FF9F1C] mb-1 transition-colors">{isEn ? 'Technical & Aesthetic Apparel' : '運動機能與美學服飾'}</div>
-                    <div className="text-[#6C6C66]">{isEn ? 'Durable, stylish pieces designed for training and urban transit.' : '舒適、耐用且融入日常都會穿搭。'}</div>
+                    <div className="font-bold text-[#141413] group-hover:text-[#FF9F1C] mb-1 transition-colors">{isEn ? 'Sports apparel' : '運動服飾'}</div>
+                    <div className="text-[#6C6C66]">{isEn ? 'Clothes you can train in and wear every day.' : '練完也能直接穿出門。'}</div>
                   </div>
                   <div className="subtle-interactive-card p-4 bg-[#FAF9F6] border border-[#E5E5DF] hover:bg-white group cursor-default">
-                    <div className="font-bold text-[#141413] group-hover:text-[#FF9F1C] mb-1 transition-colors">{isEn ? 'Training Gear & Accessories' : '訓練裝備與周邊配備'}</div>
-                    <div className="text-[#6C6C66]">{isEn ? 'Carefully curated equipment to accompany every personal breakthrough.' : '精選專業輔具，陪伴每一次自我超越。'}</div>
+                    <div className="font-bold text-[#141413] group-hover:text-[#FF9F1C] mb-1 transition-colors">{isEn ? 'Training gear' : '訓練用品'}</div>
+                    <div className="text-[#6C6C66]">{isEn ? 'Equipment and accessories for everyday training.' : '日常訓練用得到的器材與配件。'}</div>
                   </div>
                   <div className="subtle-interactive-card p-4 bg-[#FAF9F6] border border-[#E5E5DF] hover:bg-white group cursor-default">
-                    <div className="font-bold text-[#141413] group-hover:text-[#FF9F1C] mb-1 transition-colors">{isEn ? 'Wellness Nutrition & Recovery' : '健康補給與機能飲食'}</div>
-                    <div className="text-[#6C6C66]">{isEn ? 'Clean nutrition and recovery formulas supporting sustained performance.' : '運動前後的營養補給與體能恢復。'}</div>
+                    <div className="font-bold text-[#141413] group-hover:text-[#FF9F1C] mb-1 transition-colors">{isEn ? 'Nutrition' : '營養補給'}</div>
+                    <div className="text-[#6C6C66]">{isEn ? 'Food and drinks for before and after a workout.' : '運動前後的營養補給與體能恢復。'}</div>
                   </div>
                   <div className="subtle-interactive-card p-4 bg-[#FAF9F6] border border-[#E5E5DF] hover:bg-white group cursor-default">
-                    <div className="font-bold text-[#141413] group-hover:text-[#FF9F1C] mb-1 transition-colors">{isEn ? 'Brand Co-Creations' : '生活美學跨界聯名'}</div>
-                    <div className="text-[#6C6C66]">{isEn ? 'Collaborations with creative brands to spark fresh active lifestyles.' : '攜手風格品牌，共創運動生活靈感。'}</div>
+                    <div className="font-bold text-[#141413] group-hover:text-[#FF9F1C] mb-1 transition-colors">{isEn ? 'Brand collaborations' : '品牌聯名'}</div>
+                    <div className="text-[#6C6C66]">{isEn ? 'Co-branded products with sports and lifestyle brands.' : '和運動或生活品牌合作的聯名商品。'}</div>
                   </div>
                 </div>
               </div>

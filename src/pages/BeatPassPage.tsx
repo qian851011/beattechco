@@ -120,8 +120,8 @@ export const BeatPassPage: React.FC<BeatPassPageProps> = ({ onNavigate, language
               </p>
               <p className="text-sm text-[#6C6C66] leading-relaxed">
                 {isEn
-                  ? 'BEAT PASS is built for this modern rhythm. Powered by software, one pass opens doors to curated boutique spaces, making fitness truly align with your urban lifestyle.'
-                  : 'BEAT PASS 正是為此而生。以科技賦能會員體驗，一個帳號即能穿梭各家精選特色場館，讓運動真正貼合你的生活動線。'}
+                  ? 'That is why we made BEAT PASS: one account for many venues, so you can work out wherever fits your day.'
+                  : '所以我們做了 BEAT PASS：一個帳號就能去不同場館，在哪裡方便就在哪裡運動。'}
               </p>
             </div>
 

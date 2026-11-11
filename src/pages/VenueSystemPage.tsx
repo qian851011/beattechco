@@ -111,7 +111,7 @@ export const VenueSystemPage: React.FC<VenueSystemPageProps> = ({ onNavigate, la
             <h1 className="text-3xl sm:text-5xl font-extrabold text-[#141413] tracking-tight leading-tight">
               {isEn ? 'BEAT PASS Venue Management System' : 'BEAT PASS 場館管理系統'}
               <span className="block text-2xl sm:text-3xl font-medium text-[#5C5C58] mt-2">
-                {isEn ? 'Not just a system, but a digital growth partner for venues.' : '不只是系統，更是場館成長的數位夥伴。'}
+                {isEn ? 'QR check-in, online booking, and new visitors for your venue.' : 'QR Code 入場、線上預約，也幫場館帶來新客人。'}
               </span>
             </h1>
             <p className="text-sm sm:text-base text-[#6C6C66] leading-relaxed pt-2">
