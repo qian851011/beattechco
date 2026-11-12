@@ -1,5 +1,16 @@
-import React, { useState } from 'react';
-import { PageId, Language } from '../types';
+import React, { useEffect, useState } from 'react';
+import { PageId, Language, CollaborationType } from '../types';
+import { HowItWorksFlow } from '../components/HowItWorksFlow';
+import {
+  VenueFeatures,
+  VenueBenefits,
+  VenueConcerns,
+  VenuePlans,
+  VenueExtraIncome,
+  VenueSteps,
+  VenueFaqAccordion,
+  VenueInquiry,
+} from '../components/VenueSections';
 import { BEAT_PASS_FAQS, VENUE_CATEGORIES } from '../data/content';
 import { BeatLogo } from '../components/BeatLogo';
 import {
@@ -21,7 +32,7 @@ import {
 } from 'lucide-react';
 
 interface BeatPassPageProps {
-  onNavigate: (page: PageId) => void;
+  onNavigate: (page: PageId, defaultCollaborationType?: CollaborationType) => void;
   language: Language;
 }
 
@@ -29,6 +40,22 @@ export const BeatPassPage: React.FC<BeatPassPageProps> = ({ onNavigate, language
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string>('fitness');
   const isEn = language === 'en';
+
+  // 「用戶」／「場館」分頁；網址加 #venues 可以直接打開場館分頁
+  type Audience = 'members' | 'venues';
+  const [audience, setAudience] = useState<Audience>('members');
+  useEffect(() => {
+    if (window.location.hash === '#venues') setAudience('venues');
+  }, []);
+  const switchAudience = (a: Audience, scroll = false) => {
+    setAudience(a);
+    try {
+      window.history.replaceState(null, '', a === 'venues' ? '#venues' : window.location.pathname);
+    } catch {
+      /* 不影響切換 */
+    }
+    if (scroll) document.getElementById('audience-tabs')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
 
   const toggleFaq = (idx: number) => {
     setActiveFaq(activeFaq === idx ? null : idx);
@@ -82,26 +109,39 @@ export const BeatPassPage: React.FC<BeatPassPageProps> = ({ onNavigate, language
                 ? 'BEAT PASS is BEAT Technology’s cross-venue membership. One digital member card gets you into different kinds of sports venues, so you can pick by your schedule and what you feel like doing.'
                 : 'BEAT PASS 是比忒科技的跨場館會員服務。一張數位會員卡，可以去不同類型的運動場館，依自己的時間和興趣選。'}
             </p>
-            <div className="pt-2 flex flex-wrap items-center gap-4">
-              <a
-                href="https://beatpasstw.com/app/"
-                target="_blank"
-                rel="noopener"
-                className="px-6 py-3.5 text-xs sm:text-sm font-semibold uppercase tracking-wider text-white bg-[#FF9F1C] hover:bg-[#F08C00] transition-colors cursor-pointer shadow-md shadow-[#FF9F1C]/25"
-              >
-                {isEn ? 'Join the Movement' : '立即加入運動行列'}
-              </a>
-              <button
-                onClick={() => onNavigate('partners')}
-                className="px-6 py-3.5 text-xs sm:text-sm font-medium uppercase tracking-wider text-[#141413] bg-white border border-[#DCDCD6] hover:border-[#141413] transition-colors cursor-pointer shadow-2xs"
-              >
-                {isEn ? 'Partner as Venue' : '成為合作運動場館'}
-              </button>
-            </div>
           </div>
         </div>
       </section>
 
+      {/* 分頁：用戶／場館 */}
+      <div id="audience-tabs" className="sticky top-[68px] z-30 bg-[#F7F7F5]/95 backdrop-blur-sm border-b border-[#E5E5DF] scroll-mt-[68px]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div role="tablist" aria-label={isEn ? 'BEAT PASS for' : 'BEAT PASS 給誰'} className="flex justify-center">
+            {([
+              ['members', isEn ? 'For Members' : '用戶'],
+              ['venues', isEn ? 'For Venues' : '場館'],
+            ] as [Audience, string][]).map(([key, label]) => {
+              const on = audience === key;
+              return (
+                <button
+                  key={key}
+                  role="tab"
+                  aria-selected={on}
+                  onClick={() => switchAudience(key)}
+                  className={`flex-1 sm:flex-none sm:min-w-[160px] px-6 py-4 text-sm sm:text-base font-bold border-b-2 transition-colors cursor-pointer ${
+                    on ? 'text-[#141413] border-[#FF9F1C]' : 'text-[#8C8C85] border-transparent hover:text-[#141413]'
+                  }`}
+                >
+                  {label}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      {/* ===== 用戶 ===== */}
+      <div role="tabpanel" hidden={audience !== 'members'}>
       {/* 2. WHAT IS BEAT PASS & 3. WHY BEAT PASS */}
       <section className="py-20 border-b border-[#E5E5DF] bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -262,6 +302,8 @@ export const BeatPassPage: React.FC<BeatPassPageProps> = ({ onNavigate, language
                 : '會員卡、線上預約、通知，都在 App 裡。'}
             </p>
           </div>
+
+          <HowItWorksFlow isEn={isEn} />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Feature 1: Digital Membership */}
@@ -676,6 +718,19 @@ export const BeatPassPage: React.FC<BeatPassPageProps> = ({ onNavigate, language
           </div>
         </div>
       </section>
+      </div>
+
+      {/* ===== 場館 ===== */}
+      <div role="tabpanel" hidden={audience !== 'venues'}>
+        <VenueFeatures isEn={isEn} />
+        <VenueBenefits isEn={isEn} />
+        <VenueConcerns isEn={isEn} />
+        <VenuePlans isEn={isEn} />
+        <VenueExtraIncome isEn={isEn} />
+        <VenueSteps isEn={isEn} />
+        <VenueInquiry isEn={isEn} withStory onContact={() => onNavigate('contact', 'BEAT PASS 場館合作')} />
+        <VenueFaqAccordion isEn={isEn} />
+      </div>
     </div>
   );
 };

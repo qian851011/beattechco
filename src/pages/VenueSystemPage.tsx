@@ -1,6 +1,6 @@
 import React from 'react';
 import { PageId, Language, CollaborationType } from '../types';
-import { ArrowRight, QrCode, CalendarCheck, LayoutDashboard, BarChart3 } from 'lucide-react';
+import { VenueFeatures, VenueBenefits, VenuePlans, VenueSteps, VenueInquiry } from '../components/VenueSections';
 
 interface VenueSystemPageProps {
   onNavigate: (page: PageId, defaultCollaborationType?: CollaborationType) => void;
@@ -10,113 +10,6 @@ interface VenueSystemPageProps {
 // 場館管理系統頁：方案、分潤與規則依場館合作契約（2026-11-11 版）。
 export const VenueSystemPage: React.FC<VenueSystemPageProps> = ({ onNavigate, language }) => {
   const isEn = language === 'en';
-
-  const features = [
-    {
-      icon: QrCode,
-      title: isEn ? 'QR Code Check-in' : 'QR Code 數位核驗入場',
-      desc: isEn
-        ? 'Members show a dynamic QR code on their phone; the front desk or gate scans it in one second. No paper sign-in sheets or manual logs.'
-        : '會員抵達場館時出示手機動態 QR Code，櫃檯或閘門一秒掃描核銷即可入場，免去紙本簽到與人工登記。',
-    },
-    {
-      icon: CalendarCheck,
-      title: isEn ? 'Online Class Booking' : '線上課程預約',
-      desc: isEn
-        ? 'Your schedule, coaches and real-time open seats appear on BEAT PASS. Members book group classes, coaching sessions or open training in one tap, with booking confirmations, reminders and change notices sent automatically.'
-        : '場館課表、師資與即時剩餘名額呈現在 BEAT PASS 上，會員可線上一鍵預約團體課、教練課或自由訓練時段；系統發送預約確認、課前提醒與場館臨時變動通知。',
-    },
-    {
-      icon: LayoutDashboard,
-      title: isEn ? 'Venue Backend: BEAT Partner Portal' : '場館後台 BEAT Partner Portal',
-      desc: isEn
-        ? 'Partner venues use a dedicated backend, BEAT Partner Portal, to handle BEAT PASS member check-ins and day-to-day operations.'
-        : '合作場館使用專屬的場館端後台 BEAT Partner Portal，處理 BEAT PASS 會員的入場核驗與日常營運事務。',
-    },
-    {
-      icon: BarChart3,
-      title: isEn ? 'Operational Data Insights' : '營運數據洞察',
-      desc: isEn
-        ? 'Understand hourly visitor flows and usage patterns to inform operating hours, class planning and business decisions.'
-        : '協助場館掌握客群時段動態與使用樣貌，以數據為基礎輔助營業時段、課程安排與經營決策。',
-    },
-  ];
-
-  const benefits = [
-    {
-      title: isEn ? 'New Customer Exposure' : '新客源接觸',
-      desc: isEn ? 'Reach urban movers looking for diverse, flexible fitness options.' : '連結尋求多樣化運動日常的都會運動族群，讓更多人走進您的場域。',
-    },
-    {
-      title: isEn ? 'Frictionless Digital Tools' : '極簡數位管理',
-      desc: isEn ? 'Fast QR code verification reduces front-desk and admin workload.' : '快速 QR Code 核驗工具，降低櫃檯與行政溝通負擔。',
-    },
-    {
-      title: isEn ? 'Brand Exposure' : '品牌曝光',
-      desc: isEn ? 'Showcase your venue across BEAT web, member platform and editorial features.' : '在 BEAT 官網、會員平台與社群專題中呈現場館特色。',
-    },
-    {
-      title: isEn ? 'Co-Branded Marketing' : '主題行銷合作',
-      desc: isEn ? 'Join ecosystem campaigns, fitness challenges and brand promotions.' : '參與 BEAT 生態系聯合企劃、運動挑戰與品牌推廣。',
-    },
-    {
-      title: isEn ? 'Long-term Ecosystem Growth' : '長期生態拓展',
-      desc: isEn ? 'Share in future BEAT Technology products, commerce and corporate wellness resources.' : '共享比忒科技未來產品、電商周邊與企業福利資源。',
-    },
-  ];
-
-  // 合作方案依《BEAT PASS 場館合作方案 A／B》（2026-11）簡報；分潤、撥款與規則依場館合作契約（2026-11-11 版）
-  const plans = [
-    {
-      tag: isEn ? 'Plan A' : 'A 方案',
-      name: isEn ? 'Traffic Partnership' : '流量合作',
-      price: 'NT$0',
-      unit: isEn ? '/ month' : '/ 月',
-      note: isEn ? 'Month-to-month. Upgrade to B any time.' : '月約，隨時可以升級 B',
-      fit: isEn ? 'Best for: small venues, studios and new venues trying it out' : '適合：想先試試看的小館、工作室、新開的場館',
-    },
-    {
-      tag: isEn ? 'Plan B' : 'B 方案',
-      name: isEn ? 'System & Operations' : '系統營運合作',
-      price: 'NT$499',
-      unit: isEn ? '/ month (annual)' : '/ 月（年約）',
-      note: isEn ? 'Less than NT$17 a day' : '一天不到 17 元',
-      fit: isEn ? 'Best for: venues that want full reports, member messaging and a dedicated account manager' : '適合：想要完整報表、會員私訊和專屬業務的場館',
-    },
-  ];
-
-  // 比較表：照簡報第 6、7 頁的兩張表
-  const tables: { title: string; note: string; rows: [string, string, string][] }[] = [
-    {
-      title: isEn ? 'Comparison 1: fees, exposure & revenue share' : '方案比較（一）：費用、曝光與分潤',
-      note: isEn
-        ? 'All commissions exclude tax; points carry an additional 1.5% payment-processing fee. Final terms are set by the signed contract.'
-        : '抽成皆未稅；點數另計金流費 1.5%。實際條件以正式合約為準。',
-      rows: [
-        [isEn ? 'System fee' : '系統月費', isEn ? 'Free' : '免費', isEn ? 'NT$499 / month' : 'NT$499 / 月'],
-        [isEn ? 'Contract & upgrade' : '合約與升級', isEn ? 'Monthly, upgrade to B any time' : '月約，可隨時升級 B', isEn ? 'Annual' : '年約'],
-        [isEn ? 'Featured venue listing' : '熱門場館曝光', isEn ? '60 days' : '60 天', isEn ? '300 days' : '300 天'],
-        [isEn ? 'New venue spotlight' : '新館報到曝光', isEn ? 'First 7 days' : '上線 7 天', isEn ? 'First month' : '上線首月'],
-        [isEn ? 'Booking protection' : '預約取消收益保障', isEn ? 'No' : '無', isEn ? 'Yes' : '有'],
-        [isEn ? 'Shop revenue share (after launch)' : '電商分潤（上線後）', isEn ? 'No' : '無', '1～5%'],
-        [isEn ? 'Corporate group classes (after launch)' : '企業團體課程（上線後）', isEn ? 'Occasional' : '不固定', isEn ? '1–2 every other month' : '每隔月 1～2 次'],
-      ],
-    },
-    {
-      title: isEn ? 'Comparison 2: features & service' : '方案比較（二）：功能與服務',
-      note: isEn ? 'Features are as currently offered on the platform.' : '實際功能以平台當下提供為準。',
-      rows: [
-        [isEn ? 'QR code check-in' : 'QR Code 核銷', isEn ? 'Yes' : '有', isEn ? 'Yes' : '有'],
-        [isEn ? 'Live visitor count' : '即時人流顯示', isEn ? 'Yes' : '有', isEn ? 'Yes' : '有'],
-        [isEn ? 'Class & pass listings' : '課程與票券上架', isEn ? 'Full ' : '完整', isEn ? 'Full' : '完整'],
-        [isEn ? 'Staff accounts' : '員工帳號', isEn ? '8, with 8 permission levels' : '8 個，可分 8 種權限', isEn ? 'Unlimited, with 8 permission levels' : '不限，可分 8 種權限'],
-        [isEn ? 'Financial reports' : '財務報表', isEn ? 'Monthly statement' : '月結對帳單', isEn ? 'Full reports, visitor trends, Excel export' : '完整報表、客流趨勢、Excel 匯出'],
-        [isEn ? 'Member messaging (message center)' : '會員私訊（訊息中心）', isEn ? 'Yes' : '有', isEn ? 'Yes' : '有'],
-        [isEn ? 'Platform campaigns & coupons' : '平台活動與優惠券', isEn ? 'Can sign up' : '可報名參加', isEn ? 'Priority' : '優先參加'],
-        [isEn ? 'Point of contact' : '專屬窗口', isEn ? 'Online support' : '線上客服', isEn ? 'Dedicated account manager' : '專屬業務'],
-      ],
-    },
-  ];
 
   const revenue = [
     {
@@ -177,10 +70,6 @@ export const VenueSystemPage: React.FC<VenueSystemPageProps> = ({ onNavigate, la
     ? ['Plan A is month-to-month and can be upgraded to Plan B at any time. Plan B is a one-year contract; venues on the founding offer can terminate at any time during the 1-year trial and get a full refund.', 'Contracts renew automatically on the same terms unless either side says otherwise within 30 days of the end.', 'Plan B is billed monthly to a credit card linked in the portal. If a payment fails, you have 7 days to update your card before portal access is paused.', 'The portal only shows the member data needed for booking and check-in: name, photo, membership validity and booking status. It may not be used for marketing or kept elsewhere.', 'All terms are set out in the signed contract, including settlement and payout dates.']
     : ['A 方案月約，隨時可以升級 B；B 方案為一年約，適用創始場館優惠的場館，1 年試用期間可隨時終止，退還全部費用。', '合約到期前 30 天內雙方都沒表示不續約，就以原條件自動續約。', 'B 方案在後台綁定信用卡，按月自動扣款；扣款失敗有 7 天可以更新信用卡，逾期才會暫停後台權限。', '後台只顯示預約與報到需要的會員資料：姓名、大頭照、方案效期、預約狀態。不能拿來行銷，也不能另外存檔。', '所有條件都寫在正式合約裡，包含結算方式與撥款日。'];
 
-  const steps = isEn
-    ? [['Choose a plan', 'We go through your venue’s needs with you and confirm Plan A or B.'], ['Sign the contract', 'All terms go into the official contract, including settlement and payout dates.'], ['Set up and go live', 'We open your portal. Add your opening hours and venue details, and start welcoming BEAT members.']]
-    : [['選方案', '業務會依你的場館需求，一起確認 A 或 B。'], ['簽合作合約', '條件寫進正式合約，含結算方式與撥款日。'], ['開通後台、上架', '設定營業時間、場館介紹，就能開始接 BEAT 的會員。']];
-
   const faqs = [
     {
       q: isEn ? 'What types of venues is BEAT PASS for?' : 'BEAT PASS 適合哪些類型的場館？',
@@ -220,11 +109,6 @@ export const VenueSystemPage: React.FC<VenueSystemPageProps> = ({ onNavigate, la
     },
   ];
 
-  const goContact = (e: React.MouseEvent) => {
-    e.preventDefault();
-    onNavigate('contact', '系統服務');
-  };
-
   return (
     <div className="min-h-screen bg-[#F7F7F5] text-[#141413] pt-24 pb-20">
       {/* HERO */}
@@ -251,108 +135,14 @@ export const VenueSystemPage: React.FC<VenueSystemPageProps> = ({ onNavigate, la
         </div>
       </section>
 
-      {/* FEATURES */}
-      <section className="py-20 border-b border-[#E5E5DF]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#141413] mb-8">
-            {isEn ? 'What does BEAT PASS provide for partner venues?' : 'BEAT PASS 為合作場館提供哪些系統功能？'}
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {features.map((f) => (
-              <div key={f.title} className="p-8 bg-white border border-[#E5E5DF] shadow-sm">
-                <f.icon className="w-6 h-6 text-[#FF9F1C] mb-4" />
-                <h3 className="text-lg font-bold text-[#141413] mb-2">{f.title}</h3>
-                <p className="text-sm text-[#6C6C66] leading-relaxed">{f.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <VenueFeatures isEn={isEn} />
 
-      {/* BENEFITS */}
-      <section className="py-20 border-b border-[#E5E5DF]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#141413] mb-8">
-            {isEn ? 'Why venues join BEAT PASS' : '加入 BEAT PASS 對場館有什麼好處？'}
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-xs text-[#4A4A46]">
-            {benefits.map((b) => (
-              <div key={b.title} className="p-4 bg-white border border-[#E5E5DF]">
-                <div className="font-bold text-[#141413] mb-1 text-sm">{b.title}</div>
-                <div className="text-[#6C6C66]">{b.desc}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* PLANS */}
-      <section id="plans" className="py-20 border-b border-[#E5E5DF]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#141413] mb-2">
-            {isEn ? 'Two Partnership Plans' : '兩種合作方案'}
-          </h2>
-          <p className="text-sm text-[#6C6C66] mb-8 max-w-2xl leading-relaxed">
-            {isEn
-              ? 'With either plan, BEAT PASS members can use the same card at your venue. The difference is how much exposure and service you want. Not sure? Ask yourself one question: do you need full reports and a dedicated account manager? If yes, choose B. If not yet, start with A and upgrade any time.'
-              : '不管選哪個方案，BEAT PASS 會員都能用同一張卡來你這裡運動，差別在你要多少曝光與服務。不知道怎麼選？問自己一個問題：需要完整報表和專屬業務嗎？需要就選 B；還不需要就先選 A，之後隨時可以升級。'}
-          </p>
-          {/* 方案摘要 */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {plans.map((p, i) => (
-              <div key={p.tag} className={`p-5 sm:p-6 border bg-white ${i === 1 ? 'border-[#FF9F1C]/60' : 'border-[#E5E5DF]'}`}>
-                <div className={`inline-block px-2 py-0.5 text-xs font-bold ${i === 1 ? 'bg-[#FF9F1C] text-white' : 'bg-[#FFF6EA] text-[#FF9F1C] border border-[#FF9F1C]/40'}`}>{p.tag}</div>
-                <h3 className="text-lg font-bold text-[#141413] mt-2">{p.name}</h3>
-                <div className="mt-2">
-                  <span className="text-3xl font-extrabold text-[#141413]">{p.price}</span>
-                  <span className="text-sm text-[#6C6C66] ml-1">{p.unit}</span>
-                </div>
-                <p className="text-xs text-[#6C6C66] mt-1">{p.note}</p>
-                <p className="text-xs text-[#4A4A46] mt-2 leading-relaxed">{p.fit}</p>
-              </div>
-            ))}
-          </div>
+      <VenueBenefits isEn={isEn} />
 
-          {/* 比較表（樣式同簡報） */}
-          {tables.map((t) => (
-            <div key={t.title} className="mt-10">
-              <h3 className="text-base sm:text-lg font-bold text-[#141413] mb-3">{t.title}</h3>
-              <div className="overflow-x-auto">
-                <table className="w-full min-w-[560px] text-sm border-collapse border border-[#E5E5DF]">
-                  <thead>
-                    <tr>
-                      <th className="w-[34%] px-4 py-3 text-left font-bold text-[#141413] bg-[#FAF9F6] border border-[#E5E5DF]">{isEn ? 'Item' : '合作項目'}</th>
-                      <th className="w-[33%] px-4 py-3 text-center font-bold text-[#141413] bg-[#FFF6EA] border border-[#E5E5DF]">{isEn ? 'A · Traffic' : 'A｜流量合作'}</th>
-                      <th className="w-[33%] px-4 py-3 text-center font-bold text-white bg-[#FF9F1C] border border-[#E5E5DF]">{isEn ? 'B · System & Operations' : 'B｜系統營運合作'}</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {t.rows.map(([k, a, b], i) => (
-                      <tr key={k} className={i % 2 === 1 ? 'bg-[#FAF9F6]' : 'bg-white'}>
-                        <td className="px-4 py-2.5 text-[#141413] border border-[#E5E5DF]">{k}</td>
-                        <td className="px-4 py-2.5 text-center text-[#141413] border border-[#E5E5DF]">{a}</td>
-                        <td className="px-4 py-2.5 text-center text-[#141413] border border-[#E5E5DF]">{b}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-              <p className="text-xs text-[#7A7A74] mt-2">{t.note}</p>
-            </div>
-          ))}
 
-          <div className="mt-6 p-6 bg-[#FFF6EA] border border-[#FF9F1C]/40">
-            <div className="font-bold text-[#141413] mb-1 text-sm">
-              {isEn ? 'Founding venue offer · Plan B' : '創始場館優惠｜B 方案'}
-            </div>
-            <p className="text-sm text-[#4A4A46] leading-relaxed">
-              {isEn
-                ? 'The first 50 venues in each of northern, central and southern Taiwan (150 in total) that sign up for Plan B get an extra 1-year trial period. During the trial you can terminate at any time and get a full refund.'
-                : '北、中、南各前 50 間，共 150 間簽約 B 方案的場館，加贈 1 年試用期。試用期間可以隨時終止，退還全部費用。'}
-            </p>
-          </div>
-        </div>
-      </section>
+      <VenuePlans isEn={isEn} />
+
 
       {/* REVENUE */}
       <section className="py-20 border-b border-[#E5E5DF]">
@@ -447,23 +237,8 @@ export const VenueSystemPage: React.FC<VenueSystemPageProps> = ({ onNavigate, la
         </div>
       </section>
 
-      {/* STEPS */}
-      <section className="py-20 border-b border-[#E5E5DF]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#141413] mb-8">
-            {isEn ? 'Get started in 3 steps' : '簽約只要 3 步'}
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {steps.map(([t, d], i) => (
-              <div key={t} className="p-6 bg-white border border-[#E5E5DF]">
-                <div className="text-2xl font-extrabold text-[#FF9F1C] mb-2">{i + 1}</div>
-                <div className="font-bold text-[#141413] mb-1">{t}</div>
-                <p className="text-sm text-[#6C6C66] leading-relaxed">{d}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <VenueSteps isEn={isEn} />
+
 
       {/* FAQ */}
       <section className="py-20 border-b border-[#E5E5DF]">
@@ -482,31 +257,7 @@ export const VenueSystemPage: React.FC<VenueSystemPageProps> = ({ onNavigate, la
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="pt-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="p-8 sm:p-12 bg-white border border-[#E5E5DF] shadow-sm">
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#141413] mb-2">
-              {isEn ? 'Venue Partnership Inquiry' : '場館合作洽詢'}
-            </h2>
-            <p className="text-xs sm:text-sm text-[#6C6C66] max-w-2xl leading-relaxed mb-8">
-              {isEn ? (
-                <>Leave your needs on the inquiry form, or email <a href="mailto:beat.tech.co@beatpasstw.com" className="text-[#FF9F1C] hover:underline">beat.tech.co@beatpasstw.com</a>.</>
-              ) : (
-                <>歡迎運動場館經營者留下需求與聯絡方式，或來信 <a href="mailto:beat.tech.co@beatpasstw.com" className="text-[#FF9F1C] hover:underline">beat.tech.co@beatpasstw.com</a>。</>
-              )}
-            </p>
-            <a
-              href="/contact"
-              onClick={goContact}
-              className="group inline-flex items-center gap-2.5 px-7 sm:px-8 py-3.5 sm:py-4 text-xs sm:text-sm font-bold uppercase tracking-wider text-white bg-[#FF9F1C] hover:bg-[#F08C00] active:scale-[0.97] hover:-translate-y-0.5 transition-all duration-200 ease-out cursor-pointer shadow-xs hover:shadow-lg hover:shadow-[#FF9F1C]/35 select-none touch-manipulation"
-            >
-              <span>{isEn ? 'Inquire Now' : '立即洽詢'}</span>
-              <ArrowRight className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-white transition-transform duration-200 ease-out group-hover:translate-x-1.5" />
-            </a>
-          </div>
-        </div>
-      </section>
+      <VenueInquiry isEn={isEn} onContact={() => onNavigate('contact', '系統服務')} />
     </div>
   );
 };
