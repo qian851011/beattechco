@@ -62,7 +62,7 @@ const ROUTES = [
     url: `${SITE}/venue-system`,
     title: '場館合作方案與管理系統｜BEAT PASS 合作場館｜比忒科技',
     description:
-      'BEAT PASS 場館合作方案：A 方案月繳 499 元、B 方案一年 5,599 元，前 100 間合作場館免月費。會員卡收入場館分 80%，點數課程抽成 0～5%，每月結算、次月 10 日撥款。提供 QR Code 入場、線上預約與場館後台。',
+      'BEAT PASS 場館合作方案：A 流量合作免月費、月約；B 系統營運合作每月 499 元、年約，前 150 間加贈 1 年試用期。會員卡收入場館分 80%，點數抽成 A 6%、B 1～5%，每月結算、次月 10 日撥款。',
     // 結構化資料：服務、價格與常見問題（文字與頁面上顯示的一致）
     ld: [
       {
@@ -79,19 +79,18 @@ const ROUTES = [
         offers: [
           {
             '@type': 'Offer',
-            name: 'A 方案（月繳方案）',
-            description: '合約期 1 個月，含稅。合作夥伴招募期間前 100 間合作場館免月費。',
-            price: 499,
+            name: 'A 方案｜流量合作',
+            description: '免月費、月約，可隨時升級 B。課程與票券完整上架、8 個員工帳號、熱門曝光 60 天。會員卡抽成 20%、點數抽成 6%（未稅）。',
+            price: 0,
             priceCurrency: 'TWD',
-            priceSpecification: { '@type': 'UnitPriceSpecification', price: 499, priceCurrency: 'TWD', unitText: 'MONTH' },
           },
           {
             '@type': 'Offer',
-            name: 'B 方案（一年約方案）',
-            description: '合約期 12 個月，含稅，分 12 期按月扣款。合作夥伴招募期間前 100 間合作場館免月費。',
-            price: 5599,
+            name: 'B 方案｜系統營運合作',
+            description: '每月 499 元、年約；北中南各前 50 間（共 150 間）加贈 1 年試用期，試用期間隨時退費。完整財務報表、會員私訊、預約取消收益保障、專屬業務、熱門曝光 300 天。會員卡抽成 20%、點數抽成 1～5%（未稅）。',
+            price: 499,
             priceCurrency: 'TWD',
-            priceSpecification: { '@type': 'UnitPriceSpecification', price: 5599, priceCurrency: 'TWD', unitText: 'ANN' },
+            priceSpecification: { '@type': 'UnitPriceSpecification', price: 499, priceCurrency: 'TWD', unitText: 'MONTH' },
           },
         ],
       },
@@ -101,9 +100,9 @@ const ROUTES = [
         mainEntity: [
           ['BEAT PASS 適合哪些類型的場館？', '健身房、瑜伽、抱石攀岩、皮拉提斯器械、拳擊與專業體能訓練等運動場館與工作室，都歡迎洽詢合作。'],
           ['場館需要更換原本的會員系統嗎？', 'BEAT PASS 主要服務透過 BEAT PASS 前來的會員，以 QR Code 核驗與 BEAT Partner Portal 運作。實際導入方式會依場館現況討論，歡迎透過合作洽詢表單聯絡我們。'],
-          ['合作方式與費用怎麼計算？', 'A 方案月繳 499 元；B 方案一年 5,599 元，分 12 期扣款。合作夥伴招募期間，前 100 間合作場館免月費。另外會員卡收入場館分 80%，點數預約的課程抽成 0～5%。詳細請看上方「合作方案」。'],
+          ['合作方式與費用怎麼計算？', 'A 方案（流量合作）免月費、月約；B 方案（系統營運合作）每月 499 元、年約，北中南各前 50 間（共 150 間）加贈 1 年試用期、試用期間隨時退費。兩個方案的會員卡收入都是平台留 20%、場館分 80%；點數抽成 A 方案 6%、B 方案 1～5%（未稅，另計金流費 1.5%）。詳細請看上方「兩種合作方案」。'],
           ['什麼時候撥款？怎麼撥？', '每月 1 日結算，次月 10 日左右撥款到場館帳戶。每日進場人次、預約與結算明細，隨時可以在 BEAT Partner Portal 查看。'],
-          ['可以退出嗎？', '可以。場館隨時可以提出終止，當期結束後生效，不收違約金。終止前已經預約的會員，仍需要接待。'],
+          ['可以退出嗎？', 'A 方案是月約，隨時可以停止或升級 B。B 方案為一年約；前 150 間場館加贈 1 年試用期，試用期間可隨時終止，退還全部費用。終止前已經預約的會員，仍需要接待。'],
           ['目前有哪些地區的場館加入？', 'BEAT PASS 持續拓展雙北都會運動場域網絡，最新進度請見最新消息。'],
         ].map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
       },

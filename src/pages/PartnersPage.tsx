@@ -52,8 +52,8 @@ export const PartnersPage: React.FC<PartnersPageProps> = ({ onNavigate, language
             </h2>
             <p className="text-xs sm:text-sm text-[#6C6C66] max-w-2xl leading-relaxed mb-8">
               {isEn
-                ? 'BEAT PASS members find your venue, book, and check in with a QR code. Plan A is NT$499 a month, Plan B NT$5,599 a year; the first 100 partner venues pay no monthly fee.'
-                : 'BEAT PASS 會員找到你的場館、預約、用 QR Code 入場。A 方案月繳 499 元、B 方案一年 5,599 元，前 100 家合作場館免月費。'}
+                ? 'BEAT PASS members find your venue, book, and check in with a QR code. Plan A has no monthly fee; Plan B is NT$499 a month with fuller exposure and service. The first 150 Plan B venues get an extra 1-year trial, fully refundable.'
+                : 'BEAT PASS 會員找到你的場館、預約、用 QR Code 入場。A 方案免月費，B 方案每月 499 元、曝光與服務最完整；B 方案前 150 間加贈 1 年試用期，試用期間隨時退費。'}
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8 text-xs text-[#4A4A46]">

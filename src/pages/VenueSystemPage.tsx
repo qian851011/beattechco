@@ -65,69 +65,88 @@ export const VenueSystemPage: React.FC<VenueSystemPageProps> = ({ onNavigate, la
     },
   ];
 
-  // 合作方案、分潤與規則：內容依《BEAT PASS 跨場館共享平台合作契約書》（2026-11-11 版）
+  // 合作方案依《BEAT PASS 場館合作方案 A／B》（2026-11）簡報；分潤、撥款與規則依場館合作契約（2026-11-11 版）
   const plans = [
     {
       tag: isEn ? 'Plan A' : 'A 方案',
-      name: isEn ? 'Monthly' : '月繳方案',
-      price: 'NT$499',
+      name: isEn ? 'Traffic Partnership' : '流量合作',
+      price: 'NT$0',
       unit: isEn ? '/ month' : '/ 月',
-      note: isEn ? 'Tax included. 1-month term, renews monthly.' : '含稅。合約期 1 個月，按月續約。',
+      note: isEn ? 'Month-to-month, no lock-in. Upgrade to B any time.' : '月約，不綁約。隨時可以升級 B。',
+      fit: isEn ? 'For small venues, studios and new venues that want to try it first.' : '適合想先試試看的小館、工作室、新開的場館。',
       points: isEn
-        ? ['Good for trying BEAT PASS first', 'Cancel any time; ends at the close of the current month', 'No early-termination fee']
-        : ['適合先試試看的場館', '隨時可提出終止，當月結束後生效', '不收違約金'],
+        ? ['Full class and pass listings (copy schedules, pricing by member type, subscriber prices)', '8 staff accounts with 8 permission levels', 'QR code check-in and live visitor count', 'Featured listing for 60 days; “New venue” spotlight for 7 days', 'Can sign up for platform campaigns', 'Monthly statement and online support']
+        : ['課程與票券完整上架（複製排程、身分別定價、訂閱會員價）', '8 個員工帳號，可分 8 種權限', 'QR Code 核銷、即時人流顯示', '熱門曝光 60 天、新館報到 7 天', '平台活動可報名參加', '月結對帳單、線上客服'],
     },
     {
       tag: isEn ? 'Plan B' : 'B 方案',
-      name: isEn ? 'Annual' : '一年約方案',
-      price: 'NT$5,599',
-      unit: isEn ? '/ year' : '/ 年',
-      note: isEn ? 'Tax included. 12-month term, paid in 12 monthly instalments (about NT$467/month).' : '含稅。合約期 12 個月，分 12 期按月扣款（每月約 467 元）。',
+      name: isEn ? 'System & Operations Partnership' : '系統營運合作',
+      price: 'NT$499',
+      unit: isEn ? '/ month (annual)' : '/ 月（年約）',
+      note: isEn ? 'One-year contract. Less than NT$17 a day. First 150 venues get an extra 1-year trial with full refund if you leave during it.' : '簽一年，一天不到 17 元。前 150 間加贈 1 年試用期，試用期間隨時退費。',
+      fit: isEn ? 'For venues that want full reports, member messaging and a dedicated account manager.' : '適合想要完整報表、會員私訊和專屬業務的場館。',
       points: isEn
-        ? ['About NT$389 less per year than Plan A', 'Cancel any time; remaining instalments stop', 'No early-termination fee']
-        : ['一年比 A 方案省約 389 元', '隨時可提出終止，之後的分期不再扣款', '不收違約金'],
+        ? ['Everything in Plan A', 'Unlimited staff accounts with 8 permission levels', 'Full financial reports: visitor trends, transaction details, Excel export', 'Member messaging: members can message you in the app', 'Booking protection: you still earn part of the revenue for late cancellations and no-shows', 'Featured listing for 300 days; “New venue” spotlight for the first month', 'Dedicated account manager; priority for platform campaigns', 'Points commission 1–5% (Plan A: 6%)']
+        : ['A 方案的全部功能', '員工帳號不限，可分 8 種權限', '完整財務報表：客流趨勢、交易明細、Excel 匯出', '會員私訊：會員可以直接在 App 傳訊息問你', '預約取消收益保障：會員逾時取消或沒到，你仍分得一部分', '熱門曝光 300 天、新館報到首月', '專屬業務、平台活動優先參加', '點數抽成 1～5%（A 方案為 6%）'],
     },
   ];
 
-  const included = isEn
-    ? ['Venue listing in the BEAT PASS app and on our websites', 'QR code check-in and online class booking', 'BEAT Partner Portal: daily check-ins, class bookings, earnings and settlement details', 'Member support handled by BEAT (accounts, orders, refunds)', 'Platform marketing and campaigns']
-    : ['場館介紹頁，出現在 BEAT PASS App 與我們的網站', 'QR Code 入場與線上課程預約', 'BEAT Partner Portal 後台：每日進場人次、課程預約、收入與結算明細', '會員的帳號、訂單、退費等客服由 BEAT 處理', '平台行銷與活動推廣'];
+  const compare = [
+    [isEn ? 'System fee' : '系統月費', isEn ? 'Free' : '免費', isEn ? 'NT$499 / month' : 'NT$499／月'],
+    [isEn ? 'Contract' : '合約與升級', isEn ? 'Monthly; upgrade to B any time' : '月約，可隨時升級 B', isEn ? 'Annual' : '年約'],
+    [isEn ? 'Featured venue listing' : '熱門場館曝光', isEn ? '60 days' : '60 天', isEn ? '300 days' : '300 天'],
+    [isEn ? 'New venue spotlight' : '新館報到曝光', isEn ? 'First 7 days' : '上線 7 天', isEn ? 'First month' : '上線首月'],
+    [isEn ? 'Member card commission (excl. tax)' : '會員卡抽成（未稅）', '20%', '20%'],
+    [isEn ? 'Points commission (excl. tax)' : '點數抽成（未稅）', '6%', '1～5%'],
+    [isEn ? 'Class pass redemption' : '堂課券核銷', isEn ? '70 points per class' : '一堂 70 點', isEn ? '70 points per class' : '一堂 70 點'],
+    [isEn ? 'Booking protection' : '預約取消收益保障', isEn ? 'No' : '無', isEn ? 'Yes' : '有'],
+    [isEn ? 'Shop revenue share (after launch)' : '電商分潤（上線後）', isEn ? 'No' : '無', '1～5%'],
+    [isEn ? 'Corporate group classes (after launch)' : '企業團體課程（上線後）', isEn ? 'Occasional' : '不固定', isEn ? '1–2 times every other month' : '每隔月 1～2 次'],
+    [isEn ? 'Class & pass listings' : '課程與票券上架', isEn ? 'Full' : '完整', isEn ? 'Full' : '完整'],
+    [isEn ? 'QR check-in & live visitor count' : 'QR Code 核銷、即時人流', isEn ? 'Yes' : '有', isEn ? 'Yes' : '有'],
+    [isEn ? 'Staff accounts' : '員工帳號', isEn ? '8, with 8 permission levels' : '8 個，可分 8 種權限', isEn ? 'Unlimited, with 8 permission levels' : '不限，可分 8 種權限'],
+    [isEn ? 'Financial reports' : '財務報表', isEn ? 'Monthly statement' : '月結對帳單', isEn ? 'Full reports, visitor trends, Excel export' : '完整報表、客流趨勢、Excel 匯出'],
+    [isEn ? 'Member messaging' : '會員私訊（訊息中心）', isEn ? 'No' : '無', isEn ? 'Yes' : '有'],
+    [isEn ? 'Platform campaigns & coupons' : '平台活動與優惠券', isEn ? 'Can sign up' : '可報名參加', isEn ? 'Priority' : '優先參加'],
+    [isEn ? 'Point of contact' : '專屬窗口', isEn ? 'Online support' : '線上客服', isEn ? 'Dedicated account manager' : '專屬業務'],
+    [isEn ? 'Settlement' : '合作結算', isEn ? 'Monthly' : '月結', isEn ? 'Monthly' : '月結'],
+  ];
 
   const revenue = [
     {
-      title: isEn ? 'Member card (Space Pass)' : '會員卡（Space Pass）',
-      share: isEn ? 'Venue gets 80%' : '場館分得 80%',
+      title: isEn ? 'Member card (both plans)' : '會員卡（A、B 都一樣）',
+      share: isEn ? 'Venues get 80%' : '場館分 80%',
       desc: isEn
-        ? 'Each member card lasts 30 days. When it ends, 80% of what the member actually paid is split among the venues they visited, by number of valid check-ins. The 20% platform fee already includes payment processing; nothing else is deducted.'
-        : '每張會員卡效期 30 天。效期結束後，會員實際支付金額的 80%，依會員在各場館的有效進場次數比例分給場館。平台的 20% 已包含金流手續費，不會再另外扣。',
+        ? 'BEAT keeps 20% (excl. tax). The other 80% is split among the venues a member visited, by how many times they checked in at each venue during the card’s 30 days.'
+        : '平台留 20%（未稅），其餘 80% 依這張卡 30 天內在各館的入場次數分配。會員越常來你這裡，你分得越多。',
       example: isEn
-        ? 'Example (illustrative figures): a member pays NT$1,000 and checks in 10 times in 30 days, 4 of them at your venue → 1,000 × 80% × 4/10 = NT$320.'
-        : '例（數字為舉例）：會員付 1,000 元，30 天內進場 10 次，其中 4 次在你的場館 → 1,000 × 80% × 4/10 ＝ 320 元。',
+        ? 'Example: a member checks in 10 times in 30 days, 3 of them at your venue → you get 30% of that card’s venue share.'
+        : '例：一位會員 30 天內入場 10 次，其中 3 次在你的場館 → 你分到這張卡場館收入的 30%。',
     },
     {
       title: isEn ? 'Classes booked with points or class passes' : '用點數或堂課券預約的課程',
-      share: isEn ? 'Commission 0–5%' : '抽成 0～5%',
+      share: isEn ? 'A 6% · B 1–5%' : 'A 6%・B 1～5%',
       desc: isEn
-        ? 'Group classes and private coaching are not included in the member card. When a member books your class with points, you receive the class value minus 5% business tax, the payment-processing fee, and an agreed commission of 0–5%. Points needed per class are agreed with you and shown in the app.'
-        : '團體課、私人教練課不包含在會員卡內。會員用點數預約你的課程時，場館拿到的是課程金額扣除 5% 營業稅、金流手續費，再扣除雙方議定的 0～5% 抽成。每堂課要幾點，由雙方約定並公告在 App。',
+        ? 'Group classes and private coaching are not included in the member card. When members book your classes with points, the platform commission is 6% on Plan A and 1–5% on Plan B (set in the contract, excl. tax), plus a 1.5% payment-processing fee. Class passes are redeemed at 70 points per class.'
+        : '團體課、私人教練課不包含在會員卡內。會員用點數預約你的課程時，平台抽成 A 方案 6%、B 方案 1～5%（依合約，未稅），點數另計金流費 1.5%。堂課券每堂以 70 點核銷。',
       example: isEn
-        ? 'Classes cancelled in time (2 hours before group classes, 3 hours before private sessions) are not settled and points go back to the member.'
+        ? 'Classes cancelled in time (2 hours before group classes, 3 hours before private sessions) are not settled; points go back to the member.'
         : '會員在期限前取消（團體課開課前 2 小時、私人教練課前 3 小時）不結算，點數退回會員。',
     },
     {
-      title: isEn ? 'Late cancellations & no-shows' : '逾時取消與未到',
-      share: isEn ? 'Venue 35% / BEAT 65%' : '場館 35%／BEAT 65%',
+      title: isEn ? 'Booking protection (Plan B)' : '預約取消收益保障（B 方案）',
+      share: isEn ? 'Plan B only' : 'B 方案限定',
       desc: isEn
-        ? 'You decide whether points are refunded for late cancellations and no-shows, and post the rule on your class page. If you choose not to refund, the value of those points is split 35% to you and 65% to BEAT. If no rule is posted, points are refunded in full.'
-        : '逾時取消或未到，點數要不要退由場館決定，並先公告在課程頁面。場館選擇不退時，這次點數的價值場館分 35%、BEAT 分 65%。沒有公告的話，視為全額退回。',
+        ? 'When a member cancels late or doesn’t show up, Plan B venues still receive part of the revenue (ratio set in the contract). Plan A does not include this protection.'
+        : '會員逾時取消或沒到時，B 方案場館仍分得一部分收入，比例依合約。A 方案沒有這項保障。',
       example: '',
     },
     {
-      title: isEn ? 'Shop referrals' : '商品推廣分潤',
+      title: isEn ? 'Shop revenue share (Plan B, after launch)' : '電商分潤（B 方案，上線後提供）',
       share: '1%～5%',
       desc: isEn
-        ? 'Optional. Recommend BEAT Shop products with your venue’s referral code or offer in-venue pickup, and earn a share of each order (after refunds). No inventory or shipping costs for you.'
-        : '自由參加。用場館推薦碼推薦 BEAT 商店商品，或提供場館取貨，就能依訂單實收金額（扣除退款後）分潤。場館不需要負擔庫存與物流。',
+        ? 'After the BEAT Shop launches, Plan B venues can recommend products with their referral code or offer in-venue pickup, and earn a share of each order (after refunds). No inventory or shipping costs.'
+        : 'BEAT 商店上線後，B 方案場館可以用推薦碼推薦商品或提供場館取貨，依訂單實收金額（扣除退款後）分潤，不需要負擔庫存與物流。',
       example: '',
     },
   ];
@@ -149,8 +168,12 @@ export const VenueSystemPage: React.FC<VenueSystemPageProps> = ({ onNavigate, la
     : ['會員卡只包含場館開放給會員的空間，不含團體課與私人教練課；教練教學專用區可以不開放。', '對 BEAT PASS 會員的服務，要和自家會員、單次顧客一樣。', '會員用現金上課時給課程折扣（建議九折），或讓會員用點數預約。', '入場時掃會員手機上的動態 QR Code。同一會員每天在同一場館限核銷 1 次，每天最多去 3 家場館。', '核對 App 上的姓名、照片是否為本人。發現冒用時拒絕入場，並在 24 小時內從後台通報。', '營業時間內，開放給會員的名額不低於場館最大容留人數的 55%；設備維修、包場或緊急狀況可以暫時調降。', '投保公共意外責任險，簽約時提供保單影本。', '退出平台或停止營業，要在 30 天前通知。'];
 
   const contractTerms = isEn
-    ? ['The contract starts on signing and runs for the term of your plan (1 month or 12 months). It renews automatically unless either side says otherwise within 30 days of the end.', 'You can terminate at any time; it takes effect at the end of the current billing period. No termination fee.', 'A credit card is linked in the portal for automatic billing. During the founding-partner offer, the first charge starts after the offer ends.', 'If a payment fails, you have 7 days to update your card before portal access is paused.', 'The portal only shows the member data needed for booking and check-in: name, photo, membership validity and booking status. It may not be used for marketing or kept elsewhere.']
-    : ['合約自簽署日生效，期限依方案為 1 個月或 12 個月；到期前 30 天內雙方都沒表示不續約，就以原條件自動續約。', '場館可以隨時提出終止，當期結束後生效，不收違約金。', '簽約時在後台綁定信用卡自動扣款；適用創始場館優惠的場館，優惠期結束後才開始扣款。', '扣款失敗時，有 7 天可以更新信用卡，逾期才會暫停後台權限。', '後台只顯示預約與報到需要的會員資料：姓名、大頭照、方案效期、預約狀態。不能拿來行銷，也不能另外存檔。'];
+    ? ['Plan A is month-to-month and can be upgraded to Plan B at any time. Plan B is a one-year contract; venues on the founding offer can terminate at any time during the 1-year trial and get a full refund.', 'Contracts renew automatically on the same terms unless either side says otherwise within 30 days of the end.', 'Plan B is billed monthly to a credit card linked in the portal. If a payment fails, you have 7 days to update your card before portal access is paused.', 'The portal only shows the member data needed for booking and check-in: name, photo, membership validity and booking status. It may not be used for marketing or kept elsewhere.', 'All terms are set out in the signed contract, including settlement and payout dates.']
+    : ['A 方案月約，隨時可以升級 B；B 方案為一年約，適用創始場館優惠的場館，1 年試用期間可隨時終止，退還全部費用。', '合約到期前 30 天內雙方都沒表示不續約，就以原條件自動續約。', 'B 方案在後台綁定信用卡，按月自動扣款；扣款失敗有 7 天可以更新信用卡，逾期才會暫停後台權限。', '後台只顯示預約與報到需要的會員資料：姓名、大頭照、方案效期、預約狀態。不能拿來行銷，也不能另外存檔。', '所有條件都寫在正式合約裡，包含結算方式與撥款日。'];
+
+  const steps = isEn
+    ? [['Choose a plan', 'We go through your venue’s needs with you and confirm Plan A or B.'], ['Sign the contract', 'All terms go into the official contract, including settlement and payout dates.'], ['Set up and go live', 'We open your portal. Add your opening hours and venue details, and start welcoming BEAT members.']]
+    : [['選方案', '業務會依你的場館需求，一起確認 A 或 B。'], ['簽合作合約', '條件寫進正式合約，含結算方式與撥款日。'], ['開通後台、上架', '設定營業時間、場館介紹，就能開始接 BEAT 的會員。']];
 
   const faqs = [
     {
@@ -168,8 +191,8 @@ export const VenueSystemPage: React.FC<VenueSystemPageProps> = ({ onNavigate, la
     {
       q: isEn ? 'How are partnership terms and fees set?' : '合作方式與費用怎麼計算？',
       a: isEn
-        ? 'Plan A is NT$499 a month; Plan B is NT$5,599 a year, paid in 12 instalments. During partner recruitment, the first 100 partner venues pay no monthly fee. On top of that, venues get 80% of member card revenue and pay a 0–5% commission on classes booked with points. See “Partnership Plans” above.'
-        : 'A 方案月繳 499 元；B 方案一年 5,599 元，分 12 期扣款。合作夥伴招募期間，前 100 間合作場館免月費。另外會員卡收入場館分 80%，點數預約的課程抽成 0～5%。詳細請看上方「合作方案」。',
+        ? 'Plan A (Traffic Partnership) has no monthly fee and is month-to-month. Plan B (System & Operations Partnership) is NT$499 a month on an annual contract; the first 50 venues in each of northern, central and southern Taiwan (150 total) get an extra 1-year trial with full refund if they leave during it. On both plans, BEAT keeps 20% of member card revenue and venues share 80%. Points commission is 6% on Plan A and 1–5% on Plan B (excl. tax, plus a 1.5% payment fee). See “Two Partnership Plans” above.'
+        : 'A 方案（流量合作）免月費、月約；B 方案（系統營運合作）每月 499 元、年約，北中南各前 50 間（共 150 間）加贈 1 年試用期、試用期間隨時退費。兩個方案的會員卡收入都是平台留 20%、場館分 80%；點數抽成 A 方案 6%、B 方案 1～5%（未稅，另計金流費 1.5%）。詳細請看上方「兩種合作方案」。',
     },
     {
       q: isEn ? 'When and how do we get paid?' : '什麼時候撥款？怎麼撥？',
@@ -180,8 +203,8 @@ export const VenueSystemPage: React.FC<VenueSystemPageProps> = ({ onNavigate, la
     {
       q: isEn ? 'Can we leave the partnership?' : '可以退出嗎？',
       a: isEn
-        ? 'Yes. You can terminate at any time; it takes effect at the end of the current billing period, with no termination fee. Members who booked before termination should still be served.'
-        : '可以。場館隨時可以提出終止，當期結束後生效，不收違約金。終止前已經預約的會員，仍需要接待。',
+        ? 'Plan A is month-to-month, so you can stop or upgrade to Plan B at any time. Plan B is a one-year contract; the first 150 venues get an extra 1-year trial, during which they can terminate at any time with a full refund. Members who booked before termination should still be served.'
+        : 'A 方案是月約，隨時可以停止或升級 B。B 方案為一年約；前 150 間場館加贈 1 年試用期，試用期間可隨時終止，退還全部費用。終止前已經預約的會員，仍需要接待。',
     },
     {
       q: isEn ? 'Which areas currently have partner venues?' : '目前有哪些地區的場館加入？',
@@ -261,12 +284,12 @@ export const VenueSystemPage: React.FC<VenueSystemPageProps> = ({ onNavigate, la
       <section id="plans" className="py-20 border-b border-[#E5E5DF]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl sm:text-3xl font-extrabold text-[#141413] mb-2">
-            {isEn ? 'Partnership Plans' : '合作方案'}
+            {isEn ? 'Two Partnership Plans' : '兩種合作方案'}
           </h2>
           <p className="text-sm text-[#6C6C66] mb-8 max-w-2xl leading-relaxed">
             {isEn
-              ? 'Both plans include the same features and revenue share. The only difference is how you pay the system fee.'
-              : '兩個方案的功能和分潤都一樣，差別只在系統費用的繳法。'}
+              ? 'With either plan, BEAT PASS members can use the same card at your venue. The difference is how much exposure and service you want. Not sure? Ask yourself one question: do you need full reports and a dedicated account manager? If yes, choose B. If not yet, start with A and upgrade any time.'
+              : '不管選哪個方案，BEAT PASS 會員都能用同一張卡來你這裡運動，差別在你要多少曝光與服務。不知道怎麼選？問自己一個問題：需要完整報表和專屬業務嗎？需要就選 B；還不需要就先選 A，之後隨時可以升級。'}
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {plans.map((p) => (
@@ -277,7 +300,8 @@ export const VenueSystemPage: React.FC<VenueSystemPageProps> = ({ onNavigate, la
                   <span className="text-3xl font-extrabold text-[#141413]">{p.price}</span>
                   <span className="text-sm text-[#6C6C66] ml-1">{p.unit}</span>
                 </div>
-                <p className="text-xs text-[#6C6C66] mb-4">{p.note}</p>
+                <p className="text-xs text-[#6C6C66]">{p.note}</p>
+                <p className="text-xs text-[#4A4A46] mt-1 mb-4">{p.fit}</p>
                 <ul className="space-y-1.5 text-sm text-[#4A4A46]">
                   {p.points.map((x) => (
                     <li key={x}>✓ {x}</li>
@@ -289,23 +313,40 @@ export const VenueSystemPage: React.FC<VenueSystemPageProps> = ({ onNavigate, la
 
           <div className="mt-6 p-6 bg-[#FFF6EA] border border-[#FF9F1C]/40">
             <div className="font-bold text-[#141413] mb-1 text-sm">
-              {isEn ? 'Founding partner offer' : '創始場館優惠'}
+              {isEn ? 'Founding venue offer · Plan B' : '創始場館優惠｜B 方案'}
             </div>
             <p className="text-sm text-[#4A4A46] leading-relaxed">
               {isEn
-                ? 'During partner recruitment, the first 100 partner venues pay no monthly fee. For the offer period set in the contract, BEAT also waives its platform fee: you get 100% of member card revenue (after payment processing) and 0% commission on classes booked with points.'
-                : '合作夥伴招募期間，前 100 間合作場館免月費。在合約約定的優惠期內，BEAT 也不收平台服務費：會員卡收入場館拿 100%（扣除金流手續費），點數預約的課程抽成 0%。'}
+                ? 'The first 50 venues in each of northern, central and southern Taiwan (150 in total) that sign up for Plan B get an extra 1-year trial period. During the trial you can terminate at any time and get a full refund.'
+                : '北、中、南各前 50 間，共 150 間簽約 B 方案的場館，加贈 1 年試用期。試用期間可以隨時終止，退還全部費用。'}
             </p>
           </div>
 
-          <div className="mt-6 p-6 bg-white border border-[#E5E5DF]">
-            <div className="font-bold text-[#141413] mb-3 text-sm">{isEn ? 'Included in both plans' : '兩個方案都包含'}</div>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1.5 text-sm text-[#4A4A46]">
-              {included.map((x) => (
-                <li key={x}>✓ {x}</li>
-              ))}
-            </ul>
+          <div className="mt-6 bg-white border border-[#E5E5DF] overflow-x-auto">
+            <table className="w-full text-sm min-w-[520px]">
+              <thead>
+                <tr className="bg-[#FAF9F6] text-left text-[#141413]">
+                  <th className="p-3 font-bold">{isEn ? 'Item' : '合作項目'}</th>
+                  <th className="p-3 font-bold">{isEn ? 'A · Traffic' : 'A｜流量合作'}</th>
+                  <th className="p-3 font-bold">{isEn ? 'B · System & Operations' : 'B｜系統營運合作'}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {compare.map(([k, a, b]) => (
+                  <tr key={k} className="border-t border-[#E5E5DF] text-[#4A4A46]">
+                    <td className="p-3 font-medium text-[#141413]">{k}</td>
+                    <td className="p-3">{a}</td>
+                    <td className="p-3">{b}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
+          <p className="text-xs text-[#7A7A74] mt-3">
+            {isEn
+              ? 'Commissions exclude tax; points carry an additional 1.5% payment-processing fee. Corporate classes and shop revenue share will be offered after launch. Final terms are set by the signed contract; features are as currently offered on the platform.'
+              : '抽成皆未稅；點數另計金流費 1.5%。企業團體課程與電商分潤上線後提供。實際條件以正式合約為準，功能以平台當下提供為準。'}
+          </p>
         </div>
       </section>
 
@@ -318,7 +359,7 @@ export const VenueSystemPage: React.FC<VenueSystemPageProps> = ({ onNavigate, la
           <p className="text-sm text-[#6C6C66] mb-8 max-w-2xl leading-relaxed">
             {isEn
               ? 'Members pay BEAT. BEAT pays venues monthly, based on actual check-ins and completed classes.'
-              : '會員付款給 BEAT，BEAT 再依實際進場與完成的課程，每月撥款給場館。'}
+              : '會員付款給 BEAT，BEAT 再依實際進場與上課紀錄，每月撥款給場館。'}
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {revenue.map((r) => (
@@ -337,7 +378,7 @@ export const VenueSystemPage: React.FC<VenueSystemPageProps> = ({ onNavigate, la
             <table className="w-full text-sm">
               <thead>
                 <tr className="bg-[#FAF9F6] text-left text-[#141413]">
-                  <th className="p-3 font-bold">{isEn ? 'Shop referral: how the order was placed' : '商品推廣分潤：訂單狀況'}</th>
+                  <th className="p-3 font-bold">{isEn ? 'Shop revenue share (Plan B): how the order was placed' : '電商分潤（B 方案）：訂單狀況'}</th>
                   <th className="p-3 font-bold whitespace-nowrap">{isEn ? 'Venue share' : '場館分潤'}</th>
                 </tr>
               </thead>
@@ -369,7 +410,7 @@ export const VenueSystemPage: React.FC<VenueSystemPageProps> = ({ onNavigate, la
           </div>
           <div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[#141413] mb-6">
-              {isEn ? 'Contract term & leaving' : '合約期限與退出'}
+              {isEn ? 'Contract' : '合約'}
             </h2>
             <ol className="space-y-3 text-sm text-[#4A4A46] list-decimal pl-5">
               {contractTerms.map((x) => (
@@ -396,6 +437,24 @@ export const VenueSystemPage: React.FC<VenueSystemPageProps> = ({ onNavigate, la
               <div key={x} className="p-5 bg-white border border-[#E5E5DF] flex gap-3 text-sm text-[#4A4A46] leading-relaxed">
                 <span className="font-mono font-bold text-[#FF9F1C]">{String(i + 1).padStart(2, '0')}</span>
                 <span>{x}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* STEPS */}
+      <section className="py-20 border-b border-[#E5E5DF]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#141413] mb-8">
+            {isEn ? 'Get started in 3 steps' : '簽約只要 3 步'}
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {steps.map(([t, d], i) => (
+              <div key={t} className="p-6 bg-white border border-[#E5E5DF]">
+                <div className="text-2xl font-extrabold text-[#FF9F1C] mb-2">{i + 1}</div>
+                <div className="font-bold text-[#141413] mb-1">{t}</div>
+                <p className="text-sm text-[#6C6C66] leading-relaxed">{d}</p>
               </div>
             ))}
           </div>
