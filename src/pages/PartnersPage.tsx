@@ -52,8 +52,8 @@ export const PartnersPage: React.FC<PartnersPageProps> = ({ onNavigate, language
             </h2>
             <p className="text-xs sm:text-sm text-[#6C6C66] max-w-2xl leading-relaxed mb-8">
               {isEn
-                ? 'BEAT PASS members find your venue, book, and check in with a QR code. Under NT$500 a month; the first 100 partner venues pay no monthly fee.'
-                : 'BEAT PASS 會員找到你的場館、預約、用 QR Code 入場。每月不到 500 元，前 100 家合作場館免月費。'}
+                ? 'BEAT PASS members find your venue, book, and check in with a QR code. Plan A is NT$499 a month, Plan B NT$5,599 a year; the first 100 partner venues pay no monthly fee.'
+                : 'BEAT PASS 會員找到你的場館、預約、用 QR Code 入場。A 方案月繳 499 元、B 方案一年 5,599 元，前 100 家合作場館免月費。'}
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8 text-xs text-[#4A4A46]">
@@ -107,6 +107,7 @@ export const PartnersPage: React.FC<PartnersPageProps> = ({ onNavigate, language
               </div>
             </div>
 
+            <div className="flex flex-wrap items-center gap-4">
             <button
               onClick={() => onNavigate('contact', 'BEAT PASS 場館合作')}
               className="group inline-flex items-center gap-2.5 px-7 sm:px-8 py-3.5 sm:py-4 text-xs sm:text-sm font-bold uppercase tracking-wider text-white bg-[#FF9F1C] hover:bg-[#F08C00] active:scale-[0.97] hover:-translate-y-0.5 transition-all duration-200 ease-out cursor-pointer shadow-xs hover:shadow-lg hover:shadow-[#FF9F1C]/35 select-none touch-manipulation"
@@ -114,6 +115,14 @@ export const PartnersPage: React.FC<PartnersPageProps> = ({ onNavigate, language
               <span>{isEn ? 'Inquire Venue Partnership' : '場館合作洽詢'}</span>
               <ArrowRight className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-white transition-transform duration-200 ease-out group-hover:translate-x-1.5" />
             </button>
+            <a
+              href="/venue-system#plans"
+              onClick={(e) => { e.preventDefault(); onNavigate('venue-system'); }}
+              className="text-xs sm:text-sm font-bold text-[#141413] underline underline-offset-4 decoration-[#FF9F1C] hover:text-[#FF9F1C] transition-colors"
+            >
+              {isEn ? 'See plans, revenue share & terms' : '看合作方案、分潤與合約重點'}
+            </a>
+            </div>
           </div>
 
           {/* TRACK 2: BRAND PARTNERSHIP */}
