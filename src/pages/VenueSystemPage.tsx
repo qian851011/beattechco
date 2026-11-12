@@ -72,44 +72,54 @@ export const VenueSystemPage: React.FC<VenueSystemPageProps> = ({ onNavigate, la
       name: isEn ? 'Traffic Partnership' : '流量合作',
       price: 'NT$0',
       unit: isEn ? '/ month' : '/ 月',
-      note: isEn ? 'Month-to-month, no lock-in. Upgrade to B any time.' : '月約，不綁約。隨時可以升級 B。',
-      fit: isEn ? 'For small venues, studios and new venues that want to try it first.' : '適合想先試試看的小館、工作室、新開的場館。',
-      points: isEn
-        ? ['Full class and pass listings (copy schedules, pricing by member type, subscriber prices)', '8 staff accounts with 8 permission levels', 'QR code check-in and live visitor count', 'Featured listing for 60 days; “New venue” spotlight for 7 days', 'Can sign up for platform campaigns', 'Monthly statement and online support']
-        : ['課程與票券完整上架（複製排程、身分別定價、訂閱會員價）', '8 個員工帳號，可分 8 種權限', 'QR Code 核銷、即時人流顯示', '熱門曝光 60 天、新館報到 7 天', '平台活動可報名參加', '月結對帳單、線上客服'],
+      note: isEn ? 'Month-to-month. Upgrade to B any time.' : '月約，隨時可以升級 B',
+      fit: isEn ? 'Best for: small venues, studios and new venues trying it out' : '適合：想先試試看的小館、工作室、新開的場館',
     },
     {
       tag: isEn ? 'Plan B' : 'B 方案',
-      name: isEn ? 'System & Operations Partnership' : '系統營運合作',
+      name: isEn ? 'System & Operations' : '系統營運合作',
       price: 'NT$499',
       unit: isEn ? '/ month (annual)' : '/ 月（年約）',
-      note: isEn ? 'One-year contract. Less than NT$17 a day. First 150 venues get an extra 1-year trial with full refund if you leave during it.' : '簽一年，一天不到 17 元。前 150 間加贈 1 年試用期，試用期間隨時退費。',
-      fit: isEn ? 'For venues that want full reports, member messaging and a dedicated account manager.' : '適合想要完整報表、會員私訊和專屬業務的場館。',
-      points: isEn
-        ? ['Everything in Plan A', 'Unlimited staff accounts with 8 permission levels', 'Full financial reports: visitor trends, transaction details, Excel export', 'Member messaging: members can message you in the app', 'Booking protection: you still earn part of the revenue for late cancellations and no-shows', 'Featured listing for 300 days; “New venue” spotlight for the first month', 'Dedicated account manager; priority for platform campaigns', 'Points commission 1–5% (Plan A: 6%)']
-        : ['A 方案的全部功能', '員工帳號不限，可分 8 種權限', '完整財務報表：客流趨勢、交易明細、Excel 匯出', '會員私訊：會員可以直接在 App 傳訊息問你', '預約取消收益保障：會員逾時取消或沒到，你仍分得一部分', '熱門曝光 300 天、新館報到首月', '專屬業務、平台活動優先參加', '點數抽成 1～5%（A 方案為 6%）'],
+      note: isEn ? 'Less than NT$17 a day' : '一天不到 17 元',
+      fit: isEn ? 'Best for: venues that want full reports, member messaging and a dedicated account manager' : '適合：想要完整報表、會員私訊和專屬業務的場館',
     },
   ];
 
-  const compare = [
-    [isEn ? 'System fee' : '系統月費', isEn ? 'Free' : '免費', isEn ? 'NT$499 / month' : 'NT$499／月'],
-    [isEn ? 'Contract' : '合約與升級', isEn ? 'Monthly; upgrade to B any time' : '月約，可隨時升級 B', isEn ? 'Annual' : '年約'],
-    [isEn ? 'Featured venue listing' : '熱門場館曝光', isEn ? '60 days' : '60 天', isEn ? '300 days' : '300 天'],
-    [isEn ? 'New venue spotlight' : '新館報到曝光', isEn ? 'First 7 days' : '上線 7 天', isEn ? 'First month' : '上線首月'],
-    [isEn ? 'Member card commission (excl. tax)' : '會員卡抽成（未稅）', '20%', '20%'],
-    [isEn ? 'Points commission (excl. tax)' : '點數抽成（未稅）', '6%', '1～5%'],
-    [isEn ? 'Class pass redemption' : '堂課券核銷', isEn ? '70 points per class' : '一堂 70 點', isEn ? '70 points per class' : '一堂 70 點'],
-    [isEn ? 'Booking protection' : '預約取消收益保障', isEn ? 'No' : '無', isEn ? 'Yes' : '有'],
-    [isEn ? 'Shop revenue share (after launch)' : '電商分潤（上線後）', isEn ? 'No' : '無', '1～5%'],
-    [isEn ? 'Corporate group classes (after launch)' : '企業團體課程（上線後）', isEn ? 'Occasional' : '不固定', isEn ? '1–2 times every other month' : '每隔月 1～2 次'],
-    [isEn ? 'Class & pass listings' : '課程與票券上架', isEn ? 'Full' : '完整', isEn ? 'Full' : '完整'],
-    [isEn ? 'QR check-in & live visitor count' : 'QR Code 核銷、即時人流', isEn ? 'Yes' : '有', isEn ? 'Yes' : '有'],
-    [isEn ? 'Staff accounts' : '員工帳號', isEn ? '8, with 8 permission levels' : '8 個，可分 8 種權限', isEn ? 'Unlimited, with 8 permission levels' : '不限，可分 8 種權限'],
-    [isEn ? 'Financial reports' : '財務報表', isEn ? 'Monthly statement' : '月結對帳單', isEn ? 'Full reports, visitor trends, Excel export' : '完整報表、客流趨勢、Excel 匯出'],
-    [isEn ? 'Member messaging' : '會員私訊（訊息中心）', isEn ? 'No' : '無', isEn ? 'Yes' : '有'],
-    [isEn ? 'Platform campaigns & coupons' : '平台活動與優惠券', isEn ? 'Can sign up' : '可報名參加', isEn ? 'Priority' : '優先參加'],
-    [isEn ? 'Point of contact' : '專屬窗口', isEn ? 'Online support' : '線上客服', isEn ? 'Dedicated account manager' : '專屬業務'],
-    [isEn ? 'Settlement' : '合作結算', isEn ? 'Monthly' : '月結', isEn ? 'Monthly' : '月結'],
+  // 比較表：照簡報第 6、7 頁的兩張表
+  const tables: { title: string; note: string; rows: [string, string, string][] }[] = [
+    {
+      title: isEn ? 'Comparison 1: fees, exposure & revenue share' : '方案比較（一）：費用、曝光與分潤',
+      note: isEn
+        ? 'All commissions exclude tax; points carry an additional 1.5% payment-processing fee. Final terms are set by the signed contract.'
+        : '抽成皆未稅；點數另計金流費 1.5%。實際條件以正式合約為準。',
+      rows: [
+        [isEn ? 'System fee' : '系統月費', isEn ? 'Free' : '免費', isEn ? 'NT$499 / month' : 'NT$499 / 月'],
+        [isEn ? 'Contract & upgrade' : '合約與升級', isEn ? 'Monthly, upgrade to B any time' : '月約，可隨時升級 B', isEn ? 'Annual' : '年約'],
+        [isEn ? 'Featured venue listing' : '熱門場館曝光', isEn ? '60 days' : '60 天', isEn ? '300 days' : '300 天'],
+        [isEn ? 'New venue spotlight' : '新館報到曝光', isEn ? 'First 7 days' : '上線 7 天', isEn ? 'First month' : '上線首月'],
+        [isEn ? 'Member card commission (excl. tax)' : '會員卡抽成（未稅）', '20%', '20%'],
+        [isEn ? 'Points commission (excl. tax)' : '點數抽成（未稅）', '6%', '1～5%'],
+        [isEn ? 'Class pass redemption (excl. tax)' : '堂課券核銷（未稅）', isEn ? '70 points / class' : '一堂 70 點', isEn ? '70 points / class' : '一堂 70 點'],
+        [isEn ? 'Booking protection' : '預約取消收益保障', isEn ? 'No' : '無', isEn ? 'Yes' : '有'],
+        [isEn ? 'Shop revenue share (after launch)' : '電商分潤（上線後）', isEn ? 'No' : '無', '1～5%'],
+        [isEn ? 'Corporate group classes (after launch)' : '企業團體課程（上線後）', isEn ? 'Occasional' : '不固定', isEn ? '1–2 every other month' : '每隔月 1～2 次'],
+        [isEn ? 'Settlement' : '合作結算', isEn ? 'Monthly' : '月結', isEn ? 'Monthly' : '月結'],
+      ],
+    },
+    {
+      title: isEn ? 'Comparison 2: features & service' : '方案比較（二）：功能與服務',
+      note: isEn ? 'Features are as currently offered on the platform.' : '實際功能以平台當下提供為準。',
+      rows: [
+        [isEn ? 'QR code check-in' : 'QR Code 核銷', isEn ? 'Yes' : '有', isEn ? 'Yes' : '有'],
+        [isEn ? 'Live visitor count' : '即時人流顯示', isEn ? 'Yes' : '有', isEn ? 'Yes' : '有'],
+        [isEn ? 'Class & pass listings' : '課程與票券上架', isEn ? 'Full (copy schedules, pricing by member type, subscriber prices)' : '完整（複製排程、身分別定價、訂閱會員價）', isEn ? 'Full (copy schedules, pricing by member type, subscriber prices)' : '完整（複製排程、身分別定價、訂閱會員價）'],
+        [isEn ? 'Staff accounts' : '員工帳號', isEn ? '8, with 8 permission levels' : '8 個，可分 8 種權限', isEn ? 'Unlimited, with 8 permission levels' : '不限，可分 8 種權限'],
+        [isEn ? 'Financial reports' : '財務報表', isEn ? 'Monthly statement' : '月結對帳單', isEn ? 'Full reports, visitor trends, Excel export' : '完整報表、客流趨勢、Excel 匯出'],
+        [isEn ? 'Member messaging (message center)' : '會員私訊（訊息中心）', isEn ? 'No' : '無', isEn ? 'Yes' : '有'],
+        [isEn ? 'Platform campaigns & coupons' : '平台活動與優惠券', isEn ? 'Can sign up' : '可報名參加', isEn ? 'Priority' : '優先參加'],
+        [isEn ? 'Point of contact' : '專屬窗口', isEn ? 'Online support' : '線上客服', isEn ? 'Dedicated account manager' : '專屬業務'],
+      ],
+    },
   ];
 
   const revenue = [
@@ -291,25 +301,49 @@ export const VenueSystemPage: React.FC<VenueSystemPageProps> = ({ onNavigate, la
               ? 'With either plan, BEAT PASS members can use the same card at your venue. The difference is how much exposure and service you want. Not sure? Ask yourself one question: do you need full reports and a dedicated account manager? If yes, choose B. If not yet, start with A and upgrade any time.'
               : '不管選哪個方案，BEAT PASS 會員都能用同一張卡來你這裡運動，差別在你要多少曝光與服務。不知道怎麼選？問自己一個問題：需要完整報表和專屬業務嗎？需要就選 B；還不需要就先選 A，之後隨時可以升級。'}
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {plans.map((p) => (
-              <div key={p.tag} className="p-8 bg-white border border-[#E5E5DF] shadow-sm">
-                <div className="text-xs font-mono font-semibold uppercase tracking-widest text-[#FF9F1C] mb-2">{p.tag}</div>
-                <h3 className="text-lg font-bold text-[#141413]">{p.name}</h3>
-                <div className="mt-3 mb-1">
+          {/* 方案摘要 */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {plans.map((p, i) => (
+              <div key={p.tag} className={`p-5 sm:p-6 border bg-white ${i === 1 ? 'border-[#FF9F1C]/60' : 'border-[#E5E5DF]'}`}>
+                <div className={`inline-block px-2 py-0.5 text-xs font-bold ${i === 1 ? 'bg-[#FF9F1C] text-white' : 'bg-[#FFF6EA] text-[#FF9F1C] border border-[#FF9F1C]/40'}`}>{p.tag}</div>
+                <h3 className="text-lg font-bold text-[#141413] mt-2">{p.name}</h3>
+                <div className="mt-2">
                   <span className="text-3xl font-extrabold text-[#141413]">{p.price}</span>
                   <span className="text-sm text-[#6C6C66] ml-1">{p.unit}</span>
                 </div>
-                <p className="text-xs text-[#6C6C66]">{p.note}</p>
-                <p className="text-xs text-[#4A4A46] mt-1 mb-4">{p.fit}</p>
-                <ul className="space-y-1.5 text-sm text-[#4A4A46]">
-                  {p.points.map((x) => (
-                    <li key={x}>✓ {x}</li>
-                  ))}
-                </ul>
+                <p className="text-xs text-[#6C6C66] mt-1">{p.note}</p>
+                <p className="text-xs text-[#4A4A46] mt-2 leading-relaxed">{p.fit}</p>
               </div>
             ))}
           </div>
+
+          {/* 比較表（樣式同簡報） */}
+          {tables.map((t) => (
+            <div key={t.title} className="mt-10">
+              <h3 className="text-base sm:text-lg font-bold text-[#141413] mb-3">{t.title}</h3>
+              <div className="overflow-x-auto">
+                <table className="w-full min-w-[560px] text-sm border-collapse border border-[#E5E5DF]">
+                  <thead>
+                    <tr>
+                      <th className="w-[34%] px-4 py-3 text-left font-bold text-[#141413] bg-[#FAF9F6] border border-[#E5E5DF]">{isEn ? 'Item' : '合作項目'}</th>
+                      <th className="w-[33%] px-4 py-3 text-center font-bold text-[#141413] bg-[#FFF6EA] border border-[#E5E5DF]">{isEn ? 'A · Traffic' : 'A｜流量合作'}</th>
+                      <th className="w-[33%] px-4 py-3 text-center font-bold text-white bg-[#FF9F1C] border border-[#E5E5DF]">{isEn ? 'B · System & Operations' : 'B｜系統營運合作'}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {t.rows.map(([k, a, b], i) => (
+                      <tr key={k} className={i % 2 === 1 ? 'bg-[#FAF9F6]' : 'bg-white'}>
+                        <td className="px-4 py-2.5 text-[#141413] border border-[#E5E5DF]">{k}</td>
+                        <td className="px-4 py-2.5 text-center text-[#141413] border border-[#E5E5DF]">{a}</td>
+                        <td className="px-4 py-2.5 text-center text-[#141413] border border-[#E5E5DF]">{b}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="text-xs text-[#7A7A74] mt-2">{t.note}</p>
+            </div>
+          ))}
 
           <div className="mt-6 p-6 bg-[#FFF6EA] border border-[#FF9F1C]/40">
             <div className="font-bold text-[#141413] mb-1 text-sm">
@@ -321,32 +355,6 @@ export const VenueSystemPage: React.FC<VenueSystemPageProps> = ({ onNavigate, la
                 : '北、中、南各前 50 間，共 150 間簽約 B 方案的場館，加贈 1 年試用期。試用期間可以隨時終止，退還全部費用。'}
             </p>
           </div>
-
-          <div className="mt-6 bg-white border border-[#E5E5DF] overflow-x-auto">
-            <table className="w-full text-sm min-w-[520px]">
-              <thead>
-                <tr className="bg-[#FAF9F6] text-left text-[#141413]">
-                  <th className="p-3 font-bold">{isEn ? 'Item' : '合作項目'}</th>
-                  <th className="p-3 font-bold">{isEn ? 'A · Traffic' : 'A｜流量合作'}</th>
-                  <th className="p-3 font-bold">{isEn ? 'B · System & Operations' : 'B｜系統營運合作'}</th>
-                </tr>
-              </thead>
-              <tbody>
-                {compare.map(([k, a, b]) => (
-                  <tr key={k} className="border-t border-[#E5E5DF] text-[#4A4A46]">
-                    <td className="p-3 font-medium text-[#141413]">{k}</td>
-                    <td className="p-3">{a}</td>
-                    <td className="p-3">{b}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <p className="text-xs text-[#7A7A74] mt-3">
-            {isEn
-              ? 'Commissions exclude tax; points carry an additional 1.5% payment-processing fee. Corporate classes and shop revenue share will be offered after launch. Final terms are set by the signed contract; features are as currently offered on the platform.'
-              : '抽成皆未稅；點數另計金流費 1.5%。企業團體課程與電商分潤上線後提供。實際條件以正式合約為準，功能以平台當下提供為準。'}
-          </p>
         </div>
       </section>
 
