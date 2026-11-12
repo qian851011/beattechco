@@ -79,8 +79,8 @@ export const BeatPassPage: React.FC<BeatPassPageProps> = ({ onNavigate, language
             </h1>
             <p className="text-base sm:text-lg text-[#6C6C66] leading-relaxed">
               {isEn
-                ? 'BEAT PASS is our signature cross-venue movement pass. With a single digital membership, connect with diverse sports spaces and explore activities freely tailored to your lifestyle, interests, and fitness goals.'
-                : 'BEAT PASS 是比忒科技打造的跨場域運動會員服務。透過單一數位憑證，串聯多元運動空間，讓使用者依照自己的生活節奏、興趣與訓練需求，探索運動的無限可能。'}
+                ? 'BEAT PASS is BEAT Technology’s cross-venue membership. One digital member card gets you into different kinds of sports venues, so you can pick by your schedule and what you feel like doing.'
+                : 'BEAT PASS 是比忒科技的跨場館會員服務。一張數位會員卡，可以去不同類型的運動場館，依自己的時間和興趣選。'}
             </p>
             <div className="pt-2 flex flex-wrap items-center gap-4">
               <a
@@ -111,12 +111,12 @@ export const BeatPassPage: React.FC<BeatPassPageProps> = ({ onNavigate, language
                 01 / WHAT IS BEAT PASS?
               </div>
               <h2 className="text-2xl sm:text-4xl font-extrabold text-[#141413]">
-                {isEn ? 'Break Free from Single-Club Lock-In' : '打破單一會籍束縛，運動由你做主'}
+                {isEn ? 'One Membership, More Than One Venue' : '一個會員，不只一間場館'}
               </h2>
               <p className="text-sm text-[#4A4A46] leading-relaxed">
                 {isEn
-                  ? 'Conventional fitness contracts often restrict members to a single facility and routine. But modern urban life is fluid: you might want strength training on Monday, yoga on Wednesday, and weekend bouldering or swimming.'
-                  : '傳統健身合約往往將你綁定在特定單一地點與單一項目。但現代運動者的生活充滿變化：週一需要重訓喚醒活力，週三想用瑜伽舒緩身心，週末則渴望挑戰抱石或享受水適能。'}
+                  ? 'A typical gym contract ties you to one location and one kind of workout. But you might want weights on Monday, yoga on Wednesday, and bouldering on the weekend.'
+                  : '一般健身房合約會把你綁在一個地點、一種運動。但你可能週一想重訓、週三做瑜伽、週末想試試抱石。'}
               </p>
               <p className="text-sm text-[#6C6C66] leading-relaxed">
                 {isEn
@@ -139,10 +139,10 @@ export const BeatPassPage: React.FC<BeatPassPageProps> = ({ onNavigate, language
                     <CheckCircle2 className="w-5 h-5 text-[#FF9F1C] shrink-0 mt-0.5" />
                     <div>
                       <div className="text-sm font-bold text-[#141413]">
-                        {isEn ? 'Ultimate Flexibility' : '極致彈性'}
+                        {isEn ? 'No Lock-In' : '不用綁約'}
                       </div>
                       <div className="text-xs text-[#6C6C66] mt-0.5">
-                        {isEn ? 'Plan schedules around your daily life and commute, with zero wasted annual fees.' : '依照生活與工作動線自由安排訓練日程，不再浪費未使用的會籍。'}
+                        {isEn ? 'Train on your own schedule, without an annual contract you never use up.' : '照自己的行程安排，不會有用不完的年約。'}
                       </div>
                     </div>
                   </div>
@@ -151,10 +151,10 @@ export const BeatPassPage: React.FC<BeatPassPageProps> = ({ onNavigate, language
                     <CheckCircle2 className="w-5 h-5 text-[#FF9F1C] shrink-0 mt-0.5" />
                     <div>
                       <div className="text-sm font-bold text-[#141413]">
-                        {isEn ? 'Comprehensive Disciplines' : '全方位運動探索'}
+                        {isEn ? 'Different Workouts' : '不同運動'}
                       </div>
                       <div className="text-xs text-[#6C6C66] mt-0.5">
-                        {isEn ? 'Fitness, yoga, climbing, Pilates, boxing, and swimming all under one pass.' : '重訓、攀岩、瑜伽、皮拉提斯、拳擊等多樣項目，一次滿足不同訓練需求。'}
+                        {isEn ? 'Yoga, bouldering, Pilates and conditioning, all with the same member card.' : '瑜伽、抱石、皮拉提斯、體能訓練，用同一張會員卡。'}
                       </div>
                     </div>
                   </div>
@@ -163,10 +163,10 @@ export const BeatPassPage: React.FC<BeatPassPageProps> = ({ onNavigate, language
                     <CheckCircle2 className="w-5 h-5 text-[#FF9F1C] shrink-0 mt-0.5" />
                     <div>
                       <div className="text-sm font-bold text-[#141413]">
-                        {isEn ? 'Instant Digital Check-In' : '極速數位核驗'}
+                        {isEn ? 'QR Code Entry' : 'QR Code 入場'}
                       </div>
                       <div className="text-xs text-[#6C6C66] mt-0.5">
-                        {isEn ? 'Scan your dynamic QR code for rapid, contactless access with zero paperwork.' : '手機出示 QR Code 即可快速入場，零接觸、不浪費寶貴運動時間。'}
+                        {isEn ? 'Show the QR code on your phone at the front desk to get in.' : '在櫃檯出示手機 QR Code 就能入場。'}
                       </div>
                     </div>
                   </div>
@@ -185,10 +185,10 @@ export const BeatPassPage: React.FC<BeatPassPageProps> = ({ onNavigate, language
               03 / CROSS-VENUE EXPERIENCE
             </div>
             <h2 className="text-2xl sm:text-4xl font-extrabold text-[#141413]">
-              {isEn ? 'Diverse Disciplines Unlocked with One Pass' : '多元運動領域，一次解鎖'}
+              {isEn ? 'Venue Types' : '場館類型'}
             </h2>
             <p className="text-sm text-[#6C6C66] mt-2">
-              {isEn ? 'Select a category to discover curated spaces covered by BEAT PASS:' : '點選不同領域，探索 BEAT PASS 涵蓋的多元運動生活型態：'}
+              {isEn ? 'Pick a type to see which venues are on BEAT PASS:' : '點選類型，看看 BEAT PASS 有哪些場館：'}
             </p>
           </div>
 
@@ -227,19 +227,19 @@ export const BeatPassPage: React.FC<BeatPassPageProps> = ({ onNavigate, language
               </h3>
               <p className="text-xs text-[#6C6C66] mt-2 max-w-xl leading-relaxed">
                 {isEn
-                  ? 'BEAT PASS carefully curates top-rated urban spaces equipped with professional facilities and inviting training vibes for both beginners and enthusiasts.'
-                  : 'BEAT PASS 精選都會區高評價專業場域，提供完整設施與自在訓練氛圍。無論是初學者入門還是資深愛好者精進，都能找到專屬舞台。'}
+                  ? 'Partner venues are currently in Taipei and New Taipei, with more being added. Each venue’s open areas and time slots are listed in the app.'
+                  : '目前合作場館在雙北，持續增加中。每間場館開放的空間與時段，會標示在 App 裡。'}
               </p>
             </div>
             <div className="flex items-center gap-3">
               <span className="text-xs font-mono text-[#6C6C66] bg-[#FAF9F6] border border-[#E5E5DF] px-3 py-1.5">
-                {isEn ? 'Curated Partner Network' : '優選風格場館'}
+                {isEn ? 'Partner Venues' : '合作場館'}
               </span>
               <button
                 onClick={() => onNavigate('contact')}
                 className="px-4 py-1.5 text-xs font-semibold text-white bg-[#FF9F1C] hover:bg-[#F08C00] transition-colors cursor-pointer shadow-xs"
               >
-                {isEn ? 'Explore Nearby Venues' : '探索鄰近場館'}
+                {isEn ? 'Find Venues Near You' : '找附近的場館'}
               </button>
             </div>
           </div>
@@ -254,12 +254,12 @@ export const BeatPassPage: React.FC<BeatPassPageProps> = ({ onNavigate, language
               04 / DIGITAL EXPERIENCE
             </div>
             <h2 className="text-2xl sm:text-4xl font-extrabold text-[#141413]">
-              {isEn ? 'Intuitive Digital Movement Living' : '極簡直覺的數位運動生活'}
+              {isEn ? 'How It Works' : '怎麼使用'}
             </h2>
             <p className="text-sm text-[#6C6C66] mt-2">
               {isEn
-                ? 'From instant digital pass entry to real-time class booking and live alerts, tailored for modern urban fitness.'
-                : '從憑證通行、線上課表預約到即時動態推播，全方位滿足現代都會運動節奏。'}
+                ? 'Your member card, class booking and notifications are all in the app.'
+                : '會員卡、線上預約、通知，都在 App 裡。'}
             </p>
           </div>
 
@@ -276,12 +276,12 @@ export const BeatPassPage: React.FC<BeatPassPageProps> = ({ onNavigate, language
                 <h3 className="text-lg font-bold text-[#141413] mb-2">{isEn ? 'Digital Pass' : '數位會員憑證'}</h3>
                 <p className="text-xs text-[#6C6C66] leading-relaxed">
                   {isEn
-                    ? 'No physical cards or tedious paperwork. Check your membership status, training history, and perks with a single tap.'
-                    : '告別實體卡片與紙本手續。透過直覺介面，隨時查看個人運動檔案、會員資格與累積福利，隨身帶著走。'}
+                    ? 'No physical card. Your membership, expiry date and rewards are all in the app.'
+                    : '不用實體卡。會員資格、到期日和回饋，都在 App 裡查得到。'}
                 </p>
               </div>
               <div className="mt-4 pt-4 border-t border-[#E5E5DF]/60 text-[11px] font-medium text-[#FF9F1C]">
-                {isEn ? '✓ Phone is your universal key' : '✓ 手機即是通行證'}
+                {isEn ? '✓ Your phone is your member card' : '✓ 手機就是會員卡'}
               </div>
             </div>
 
@@ -297,12 +297,12 @@ export const BeatPassPage: React.FC<BeatPassPageProps> = ({ onNavigate, language
                 <h3 className="text-lg font-bold text-[#141413] mb-2">{isEn ? 'Seamless QR Entry' : '即時 QR Code 入場'}</h3>
                 <p className="text-xs text-[#6C6C66] leading-relaxed">
                   {isEn
-                    ? 'Present your dynamic QR code for one-second scanning at venue desks or smart turnstiles. Zero waiting lines.'
-                    : '抵達場館時，出示手機動態 QR Code 供櫃檯或閘門一秒掃描核銷即可輕鬆進場。流程零秒等待，運動隨時展開。'}
+                    ? 'At the venue, show the dynamic QR code on your phone and the front desk scans you in.'
+                    : '到了場館，出示手機上的動態 QR Code，櫃檯掃一下就能進場。'}
                 </p>
               </div>
               <div className="mt-4 pt-4 border-t border-[#E5E5DF]/60 text-[11px] font-medium text-[#FF9F1C]">
-                {isEn ? '✓ 1-second rapid check-in' : '✓ 一秒極速核銷通關'}
+                {isEn ? '✓ Scan and go' : '✓ 掃了就進'}
               </div>
             </div>
 
@@ -321,12 +321,12 @@ export const BeatPassPage: React.FC<BeatPassPageProps> = ({ onNavigate, language
                 </div>
                 <p className="text-xs text-[#6C6C66] leading-relaxed">
                   {isEn
-                    ? 'Unified schedules across venues! Instructor bios, live available spots, and dates are crystal clear to book in one click.'
-                    : '跨場館課表全面整合！師資背景、剩餘名額與時間動態清清楚楚。隨時隨地預約心儀團課或教練時段，行程清晰不撞期。'}
+                    ? 'See class schedules, instructors and open spots across venues, and book right in the app.'
+                    : '不同場館的課表、老師和剩餘名額都看得到，直接在 App 預約。'}
                 </p>
               </div>
               <div className="mt-4 pt-4 border-t border-[#E5E5DF]/60 text-[11px] font-medium text-[#FF9F1C]">
-                {isEn ? '✓ Live spots & schedule at a glance' : '✓ 即時名額 · 課表一覽無遺'}
+                {isEn ? '✓ Open spots & schedules' : '✓ 名額與課表'}
               </div>
             </div>
 
@@ -341,16 +341,16 @@ export const BeatPassPage: React.FC<BeatPassPageProps> = ({ onNavigate, language
                 </div>
                 <h3 className="text-lg font-bold text-[#141413] mb-2">{isEn ? 'Instant Messaging' : '即時訊息'}</h3>
                 <div className="text-xs font-semibold text-[#FF9F1C] mb-2">
-                  {isEn ? 'Live Updates in Real-Time' : '重要通知零時差掌握'}
+                  {isEn ? 'Notifications' : '通知'}
                 </div>
                 <p className="text-xs text-[#6C6C66] leading-relaxed">
                   {isEn
-                    ? 'Booking confirmations, warm pre-class reminders, and venue announcements pushed instantly. Never miss a schedule change.'
-                    : '預約成功推播、課前暖心提醒、場館即時公告與專屬會員福利訊息不漏接。隨時掌握最新排程異動與專屬名額。'}
+                    ? 'Booking confirmations, pre-class reminders and venue announcements.'
+                    : '預約成功、上課前提醒，以及場館公告。'}
                 </p>
               </div>
               <div className="mt-4 pt-4 border-t border-[#E5E5DF]/60 text-[11px] font-medium text-[#FF9F1C]">
-                {isEn ? '✓ Pre-class reminders & live alerts' : '✓ 開課提醒與即時通知'}
+                {isEn ? '✓ Reminders & announcements' : '✓ 提醒與公告'}
               </div>
             </div>
           </div>
@@ -372,8 +372,8 @@ export const BeatPassPage: React.FC<BeatPassPageProps> = ({ onNavigate, language
             </h2>
             <p className="text-sm sm:text-base text-[#5C5C58] mt-2 font-medium">
               {isEn
-                ? 'What are they for? Where to use them? Cleanly delineated to maximize value for every workout.'
-                : '幹嘛用？在哪裡使用？三者分工明確，為每一次運動創造最大價值。'}
+                ? 'What each one is and where you use it.'
+                : '三種各是什麼、在哪裡用。'}
             </p>
           </div>
 
@@ -403,8 +403,8 @@ export const BeatPassPage: React.FC<BeatPassPageProps> = ({ onNavigate, language
                     </span>
                     <span className="text-[#5C5C58]">
                       {isEn
-                        ? 'Universal identity verification and cross-venue entry credential. Ties to your member profile, validity, and anti-counterfeit dynamic code, completely replacing plastic cards.'
-                        : '身分驗證與全生態運動通行證。綁定個人運動檔案、會員等級與防偽動態核銷碼，徹底告別傳統塑膠卡片與簽到紙本。'}
+                        ? 'Your membership. Use the dynamic QR code to enter partner venues.'
+                        : '你的會員資格。用動態 QR Code 進出合作場館。'}
                     </span>
                   </div>
 
@@ -414,8 +414,8 @@ export const BeatPassPage: React.FC<BeatPassPageProps> = ({ onNavigate, language
                     </span>
                     <span className="text-[#5C5C58]">
                       {isEn
-                        ? 'All partner gyms, yoga studios, bouldering walls, and Pilates centers. Show your mobile QR code at front desks or turnstiles for instant entry.'
-                        : '全台所有 BEAT PASS 合作場館。抵達健身房、瑜伽教室、抱石攀岩館或皮拉提斯館時，出示手機 QR Code 快速掃描核銷入場。'}
+                        ? 'At BEAT PASS partner venues. Show the QR code on your phone at the front desk.'
+                        : '在 BEAT PASS 合作場館，到櫃檯出示手機 QR Code。'}
                     </span>
                   </div>
                 </div>
@@ -423,7 +423,7 @@ export const BeatPassPage: React.FC<BeatPassPageProps> = ({ onNavigate, language
 
               <div className="mt-6 pt-4 border-t border-[#F0F0EB] text-[11px] text-[#7A7A74]">
                 <strong>{isEn ? 'When to use: ' : '使用時機：'}</strong>
-                {isEn ? 'Whenever arriving at any offline partner venue desk or smart gate.' : '到達任何合作場館櫃檯或感應閘門時。'}
+                {isEn ? 'When you arrive at a partner venue.' : '到了合作場館的時候。'}
               </div>
             </div>
 
@@ -451,8 +451,8 @@ export const BeatPassPage: React.FC<BeatPassPageProps> = ({ onNavigate, language
                     </span>
                     <span className="text-[#5C5C58]">
                       {isEn
-                        ? 'Flexible credits deducted per session or class. Breaks free from expensive single-club monthly subscriptions, allowing you to pay strictly for what you book.'
-                        : '彈性扣抵運動與課程額度。打破傳統高昂單一月費與長期綁約，依實際參與的運動領域與課程時段扣點，不浪費預算。'}
+                        ? 'Points come with a class plan. The number of points each class uses is shown before you book.'
+                        : '點數來自上課服務方案。每堂課要用幾點，預約前就會標示。'}
                     </span>
                   </div>
 
@@ -462,8 +462,8 @@ export const BeatPassPage: React.FC<BeatPassPageProps> = ({ onNavigate, language
                     </span>
                     <span className="text-[#5C5C58]">
                       {isEn
-                        ? 'Deducted online when booking classes in BEAT PASS, including reformer Pilates, yoga classes, climbing sessions, or boutique gym entries.'
-                        : '在 BEAT PASS 平台上「預約課程」時使用。包含團體運動課、器械皮拉提斯、抱石體驗、拳擊教練課或特約場地自由訓練。'}
+                        ? 'Used when booking classes on BEAT PASS, such as group classes, reformer Pilates or bouldering sessions.'
+                        : '在 BEAT PASS 預約課程時使用，例如團體課、器械皮拉提斯、抱石體驗等。'}
                     </span>
                   </div>
                 </div>
@@ -471,7 +471,7 @@ export const BeatPassPage: React.FC<BeatPassPageProps> = ({ onNavigate, language
 
               <div className="mt-6 pt-4 border-t border-[#F0F0EB] text-[11px] text-[#7A7A74]">
                 <strong>{isEn ? 'When to use: ' : '使用時機：'}</strong>
-                {isEn ? 'When browsing schedules on mobile and booking your next workout.' : '在手機上挑選課程、一鍵完成線上預約時。'}
+                {isEn ? 'When you book a class.' : '預約課程的時候。'}
               </div>
             </div>
 
@@ -499,8 +499,8 @@ export const BeatPassPage: React.FC<BeatPassPageProps> = ({ onNavigate, language
                     </span>
                     <span className="text-[#5C5C58]">
                       {isEn
-                        ? 'Activity incentive and ecosystem rewards token! Earn coins by checking in, completing weekly challenges, or community milestones. Every drop of sweat has tangible value.'
-                        : '運動獎勵與生態專屬回饋機制！運動不只是流汗，每一次入場訓練、達成每週目標或參與社群挑戰皆可賺幣，讓汗水留下真實價值。'}
+                        ? 'A free reward. You get Chiu Chiu Coins when you buy a plan or join events. They can’t be bought or exchanged for cash.'
+                        : '免費的回饋。購買方案或參加活動時可以拿到啾啾幣，不能用錢買，也不能換現金。'}
                     </span>
                   </div>
 
@@ -510,8 +510,8 @@ export const BeatPassPage: React.FC<BeatPassPageProps> = ({ onNavigate, language
                     </span>
                     <span className="text-[#5C5C58]">
                       {isEn
-                        ? 'Redeemable on BEAT Commerce for gear discounts, apparel vouchers, lifestyle brand perks, or membership renewal benefits.'
-                        : '在 BEAT Commerce 運動生活商城兌換專業運動裝備折抵、機能服飾折扣券、合作生活品牌專屬好禮，或於續約享有專屬優惠。'}
+                        ? 'Redeem for coupons and events announced in the app. Once the BEAT Shop opens, you can use them there too.'
+                        : '可兌換 App 公告的優惠券與活動；BEAT 商店開幕後，也能在商店使用。'}
                     </span>
                   </div>
                 </div>
@@ -519,7 +519,7 @@ export const BeatPassPage: React.FC<BeatPassPageProps> = ({ onNavigate, language
 
               <div className="mt-6 pt-4 border-t border-[#F0F0EB] text-[11px] text-[#7A7A74]">
                 <strong>{isEn ? 'When to use: ' : '使用時機：'}</strong>
-                {isEn ? 'Treating yourself to new apparel or gear on BEAT Commerce.' : '運動累積獎勵後，在商城折抵裝備或兌換好康時。'}
+                {isEn ? 'When redeeming offers announced in the app.' : '兌換 App 公告的優惠時。'}
               </div>
             </div>
           </div>
@@ -532,7 +532,7 @@ export const BeatPassPage: React.FC<BeatPassPageProps> = ({ onNavigate, language
               <div className="space-y-4 max-w-2xl">
                 <div className="inline-flex items-center gap-2 text-xs font-mono text-[#FF9F1C] font-semibold uppercase tracking-wider bg-[#FFF4E5] border border-[#FF9F1C]/30 px-3 py-1">
                   <Sparkles className="w-3.5 h-3.5" />
-                  <span>{isEn ? 'LIMITED WELCOME OFFER' : 'LIMITED WELCOME OFFER · 新手專屬限時禮遇'}</span>
+                  <span>{isEn ? 'New Member Offer' : '新會員優惠'}</span>
                 </div>
 
                 <h3 className="text-2xl sm:text-4xl font-extrabold text-[#141413] tracking-tight leading-snug">
@@ -543,8 +543,8 @@ export const BeatPassPage: React.FC<BeatPassPageProps> = ({ onNavigate, language
 
                 <p className="text-sm text-[#5C5C58] leading-relaxed">
                   {isEn
-                    ? 'Elevate your fitness lifestyle. Join BEAT PASS now to unlock welcome gifts and enjoy tangible rewards for every workout.'
-                    : '開啟你的全方位運動生活。現在加入 BEAT PASS 會員，立刻獲得專屬起點禮遇，讓每一次進場運動都有滿滿驚喜與實質回饋。'}
+                    ? 'New BEAT PASS members can claim the offers below. Full terms are in the app.'
+                    : '新加入 BEAT PASS 的會員可以領取以下優惠，詳細規則以 App 公告為準。'}
                 </p>
 
                 {/* 2 Reward Callouts */}
@@ -557,8 +557,8 @@ export const BeatPassPage: React.FC<BeatPassPageProps> = ({ onNavigate, language
                       <div className="text-sm font-bold text-[#141413]">{isEn ? 'Instant 100 Coins' : '現贈 100 啾啾幣'}</div>
                       <div className="text-xs text-[#7A7A74] mt-0.5">
                         {isEn
-                          ? 'Granted upon signup, redeemable for discounts on gear and partner perks in BEAT Commerce.'
-                          : '註冊即領，可在 BEAT Commerce 商城直接折抵運動裝備與合作品牌好禮。'}
+                          ? 'Given after you sign up; redeem for offers announced in the app.'
+                          : '註冊後發放，可兌換 App 公告的優惠。'}
                       </div>
                     </div>
                   </div>
@@ -571,8 +571,8 @@ export const BeatPassPage: React.FC<BeatPassPageProps> = ({ onNavigate, language
                       <div className="text-sm font-bold text-[#141413]">{isEn ? 'Draw: 100 Pass Points' : '加碼抽 100 運動點數'}</div>
                       <div className="text-xs text-[#7A7A74] mt-0.5">
                         {isEn
-                          ? 'Automatic entry to win 100 points for booking top-tier group classes and training across venues.'
-                          : '全台熱門場館團課、皮拉提斯、抱石體驗隨選隨約，運動自由度拉滿。'}
+                          ? 'Points can be used to book classes at partner venues, such as Pilates or bouldering.'
+                          : '點數可用來預約合作場館的課程，例如皮拉提斯、抱石體驗。'}
                       </div>
                     </div>
                   </div>
@@ -587,11 +587,11 @@ export const BeatPassPage: React.FC<BeatPassPageProps> = ({ onNavigate, language
                   rel="noopener"
                   className="px-8 py-4 text-xs sm:text-sm font-semibold uppercase tracking-wider text-white bg-[#FF9F1C] hover:bg-[#F08C00] transition-colors cursor-pointer shadow-md shadow-[#FF9F1C]/25 flex items-center gap-2"
                 >
-                  <span>{isEn ? 'Claim Welcome Offer' : '立即加入領取專屬禮遇'}</span>
+                  <span>{isEn ? 'Join & Claim Offer' : '加入並領取優惠'}</span>
                   <ArrowRight className="w-4 h-4" />
                 </a>
                 <span className="text-[11px] text-[#8C8C85]">
-                  {isEn ? '* Valid for new activations · Applicable across ecosystem' : '* 新開通會員適用 · 點數與啾啾幣即刻適用於全生態'}
+                  {isEn ? '* New members only. Full terms in the app.' : '* 限新會員，完整規則以 App 公告為準'}
                 </span>
               </div>
             </div>
@@ -653,12 +653,12 @@ export const BeatPassPage: React.FC<BeatPassPageProps> = ({ onNavigate, language
       <section className="py-20 text-center bg-[#F2F1EC]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
           <h2 className="text-2xl sm:text-4xl font-extrabold text-[#141413]">
-            {isEn ? 'Ready to Elevate Your Movement Rhythm?' : '準備好展開屬於你的全新運動節奏？'}
+            {isEn ? 'Want to Give It a Try?' : '想試試看嗎？'}
           </h2>
           <p className="text-xs sm:text-sm text-[#6C6C66] max-w-xl mx-auto">
             {isEn
-              ? 'Join BEAT PASS and explore urban movement without bounds.'
-              : '加入 BEAT PASS，與數百位運動者一起探索城市中無限運動精彩。'}
+              ? 'Join BEAT PASS and book your first session.'
+              : '加入 BEAT PASS，預約你的第一次。'}
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <button

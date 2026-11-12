@@ -320,11 +320,11 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, language }) =>
                     </div>
                     <div className="group/feat flex items-center gap-2.5 p-1 -ml-1 rounded-xs hover:bg-[#FFF9F2]/70 transition-all duration-200 cursor-default">
                       <CheckCircle2 className="w-4 h-4 text-[#FF9F1C] shrink-0 group-hover/feat:scale-120 transition-transform duration-200" />
-                      <span className="group-hover/feat:text-[#141413] transition-colors">{isEn ? 'Curated Venue Network' : '多元風格場館生態系'}</span>
+                      <span className="group-hover/feat:text-[#141413] transition-colors">{isEn ? 'Different Kinds of Venues' : '不同類型的場館'}</span>
                     </div>
                     <div className="group/feat flex items-center gap-2.5 p-1 -ml-1 rounded-xs hover:bg-[#FFF9F2]/70 transition-all duration-200 cursor-default">
                       <CheckCircle2 className="w-4 h-4 text-[#FF9F1C] shrink-0 group-hover/feat:scale-120 transition-transform duration-200" />
-                      <span className="group-hover/feat:text-[#141413] transition-colors">{isEn ? 'Exclusive Rewards (Chiu Chiu Coin)' : '專屬「啾啾幣」回饋機制'}</span>
+                      <span className="group-hover/feat:text-[#141413] transition-colors">{isEn ? 'Chiu Chiu Coin Rewards' : '「啾啾幣」回饋'}</span>
                     </div>
                   </div>
                 </div>
@@ -334,7 +334,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, language }) =>
                     onClick={() => onNavigate('beat-pass')}
                     className="group inline-flex items-center gap-2.5 px-7 sm:px-8 py-3.5 sm:py-4 text-[17px] font-bold uppercase tracking-wider text-white bg-[#FF9F1C] hover:bg-[#F08C00] active:scale-[0.97] hover:-translate-y-0.5 transition-all duration-200 ease-out cursor-pointer shadow-xs hover:shadow-lg hover:shadow-[#FF9F1C]/35 select-none touch-manipulation"
                   >
-                    <span>{isEn ? 'Explore BEAT PASS' : '進入 BEAT PASS 專屬介紹'}</span>
+                    <span>{isEn ? 'About BEAT PASS' : '看 BEAT PASS 介紹'}</span>
                     <ArrowRight className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-white transition-transform duration-200 ease-out group-hover:translate-x-1.5" />
                   </button>
                 </div>
@@ -381,8 +381,8 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, language }) =>
                   </div>
                   <p className="text-xs sm:text-sm text-[#6C6C66] leading-relaxed pt-2">
                     {isEn
-                      ? 'Movement is an around-the-clock lifestyle. BEAT Commerce extends mover enthusiasm into curated apparel, gear, supplements, and lifestyle collaborations, forging novel links between fitness and mindful commerce.'
-                      : '運動不只發生在訓練時段，更是一種全天候的生活美學。BEAT Commerce 著眼於將運動者的熱情延伸至裝備、運動服飾、生活補給與風格周邊，探索運動體驗與日常消費之間的新連結。'}
+                      ? 'The BEAT Shop is being prepared. It will sell training gear, sportswear, and nutrition products.'
+                      : 'BEAT 商店正在籌備，預計販售訓練用品、運動服飾與營養補給。'}
                   </p>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-4 text-[15px] leading-[20px] text-[#4A4A46]">

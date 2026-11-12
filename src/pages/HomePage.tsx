@@ -401,7 +401,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, language }) => {
                   </div>
                   <h4 className="text-base font-bold text-[#141413] mb-1 group-hover:text-[#FF9F1C] transition-colors">{isEn ? 'Flexible Choices' : '彈性選擇'}</h4>
                   <p className="text-xs text-[#6C6C66] leading-relaxed">
-                    {isEn ? 'Freely organize daily training rhythms according to your schedule.' : '依照生活與需求自由安排日常運動節奏。'}
+                    {isEn ? 'Book on your own schedule.' : '照自己的時間預約。'}
                   </p>
                 </div>
 
@@ -423,7 +423,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, language }) => {
                   </div>
                   <h4 className="text-base font-bold text-[#141413] mb-1 group-hover:text-[#FF9F1C] transition-colors">{isEn ? 'Instant Entry' : '即時入場'}</h4>
                   <p className="text-xs text-[#6C6C66] leading-relaxed">
-                    {isEn ? 'Seamless QR Code check-in with zero waiting at venue desks.' : '透過專屬 QR Code 快速完成入場核驗流程。'}
+                    {isEn ? 'Check in with the QR code on your phone.' : '用手機上的 QR Code 入場。'}
                   </p>
                 </div>
 
